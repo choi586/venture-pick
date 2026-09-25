@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#171922"/>
+  <title>Venture Pick — 관리자</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">
+        <div class="logo">VP</div>
+        <div>
+          <div class="brand-title">Venture Pick</div>
+          <div class="brand-sub">관리자</div>
+        </div>
+      </a>
+      <a class="btn btn-soft" href="index.html" style="text-decoration:none">학생 화면</a>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div role="alert" id="setupWarning" class="notice error hidden"></div>
+
+    <section id="loginView" class="login-shell card">
+      <div class="logo">VP</div>
+      <h1 style="margin:0 0 8px">관리자 로그인</h1>
+      <p class="small">Firebase Authentication에서 만든 이메일/비밀번호 계정으로 로그인합니다.</p>
+      <div class="field">
+        <label>이메일</label>
+        <input id="emailInput" type="email" autocomplete="username" placeholder="teacher@example.com"/>
+      </div>
+      <div class="field">
+        <label>비밀번호</label>
+        <input id="passwordInput" type="password" autocomplete="current-password"/>
+      </div>
+      <button id="loginButton" disabled class="btn btn-brand" style="width:100%;margin-top:8px">로그인</button>
+      <div aria-live="polite" id="loginMsg" style="margin-top:12px"></div>
+    </section>
+
+    <section id="adminView" class="hidden">
+      <div class="admin-top">
+        <div>
+          <div class="kicker" style="color:var(--brand)">ADMIN DASHBOARD</div>
+          <h1 style="margin:6px 0 2px">모의투자 운영</h1>
+          <div id="adminIdentity" class="small"></div>
+        </div>
+        <div class="admin-actions">
+          <button id="logoutButton" class="btn btn-soft">로그아웃</button>
+        </div>
+      </div>
+
+      <div id="sessionMissing" class="notice info hidden">
+        아직 Firestore에 세션 설정이 없습니다.
+        <button id="createSessionButton" class="btn btn-dark" style="margin-left:10px">기본 세션 만들기</button>
+      </div>
+
+      <div id="adminContent" class="hidden">
+        <div class="admin-grid">
+          <section class="admin-card">
+            <h3>프로젝트·투자 설정</h3>
+            <div class="field">
+              <label>프로젝트명</label>
+              <input id="titleInput"/>
+            </div>
+            <div class="field">
+              <label>메인 문구</label>
+              <input id="subtitleInput"/>
+            </div>
+            <div class="field">
+              <label>설명</label>
+              <textarea id="descriptionInput"></textarea>
+            </div>
+            <div class="setting">
+              <label>1인 투자 한도</label>
+              <input id="budgetInput" type="number" min="1" max="1000000000000" step="1"/>
+            </div>
+            <div class="setting">
+              <label>투자 단위</label>
+              <input id="unitInput" type="number" min="1" max="1000000000000" step="1"/>
+            </div>
+            <div class="submit-row">
+              <div id="openStateText" class="small"></div>
+              <button id="toggleOpenButton" class="btn btn-success">투자 접수 열기</button>
+            </div>
+          </section>
+
+          <section class="admin-card">
+            <h3>운영 도구</h3>
+            <p class="small">제출 현황과 결과는 실시간으로 갱신됩니다.</p>
+            <div class="field">
+              <label>현재 세션 ID</label>
+              <input id="sessionIdView" disabled/>
+            </div>
+            <div class="admin-actions" style="margin-top:18px">
+              <button id="saveAllButton" class="btn btn-brand">설정 저장</button>
+              <button id="exportButton" class="btn btn-soft">CSV 저장</button>
+              <button id="resetButton" class="btn btn-danger">모든 제출 초기화</button>
+            </div>
+            <div aria-live="polite" id="adminMsg" style="margin-top:14px"></div>
+          </section>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <h2>조별 설정</h2>
+            <p>접수 마감 후 인원수, PIN(숫자 4~12자리), 사업명과 주소를 수정하고 설정을 저장하세요.</p>
+          </div>
+        </div>
+        <div id="teamEditors" class="team-editor"></div>
+
+        <div class="section-head">
+          <div>
+            <h2>제출 현황</h2>
+            <p>각 조에서 몇 명이 투자를 완료했는지 확인합니다.</p>
+          </div>
+        </div>
+        <div id="statusCards" class="status-cards"></div>
+
+        <div class="section-head">
+          <div>
+            <h2>투자 상세</h2>
+            <p>관리자에게만 보이는 제출 데이터입니다.</p>
+          </div>
+        </div>
+        <div id="submissionsTable" class="table-wrap"></div>
+
+        <div class="submit-row" style="margin-top:22px">
+          <div>
+            <h2 style="margin:0">최종 결과</h2>
+            <div class="small">총 투자유치액 기준 · 평균 투자액은 참고용</div>
+          </div>
+          <button id="revealButton" class="btn btn-brand">🏆 결과 공개</button>
+        </div>
+        <div id="resultArea"></div>
+      </div>
+    </section>
+  </main>
+
+  <script onerror="document.getElementById('setupWarning').textContent='스크립트를 불러오지 못했습니다. 인터넷 연결을 확인하고 GitHub Pages의 HTTPS 주소로 접속해주세요.';document.getElementById('setupWarning').classList.remove('hidden')" type="module" src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Only UIDs explicitly registered through the Firebase Console are administrators.
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        && get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.enabled == true;
+    }
+    function sessionData(id) {
+      return get(/databases/$(database)/documents/sessions/$(id)).data;
+    }
+    function pinsAfter(id) {
+      return getAfter(/databases/$(database)/documents/sessions/$(id)/private/pins).data.teamPins;
+    }
+    function validPin(pin) {
+      return pin is string && pin.matches('^[0-9]{4,12}$');
+    }
+    function validCount(n) { return n is int && n >= 1 && n <= 99; }
+    function validSettings(c, id) {
+      return c.keys().hasOnly(['sessionId', 'title', 'subtitle', 'description', 'budget', 'unit',
+          'isOpen', 'teamIds', 'teamCounts', 'teamPinHashes', 'teams', 'revision', 'updatedAtText',
+          'createdAt', 'updatedAt'])
+        && c.sessionId == id && c.title is string && c.subtitle is string && c.description is string
+        && c.revision is string && c.revision.size() > 0
+        && c.isOpen is bool && c.budget is int && c.budget > 0 && c.budget <= 1000000000000
+        && c.unit is int && c.unit > 0 && c.unit <= c.budget
+        && c.teamIds == ['team1', 'team2', 'team3', 'team4']
+        && c.teams is list && c.teams.size() == 4
+        && c.teams[0].id == 'team1' && c.teams[1].id == 'team2'
+        && c.teams[2].id == 'team3' && c.teams[3].id == 'team4'
+        && c.teamCounts.keys().hasOnly(c.teamIds)
+        && validCount(c.teamCounts.team1) && validCount(c.teamCounts.team2)
+        && validCount(c.teamCounts.team3) && validCount(c.teamCounts.team4)
+        && c.teamPinHashes.keys().hasOnly(c.teamIds)
+        && c.updatedAt == request.time;
+    }
+    function readyToOpen(c, id) {
+      let pins = pinsAfter(id);
+      return validPin(pins.team1) && validPin(pins.team2) && validPin(pins.team3) && validPin(pins.team4)
+        && c.teamPinHashes.team1.size() == 64 && c.teamPinHashes.team2.size() == 64
+        && c.teamPinHashes.team3.size() == 64 && c.teamPinHashes.team4.size() == 64;
+    }
+    function validAmount(amount, c) {
+      return amount is int && amount >= 0 && amount <= c.budget && amount % c.unit == 0;
+    }
+    function validSubmission(s, c, id, submissionId) {
+      let amounts = s.investments;
+      let canonicalId = s.teamId + '-' + (s.personNo < 10 ? '0' : '') + string(s.personNo);
+      return s.keys().hasAll(['sessionId', 'revision', 'teamId', 'personNo', 'pin', 'investments',
+          'usedAmount', 'remainingAmount', 'createdAt'])
+        && s.keys().hasOnly(['sessionId', 'revision', 'teamId', 'personNo', 'pin', 'investments',
+          'usedAmount', 'remainingAmount', 'createdAt'])
+        && c.isOpen == true && s.sessionId == id && s.revision == c.revision
+        && s.teamId in c.teamIds && s.personNo is int
+        && s.personNo >= 1 && s.personNo <= c.teamCounts[s.teamId]
+        && submissionId == canonicalId
+        && s.pin is string && validPin(s.pin)
+        && s.pin == get(/databases/$(database)/documents/sessions/$(id)/private/pins).data.teamPins[s.teamId]
+        && amounts is map && amounts.keys().hasAll(c.teamIds) && amounts.keys().hasOnly(c.teamIds)
+        && validAmount(amounts.team1, c) && validAmount(amounts.team2, c)
+        && validAmount(amounts.team3, c) && validAmount(amounts.team4, c)
+        && amounts[s.teamId] == 0
+        && s.usedAmount is int && s.usedAmount <= c.budget
+        && s.usedAmount == amounts.team1 + amounts.team2 + amounts.team3 + amounts.team4
+        && s.remainingAmount is int && s.remainingAmount == c.budget - s.usedAmount
+        && s.createdAt == request.time;
+    }
+
+    match /admins/{uid} {
+      // A user can check their own access. No web client can grant administrator access.
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow list, write: if false;
+    }
+    match /sessions/{sessionId} {
+      allow get: if true;
+      allow list: if isAdmin();
+      allow create: if isAdmin() && validSettings(request.resource.data, sessionId)
+        && request.resource.data.isOpen == false;
+      allow update: if isAdmin() && (
+        // Closing is also possible when migrating a legacy settings document.
+        (request.resource.data.isOpen == false && request.resource.data.updatedAt == request.time
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isOpen', 'updatedAt']))
+        || (validSettings(request.resource.data, sessionId)
+          && ((!resource.data.isOpen && !request.resource.data.isOpen)
+            || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isOpen', 'updatedAt']))
+          && (!request.resource.data.isOpen || readyToOpen(request.resource.data, sessionId))));
+      allow delete: if false;
+
+      match /private/pins {
+        allow get: if isAdmin();
+        allow create, update: if isAdmin()
+          && getAfter(/databases/$(database)/documents/sessions/$(sessionId)).data.isOpen == false
+          && request.resource.data.keys().hasOnly(['teamPins'])
+          && request.resource.data.teamPins.keys().hasAll(['team1','team2','team3','team4'])
+          && request.resource.data.teamPins.keys().hasOnly(['team1','team2','team3','team4']);
+      }
+      match /submissions/{submissionId} {
+        allow read: if isAdmin();
+        allow delete: if isAdmin() && sessionData(sessionId).isOpen == false;
+        allow update: if false;
+        allow create: if validSubmission(request.resource.data, sessionData(sessionId), sessionId, submissionId);
+      }
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

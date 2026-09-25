@@ -1,0 +1,16 @@
+{
+  "name": "venture-pick",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/common.test.mjs tests/static.test.mjs",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-venture-pick \"node --test tests/rules.test.mjs\"",
+    "test:browser": "firebase emulators:exec --only firestore,auth --project demo-venture-pick \"node tests/browser.mjs\""
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "5.0.0",
+    "firebase": "12.19.0",
+    "firebase-tools": "15.11.0",
+    "playwright": "^1.62.1"
+  }
+}

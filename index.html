@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#171922"/>
+  <title>Venture Pick — 모의투자</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">
+        <div class="logo">VP</div>
+        <div>
+          <div id="projectTitle" class="brand-title">Venture Pick</div>
+          <div class="brand-sub">사업 아이디어 모의투자</div>
+        </div>
+      </a>
+      <div id="openBadge" class="small">연결 확인 중…</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div role="alert" id="setupWarning" class="notice error hidden"></div>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="kicker">PROJECT INVESTMENT</div>
+        <h1 id="heroTitle">어떤 사업에 투자하시겠습니까?</h1>
+        <p id="heroDescription">다른 팀의 사업을 살펴보고 가장 가능성이 있다고 생각하는 곳에 투자금을 배분하세요.</p>
+      </div>
+      <div class="hero-side">
+        <div>
+          <div class="label">1인 투자 한도</div>
+          <div class="big" id="budgetText">—</div>
+        </div>
+        <div>
+          <div class="label">투자 단위</div>
+          <div class="money" id="unitText">—</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="entrySection" class="card entry-card">
+      <div class="section-head" style="margin:0 0 14px">
+        <div>
+          <h2>투자자 입장</h2>
+          <p>자기 조와 번호를 선택하고 조 PIN을 입력하세요.</p>
+        </div>
+      </div>
+      <div class="entry-grid">
+        <div>
+          <div class="label">조</div>
+          <select id="teamSelect"></select>
+        </div>
+        <div>
+          <div class="label">투자자 번호</div>
+          <select id="personSelect"></select>
+        </div>
+        <div>
+          <div class="label">조 PIN</div>
+          <input id="pinInput" type="password" inputmode="numeric" placeholder="예: 1111"/>
+        </div>
+        <button id="enterButton" disabled class="btn btn-brand">입장하기</button>
+      </div>
+      <div aria-live="polite" id="entryMsg" style="margin-top:12px"></div>
+    </section>
+
+    <section id="investmentApp" class="hidden">
+      <div class="section-head">
+        <div>
+          <h2>사업 둘러보기</h2>
+          <p id="investorLabel"></p>
+        </div>
+        <button id="changeInvestorButton" class="btn btn-soft">투자자 다시 선택</button>
+      </div>
+
+      <div id="teamCards" class="grid"></div>
+
+      <div class="section-head">
+        <div>
+          <h2>투자금 배분</h2>
+          <p>마음에 드는 사업에 원하는 만큼 나눠 투자하세요.</p>
+        </div>
+      </div>
+
+      <section class="invest-card">
+        <div class="budget-top">
+          <div>
+            <div class="label">사용한 금액</div>
+            <div class="money" id="usedText">0원</div>
+          </div>
+          <div style="text-align:right">
+            <div class="label">남은 금액</div>
+            <div class="money" id="remainingText">—</div>
+          </div>
+        </div>
+        <div class="bar"><div id="budgetBar"></div></div>
+
+        <div id="investArea" class="invest-list"></div>
+
+        <div class="submit-row">
+          <div class="small">💡 투자금을 전부 쓰지 않아도 됩니다.</div>
+          <button id="submitButton" class="btn btn-brand">최종 투자하기</button>
+        </div>
+        <div aria-live="polite" id="studentMsg" style="margin-top:14px"></div>
+      </section>
+    </section>
+  </main>
+
+  <script onerror="document.getElementById('setupWarning').textContent='스크립트를 불러오지 못했습니다. 인터넷 연결을 확인하고 GitHub Pages의 HTTPS 주소로 접속해주세요.';document.getElementById('setupWarning').classList.remove('hidden')" type="module" src="js/student.js"></script>
+</body>
+</html>
