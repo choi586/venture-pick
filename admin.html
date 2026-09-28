@@ -119,14 +119,6 @@
         </div>
         <div id="statusCards" class="status-cards"></div>
 
-        <div class="section-head">
-          <div>
-            <h2>투자 상세</h2>
-            <p>관리자에게만 보이는 제출 데이터입니다.</p>
-          </div>
-        </div>
-        <div id="submissionsTable" class="table-wrap"></div>
-
         <div class="submit-row" style="margin-top:22px">
           <div>
             <h2 style="margin:0">최종 결과</h2>
@@ -135,6 +127,11 @@
           <button id="revealButton" class="btn btn-brand">🏆 결과 공개</button>
         </div>
         <div id="resultArea"></div>
+        <details id="submissionDetails" style="margin-top:24px">
+          <summary style="cursor:pointer;font-weight:700;padding:16px 0">관리자용 투자 상세 보기</summary>
+          <p class="small">개별 투자 금액이 표시됩니다. 화면을 공유할 때는 닫아두세요.</p>
+          <div id="submissionsTable" class="table-wrap"></div>
+        </details>
       </div>
     </section>
   </main>

@@ -286,6 +286,7 @@ function podiumItem(result, rank, cssClass) {
 }
 
 function revealResults() {
+  el("submissionDetails").open = false;
   if (busy || !submissionsReady || !configReady) return;
   if (config.isOpen) return message("adminMsg", "접수를 마감한 뒤 결과를 공개해주세요.", "error");
   if (!submissions.length) {
