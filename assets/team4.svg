@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0284c7"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
-<rect width="1200" height="720" rx="48" fill="url(#g)"/>
-<circle cx="1030" cy="90" r="250" fill="white" opacity=".10"/>
-<circle cx="980" cy="620" r="310" fill="white" opacity=".08"/>
-<text x="80" y="150" font-family="Arial,sans-serif" font-size="56" font-weight="700" fill="white" opacity=".8">04</text>
-<text x="80" y="530" font-family="Arial,sans-serif" font-size="94" font-weight="800" fill="white">HIDDEN SCENE</text>
-<text x="82" y="600" font-family="Arial,sans-serif" font-size="30" fill="white" opacity=".72">VENTURE PICK · SAMPLE PROJECT</text>
-</svg>
