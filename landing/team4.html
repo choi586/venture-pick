@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="doc_title">한복컬러매치 | 퍼스널컬러 맞춤 한복 체험 & 스냅 촬영</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans KR, JP & Gowun Batang (Traditional Accent) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trad-red': '#B22222',
+                        'trad-jade': '#2E8B57',
+                        'trad-gold': '#D4AF37',
+                        'trad-pink': '#E8A5A5',
+                        'trad-blue': '#2B4C7E',
+                        'warm-bg': '#FAF8F5',
+                        'paper-white': '#FFFDF9',
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', '"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Gowun Batang"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .trad-pattern-bg {
+            background-color: #1c1917;
+            background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px), radial-gradient(#d4af37 0.5px, #1c1917 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .text-glow {
+            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body class="font-sans bg-warm-bg text-stone-800 antialiased selection:bg-rose-800 selection:text-white">
+
+    <!-- Top Bar Notice -->
+    <div class="bg-stone-900 text-amber-200 text-xs py-2 px-4 text-center tracking-wide font-medium flex justify-between items-center sm:px-12">
+        <span class="hidden sm:inline" data-i18n="top_notice"><i class="fa-solid fa-gift mr-1 text-trad-gold"></i> 오픈 기념 리뷰 이벤트: 네이버/구글 리뷰 작성 시 고급 아크릴 액자 증정!</span>
+        <span class="sm:hidden" data-i18n="top_notice_short"><i class="fa-solid fa-gift mr-1"></i> 리뷰 작성 시 아크릴 액자 무료!</span>
+        
+        <!-- Language Switcher Buttons -->
+        <div class="flex items-center space-x-2 text-xs">
+            <button id="lang-btn-KR" onclick="changeLanguage('KR')" class="px-2 py-0.5 rounded font-bold bg-amber-400 text-stone-900 transition">KR</button>
+            <span class="text-stone-600">|</span>
+            <button id="lang-btn-JP" onclick="changeLanguage('JP')" class="px-2 py-0.5 rounded text-stone-300 hover:text-white transition">JP</button>
+            <span class="text-stone-600">|</span>
+            <button id="lang-btn-EN" onclick="changeLanguage('EN')" class="px-2 py-0.5 rounded text-stone-300 hover:text-white transition">EN</button>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-40 bg-paper-white/90 backdrop-blur-md border-b border-stone-200/80 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-rose-800 via-rose-600 to-amber-500 flex items-center justify-center text-white shadow-md">
+                    <i class="fa-solid fa-fan text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-serif font-bold text-xl sm:text-2xl text-stone-900 tracking-tight block leading-none" data-i18n="brand_name">한복컬러매치</span>
+                    <span class="text-[10px] text-stone-500 tracking-widest uppercase font-sans">Hanbok Color Match</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-700">
+                <a href="#about" class="hover:text-rose-800 transition" data-i18n="nav_about">서비스 소개</a>
+                <a href="#video-preview" class="hover:text-rose-800 transition" data-i18n="nav_video">체험 영상</a>
+                <a href="#color-test" class="hover:text-rose-800 transition" data-i18n="nav_color">전통색 진단</a>
+                <a href="#packages" class="hover:text-rose-800 transition" data-i18n="nav_packages">패키지 & 가격</a>
+                <a href="#benefits" class="hover:text-rose-800 transition" data-i18n="nav_benefits">제휴 혜택</a>
+                <a href="#reviews" class="hover:text-rose-800 transition" data-i18n="nav_reviews">고객 후기</a>
+                <a href="#faq" class="hover:text-rose-800 transition" data-i18n="nav_faq">FAQ</a>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="flex items-center space-x-3">
+                <a href="#booking" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-rose-800 hover:bg-rose-900 shadow-md transition transform hover:-translate-y-0.5">
+                    <i class="fa-regular fa-calendar-check mr-2"></i> <span data-i18n="nav_btn_book">빠른 예약</span>
+                </a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-stone-700 hover:text-rose-800 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-paper-white border-b border-stone-200 px-4 pt-3 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-rose-800 border-b border-stone-100" data-i18n="nav_about">서비스 소개</a>
+            <a href="#video-preview" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-rose-800 border-b border-stone-100" data-i18n="nav_video">체험 영상</a>
+            <a href="#color-test" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-rose-800 border-b border-stone-100" data-i18n="nav_color">전통색 진단 테스트</a>
+            <a href="#packages" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-rose-800 border-b border-stone-100" data-i18n="nav_packages">패키지 & 가격</a>
+            <a href="#benefits" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-rose-800 border-b border-stone-100" data-i18n="nav_benefits">제휴 & 혜택</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-rose-800 border-b border-stone-100" data-i18n="nav_reviews">고객 후기</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-rose-800 border-b border-stone-100" data-i18n="nav_faq">FAQ</a>
+            <a href="#booking" onclick="toggleMobileMenu()" class="block w-full text-center py-3 rounded-xl bg-rose-800 text-white font-semibold mt-4 shadow" data-i18n="nav_btn_book">
+                예약 신청하기
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-stone-900 text-white">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 z-0 opacity-45 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1548115184-bc6544d06a58?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/60 to-transparent z-0"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 py-20 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 bg-stone-800/80 border border-amber-400/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs sm:text-sm text-amber-200 mb-6 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span data-i18n="hero_badge">경복궁역 도보 3분 · 퍼스널컬러 x 한복 전문 뷰티 스튜디오</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight sm:leading-tight mb-6 text-stone-100 text-glow" data-i18n="hero_title">
+                나의 톤을 찾아 완성하는<br>
+                <span class="bg-gradient-to-r from-amber-200 via-rose-300 to-rose-100 bg-clip-text text-transparent">가장 단아하고 빛나는 순간</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-10" data-i18n="hero_desc">
+                무작정 대여하는 한복은 이제 그만. 1:1 퍼스널컬러 정밀 진단부터 나에게 딱 맞는 한국 전통색 한복 셀렉트, 전통 헤어·메이크업, 그리고 경복궁 야외 스냅 촬영까지 한 번에 경험하세요.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#booking" class="w-full sm:w-auto px-8 py-4 rounded-full bg-rose-800 hover:bg-rose-700 text-white font-semibold text-base shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center space-x-2">
+                    <span data-i18n="hero_cta_book">체험 코스 예약하기</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="#video-preview" class="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-500/90 hover:bg-amber-500 text-stone-950 font-bold text-base backdrop-blur-sm transition flex items-center justify-center space-x-2 shadow-lg">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                    </span>
+                    <i class="fa-solid fa-circle-play text-lg"></i>
+                    <span data-i18n="hero_cta_video">30초 진단 영상 보기</span>
+                </a>
+                <a href="#color-test" class="w-full sm:w-auto px-8 py-4 rounded-full bg-stone-800/80 hover:bg-stone-700/80 border border-stone-600 text-stone-200 font-semibold text-base backdrop-blur-sm transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i>
+                    <span data-i18n="hero_cta_color">나의 전통 퍼스널컬러 알아보기</span>
+                </a>
+            </div>
+
+            <!-- Highlights Pill Stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8 border-t border-stone-800/80 text-left">
+                <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800 backdrop-blur-sm">
+                    <div class="text-2xl font-bold text-amber-300 font-serif">4.9 ★★★★★</div>
+                    <div class="text-xs text-stone-400 mt-1" data-i18n="stat_1_label">고객 만족도 (1,280+ 후기)</div>
+                </div>
+                <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800 backdrop-blur-sm">
+                    <div class="text-2xl font-bold text-amber-300 font-serif" data-i18n="stat_2_val">300+ 프리미엄</div>
+                    <div class="text-xs text-stone-400 mt-1" data-i18n="stat_2_label">보유 한복 수량</div>
+                </div>
+                <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800 backdrop-blur-sm">
+                    <div class="text-2xl font-bold text-amber-300 font-serif" data-i18n="stat_3_val">100% 1:1 케어</div>
+                    <div class="text-xs text-stone-400 mt-1" data-i18n="stat_3_label">전문 진단사 & 아티스트</div>
+                </div>
+                <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800 backdrop-blur-sm">
+                    <div class="text-2xl font-bold text-amber-300 font-serif">KR / JP / EN</div>
+                    <div class="text-xs text-stone-400 mt-1" data-i18n="stat_4_label">외국어 대응 서비스</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Preview Section -->
+    <section id="video-preview" class="py-16 bg-stone-950 border-b border-stone-800 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <span class="text-xs font-semibold uppercase tracking-widest text-amber-300 bg-stone-800 px-3 py-1 rounded-full border border-stone-700">
+                    <i class="fa-solid fa-video mr-1 text-rose-400"></i> Experience Video
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-stone-100 mt-3 mb-3" data-i18n="video_title">
+                    한복컬러매치 체험 미리보기
+                </h2>
+                <p class="text-stone-400 text-xs sm:text-sm" data-i18n="video_desc">
+                    1:1 드레이핑 퍼스널컬러 진단부터 헤어·메이크업, 경복궁 야외 스냅까지 30초 영상으로 미리 확인하세요!
+                </p>
+            </div>
+
+            <!-- Video Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-6 text-xs sm:text-sm">
+                <button id="vtab-1" onclick="switchVideo('_5bTRBzK3T8', 1)" class="px-4 py-2 rounded-full font-semibold transition bg-rose-800 text-white shadow">
+                    <i class="fa-solid fa-palette mr-1.5"></i><span data-i18n="video_tab1">퍼스널컬러 진단</span>
+                </button>
+                <button id="vtab-2" onclick="switchVideo('adIGC7NKIFY', 2)" class="px-4 py-2 rounded-full font-semibold transition bg-stone-800 text-stone-300 hover:bg-stone-700">
+                    <i class="fa-solid fa-sparkles mr-1.5"></i><span data-i18n="video_tab2">비포 & 애프터</span>
+                </button>
+                <button id="vtab-3" onclick="switchVideo('Ffb_Mrb75FI', 3)" class="px-4 py-2 rounded-full font-semibold transition bg-stone-800 text-stone-300 hover:bg-stone-700">
+                    <i class="fa-solid fa-camera mr-1.5"></i><span data-i18n="video_tab3">경복궁 야외 스냅</span>
+                </button>
+            </div>
+
+            <!-- Responsive Video Embed Container -->
+            <div class="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl bg-stone-900 aspect-video max-w-4xl mx-auto">
+                <iframe id="promo-iframe" class="w-full h-full" src="https://www.youtube.com/embed/_5bTRBzK3T8?autoplay=0&rel=0" title="한복 퍼스널컬러 체험 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="text-center text-xs text-stone-500 mt-4" data-i18n="video_footnote">
+                * 실제 고객님의 퍼스널컬러 한복 스타일링 진단 과정 촬영 영상입니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- Concept & Appeal Section -->
+    <section id="about" class="py-20 bg-paper-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-widest text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">Why Hanbok Color Match?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mt-3 mb-4" data-i18n="about_title">
+                    왜 '한복컬러매치'인가요?
+                </h2>
+                <p class="text-stone-600 text-base leading-relaxed" data-i18n="about_desc">
+                    단순히 옷을 빌려 입는 기존 한복 대여점에서 벗어나,<br class="hidden sm:inline">
+                    나의 피부 톤과 분위기에 맞춰 완성되는 <strong>나만의 고품격 한국 문화 체험</strong>을 제안합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-warm-bg p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-stone-900 mb-2" data-i18n="feat_1_title">1:1 퍼스널컬러 진단</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="feat_1_desc">
+                        전문 드레이핑 천을 활용해 봄·여름·가을·겨울 톤을 진단하고 나만의 베스트 전통 색상을 찾아드립니다.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-warm-bg p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-stone-900 mb-2" data-i18n="feat_2_title">맞춤 전통 한복 셀렉</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="feat_2_desc">
+                        진단된 색상 결과를 바탕으로 저고리, 치마, 장신구까지 어울리는 최적의 프리미엄 한복 조합을 추천받습니다.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-warm-bg p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-wand-magic"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-stone-900 mb-2" data-i18n="feat_3_title">전문 헤어·메이크업</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="feat_3_desc">
+                        전통 댕기 머리, 땋은 머리 연출 및 톤에 맞는 단아한 뷰티 메이크업으로 한복 핏의 완성도를 높입니다.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-warm-bg p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-stone-900 mb-2" data-i18n="feat_4_title">경복궁 야외 스냅 & 인화</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="feat_4_desc">
+                        경복궁 주요 포토스팟에서 전문 작가의 촬영과 보정본 파일, 고급 포토 인화 프레임을 한 번에 받아보세요.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Color Palette Tester -->
+    <section id="color-test" class="py-20 bg-stone-900 text-white trad-pattern-bg relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-semibold uppercase tracking-widest text-amber-300 bg-stone-800 px-3 py-1 rounded-full border border-stone-700">Interactive Preview</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100 mt-3 mb-4" data-i18n="color_tester_title">
+                    나에게 어울리는 전통 오방색은?
+                </h2>
+                <p class="text-stone-300 text-sm sm:text-base" data-i18n="color_tester_desc">
+                    아래 탭을 클릭하여 퍼스널컬러 톤별 추천 한복 색조 조합과 계절별 풍경 및 한옥 스팟을 미리보세요!
+                </p>
+            </div>
+
+            <!-- Color Season Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="color-tabs">
+                <button onclick="selectSeason('spring')" id="tab-spring" class="px-5 py-2.5 rounded-full font-medium text-sm transition bg-rose-800 text-white shadow-lg">
+                    🌸 <span data-i18n="tab_spring">봄 워머 (Spring Warm)</span>
+                </button>
+                <button onclick="selectSeason('summer')" id="tab-summer" class="px-5 py-2.5 rounded-full font-medium text-sm transition bg-stone-800 text-stone-300 hover:bg-stone-700">
+                    🌿 <span data-i18n="tab_summer">여름 쿨 (Summer Cool)</span>
+                </button>
+                <button onclick="selectSeason('autumn')" id="tab-autumn" class="px-5 py-2.5 rounded-full font-medium text-sm transition bg-stone-800 text-stone-300 hover:bg-stone-700">
+                    🍁 <span data-i18n="tab_autumn">가을 워머 (Autumn Warm)</span>
+                </button>
+                <button onclick="selectSeason('winter')" id="tab-winter" class="px-5 py-2.5 rounded-full font-medium text-sm transition bg-stone-800 text-stone-300 hover:bg-stone-700">
+                    ❄️ <span data-i18n="tab_winter">겨울 쿨 (Winter Cool)</span>
+                </button>
+            </div>
+
+            <!-- Color Content Box -->
+            <div class="bg-stone-800/90 border border-stone-700 rounded-3xl p-6 sm:p-10 backdrop-blur-md transition-all duration-300" id="season-display">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded bg-amber-400/20 text-amber-300 text-xs font-semibold mb-3" id="season-badge">
+                            화사함 · 생기발랄 · 따뜻함
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100 mb-4" id="season-title">
+                            봄 워머 (Spring Warm) 톤 추천
+                        </h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6" id="season-desc">
+                            피부에 따뜻한 노란 기와 맑은 혈색이 도는 타입입니다. 은은한 연분홍, 개나리 노랑, 파스텔 옥색 저고리가 얼굴을 한층 더 밝고 생기있게 연출해 줍니다.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <p class="text-xs text-stone-400 uppercase font-semibold tracking-wider" data-i18n="trad_colors_label">대표 한국 전통 매칭 색상</p>
+                            <div class="flex flex-wrap items-center gap-3" id="season-swatches">
+                                <!-- Dynamic Color Swatches rendered by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Seasonal Scenery Visual Card -->
+                    <div class="relative rounded-2xl overflow-hidden border border-stone-700 shadow-2xl group">
+                        <img id="season-img" src="https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/800x600/8B263E/FFFFFF?text=Traditional+Autumn+Hanok+Foliage'" alt="Seasonal Hanbok Scenery Match" class="w-full h-72 sm:h-80 object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 p-4 bg-stone-900/85 rounded-xl border border-stone-700/80 backdrop-blur-sm">
+                            <p class="text-xs text-amber-300 font-semibold" id="season-tip-title">💡 봄 워머 스타일링 팁</p>
+                            <p class="text-xs text-stone-300 mt-1" id="season-tip">
+                                금박 장식이 들어간 연분홍 치마와 크림색 저고리 조합에 붉은 댕기로 포인트를 주면 사진 촬영 시 얼굴선이 가장 또렷해집니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages & Pricing Section -->
+    <section id="packages" class="py-20 bg-paper-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-widest text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">Experiential Packages</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mt-3 mb-4" data-i18n="packages_title">
+                    체험 코스 & 가격 안내
+                </h2>
+                <p class="text-stone-600 text-sm sm:text-base" data-i18n="packages_desc">
+                    필요한 구성만 알차게 모았습니다. 나의 일정과 목적에 꼭 맞는 패키지를 선택해보세요.
+                </p>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+
+                <!-- Package A -->
+                <div class="bg-warm-bg rounded-3xl border border-stone-200 p-8 flex flex-col justify-between hover:border-rose-300 transition duration-300 shadow-sm relative">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-stone-200 text-stone-700">Course A</span>
+                            <span class="text-xs text-stone-500"><i class="fa-regular fa-clock mr-1"></i><span data-i18n="pkg_a_time">약 60분</span></span>
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl text-stone-900 mb-2" data-i18n="pkg_a_title">베이직 매치 코스</h3>
+                        <p class="text-xs text-stone-500 mb-6" data-i18n="pkg_a_desc">퍼스널컬러 진단 후 어울리는 한복을 착용하는 기본 실속 코스</p>
+
+                        <div class="mb-8">
+                            <span class="text-3xl font-extrabold text-stone-900">130,000</span>
+                            <span class="text-stone-600 text-sm font-medium" data-i18n="currency_per_person">원 / 1인</span>
+                        </div>
+
+                        <!-- Included Features -->
+                        <ul class="space-y-3 text-xs sm:text-sm text-stone-700 mb-8 border-t border-stone-200 pt-6">
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_personal_color">1:1 퍼스널컬러 정밀 진단 (드레이핑)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_trad_chart">한국 전통 오방색 진단 차트 제공</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_hanbok_rental">퍼스널 톤 맞춤 한복 대여 (속치마, 신발 포함)</span>
+                            </li>
+                            <li class="flex items-center text-stone-400">
+                                <i class="fa-solid fa-xmark mr-2.5"></i>
+                                <span class="line-through" data-i18n="feat_hair_makeup">헤어 메이크업 스타일링</span>
+                            </li>
+                            <li class="flex items-center text-stone-400">
+                                <i class="fa-solid fa-xmark mr-2.5"></i>
+                                <span class="line-through" data-i18n="feat_snap_photo">경복궁 야외 스냅 사진 촬영</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#booking" onclick="preselectPackage('A')" class="w-full py-3 px-4 rounded-xl border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white font-semibold text-center text-sm transition" data-i18n="btn_select_a">
+                        A 코스 선택하기
+                    </a>
+                </div>
+
+                <!-- Package B (Popular Highlight) -->
+                <div class="bg-paper-white rounded-3xl border-2 border-rose-800 p-8 flex flex-col justify-between shadow-xl relative transform md:-translate-y-2">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-rose-800 text-amber-200 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow" data-i18n="badge_best">
+                        ★ BEST 인기 추천
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-4 mt-2">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800">Course B</span>
+                            <span class="text-xs text-stone-500"><i class="fa-regular fa-clock mr-1"></i><span data-i18n="pkg_b_time">약 90분</span></span>
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl text-stone-900 mb-2" data-i18n="pkg_b_title">스타일링 풀 매치 코스</h3>
+                        <p class="text-xs text-stone-500 mb-6" data-i18n="pkg_b_desc">진단 + 한복 + 전문 전통 헤어·메이크업까지 완벽 보장</p>
+
+                        <div class="mb-8">
+                            <span class="text-xs text-stone-400 line-through mr-1">170,000원</span>
+                            <span class="text-3xl font-extrabold text-rose-800">159,000</span>
+                            <span class="text-stone-600 text-sm font-medium" data-i18n="currency_per_person">원 / 1인</span>
+                            <span class="ml-2 text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold" data-i18n="badge_discount">특가</span>
+                        </div>
+
+                        <!-- Included Features -->
+                        <ul class="space-y-3 text-xs sm:text-sm text-stone-700 mb-8 border-t border-stone-200 pt-6">
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span class="font-semibold" data-i18n="feat_personal_color">1:1 퍼스널컬러 정밀 진단 (드레이핑)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_trad_chart">한국 전통 오방색 진단 차트 제공</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_hanbok_acc">퍼스널 톤 맞춤 한복 & 노리개 등 장신구</span>
+                            </li>
+                            <li class="flex items-center font-semibold text-rose-900">
+                                <i class="fa-solid fa-star text-amber-500 mr-2.5"></i>
+                                <span data-i18n="feat_hair_makeup_inc">전통 헤어 댕기 연출 + 톤맞춤 메이크업</span>
+                            </li>
+                            <li class="flex items-center text-stone-400">
+                                <i class="fa-solid fa-xmark mr-2.5"></i>
+                                <span class="line-through" data-i18n="feat_snap_photo">경복궁 야외 스냅 사진 촬영</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#booking" onclick="preselectPackage('B')" class="w-full py-3.5 px-4 rounded-xl bg-rose-800 hover:bg-rose-900 text-white font-semibold text-center text-sm shadow-md transition" data-i18n="btn_select_b">
+                        B 코스 예약하기 (추천)
+                    </a>
+                </div>
+
+                <!-- Package C (Premium All-in-One) -->
+                <div class="bg-warm-bg rounded-3xl border border-stone-200 p-8 flex flex-col justify-between hover:border-rose-300 transition duration-300 shadow-sm relative">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">Course C</span>
+                            <span class="text-xs text-stone-500"><i class="fa-regular fa-clock mr-1"></i><span data-i18n="pkg_c_time">약 120분</span></span>
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl text-stone-900 mb-2" data-i18n="pkg_c_title">프리미엄 스냅 풀패키지</h3>
+                        <p class="text-xs text-stone-500 mb-6" data-i18n="pkg_c_desc">진단 + 한복 + 헤어메이크업 + 경복궁 작가 스냅 + 인화</p>
+
+                        <div class="mb-8">
+                            <span class="text-xs text-stone-400 line-through mr-1">300,000원</span>
+                            <span class="text-3xl font-extrabold text-stone-900">259,000</span>
+                            <span class="text-stone-600 text-sm font-medium" data-i18n="currency_per_person">원 / 1인</span>
+                            <span class="ml-2 text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold" data-i18n="badge_discount">할인</span>
+                        </div>
+
+                        <!-- Included Features -->
+                        <ul class="space-y-3 text-xs sm:text-sm text-stone-700 mb-8 border-t border-stone-200 pt-6">
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_personal_report">1:1 퍼스널컬러 정밀 진단 & 리포트</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_premium_hanbok">프리미엄 원단 한복 & 풀 액세서리 대여</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-check text-rose-700 mr-2.5"></i>
+                                <span data-i18n="feat_hair_makeup_inc">전통 헤어 댕기 연출 + 톤맞춤 메이크업</span>
+                            </li>
+                            <li class="flex items-center font-semibold text-amber-900">
+                                <i class="fa-solid fa-camera text-amber-600 mr-2.5"></i>
+                                <span data-i18n="feat_snap_inc">경복궁 전문 스냅 작가 야외 촬영 (40분)</span>
+                            </li>
+                            <li class="flex items-center font-semibold text-amber-900">
+                                <i class="fa-solid fa-image text-amber-600 mr-2.5"></i>
+                                <span data-i18n="feat_photo_prints">보정본 10장 + 고화질 인화 2장 + 고급 프레임</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#booking" onclick="preselectPackage('C')" class="w-full py-3 px-4 rounded-xl border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white font-semibold text-center text-sm transition" data-i18n="btn_select_c">
+                        C 코스 선택하기
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Perks & Partnerships Section -->
+    <section id="benefits" class="py-16 bg-stone-100 border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Exclusive Benefits</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-2" data-i18n="benefits_title">
+                    한복컬러매치 단독 제휴 & 리뷰 혜택
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Benefit 1: Review Event -->
+                <div class="bg-paper-white p-6 rounded-2xl border border-stone-200 flex items-start space-x-4 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex-shrink-0 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-stone-900 text-base mb-1" data-i18n="perk_1_title">네이버 / 구글 리뷰 이벤트</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-2" data-i18n="perk_1_desc">
+                            체험 후 리뷰를 작성해주시는 모든 분께 탁상용 고급 아크릴 액자(1만원 상당)를 즉시 증정합니다.
+                        </p>
+                        <span class="text-[11px] font-semibold text-rose-800" data-i18n="perk_1_tag">현장 참여 가능</span>
+                    </div>
+                </div>
+
+                <!-- Benefit 2: Olive Young Partnership -->
+                <div class="bg-paper-white p-6 rounded-2xl border border-stone-200 flex items-start space-x-4 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex-shrink-0 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-stone-900 text-base mb-1" data-i18n="perk_2_title">올리브영 경복궁점 제휴 쿠폰</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-2" data-i18n="perk_2_desc">
+                            퍼스널컬러 진단 결과에 맞는 화장품 구매 시 사용 가능한 근처 올리브영 10% 할인 쿠폰 & 미니 샘플 키트 증정!
+                        </p>
+                        <span class="text-[11px] font-semibold text-emerald-700" data-i18n="perk_2_tag">매장 도보 1분거리 연계</span>
+                    </div>
+                </div>
+
+                <!-- Benefit 3: Rickshaw / Tour Partnership -->
+                <div class="bg-paper-white p-6 rounded-2xl border border-stone-200 flex items-start space-x-4 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex-shrink-0 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-motorcycle"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-stone-900 text-base mb-1" data-i18n="perk_3_title">경복궁 전통 인력거·투어 연계</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-2" data-i18n="perk_3_desc">
+                            한복 착용 후 편안하고 낭만적인 서촌·북촌 골목 투어가 가능한 제휴 인력거/오토바이팀 우선 할인 예약!
+                        </p>
+                        <span class="text-[11px] font-semibold text-blue-700" data-i18n="perk_3_tag">예약 시 추가 옵션 선택 가능</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="py-20 bg-paper-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">Real Reviews</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mt-3" data-i18n="reviews_title">
+                        실제 방문 고객들의 생생 후기
+                    </h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center space-x-2">
+                    <span class="text-2xl font-bold text-stone-900">4.9</span>
+                    <div class="text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-xs text-stone-500" data-i18n="review_count">(1,280+ 누적 리뷰)</span>
+                </div>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Review 1 -->
+                <div class="bg-warm-bg p-6 rounded-2xl border border-stone-200 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-rose-200 text-rose-800 font-bold flex items-center justify-center text-sm">
+                                    김*진
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-stone-900" data-i18n="rev_1_name">김*진 님 (20대 / 봄워머)</p>
+                                    <p class="text-[11px] text-stone-400" data-i18n="rev_1_meta">Course B 이용 · 최근 방문</p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-amber-500 font-semibold">★ 5.0</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-700 leading-relaxed mb-4" data-i18n="rev_1_text">
+                            "평소에 주황색이나 밝은 색이 잘 안 어울린다고 생각했는데, 퍼스널컬러 진단받고 추천해주신 연분홍-황색 치마 조합을 입었더니 얼굴에 형광등 켜진 줄 알았습니다! 친구들도 다 경복궁에서 제 한복이 제일 예뻤대요."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-200 flex items-center justify-between text-[11px] text-stone-500">
+                        <span><i class="fa-solid fa-tag text-rose-700 mr-1"></i><span data-i18n="rev_1_tag">퍼스널컬러 만족</span></span>
+                        <span data-i18n="rev_source_naver">네이버 예약 검증 후기</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 (Japanese Tourist) -->
+                <div class="bg-warm-bg p-6 rounded-2xl border border-stone-200 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-emerald-200 text-emerald-800 font-bold flex items-center justify-center text-sm">
+                                    Yuki
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-stone-900" data-i18n="rev_2_name">Yuki S. 님 (일본인 관광객)</p>
+                                    <p class="text-[11px] text-stone-400" data-i18n="rev_2_meta">Course C 이용 · 최근 방문</p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-amber-500 font-semibold">★ 5.0</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-700 leading-relaxed mb-4" data-i18n="rev_2_text">
+                            "韓国旅行のハイライトでした！日本語の案内があって安心してパーソナルカラー診断を受けられました。写真家さんの撮影も親切で、アルバム印刷も綺麗に届きました！"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-200 flex items-center justify-between text-[11px] text-stone-500">
+                        <span><i class="fa-solid fa-globe text-blue-600 mr-1"></i><span data-i18n="rev_2_tag">외국인 만족도 1위</span></span>
+                        <span>Creatrip 예약 후기</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-warm-bg p-6 rounded-2xl border border-stone-200 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-amber-200 text-amber-800 font-bold flex items-center justify-center text-sm">
+                                    박*우
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-stone-900" data-i18n="rev_3_name">박*우 & 이*아 커플</p>
+                                    <p class="text-[11px] text-stone-400" data-i18n="rev_3_meta">Course B (2인) · 최근 방문</p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-amber-500 font-semibold">★ 5.0</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-700 leading-relaxed mb-4" data-i18n="rev_3_text">
+                            "남자친구와 함께 퍼스널컬러 커플로 진단받고 어울리는 한복 톤을 맞춰 입었습니다. 메이크업 선생님도 제 피부 톤에 맞게 립 색깔까지 정성껏 발라주셔서 정말 대만족했어요!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-200 flex items-center justify-between text-[11px] text-stone-500">
+                        <span><i class="fa-solid fa-heart text-rose-500 mr-1"></i><span data-i18n="rev_3_tag">커플 스냅 추천</span></span>
+                        <span data-i18n="rev_source_google">구글 리뷰 후기</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-stone-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold uppercase tracking-widest text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">FAQ</span>
+                <h2 class="font-serif text-3xl font-bold text-stone-900 mt-3" data-i18n="faq_title">
+                    자주 묻는 질문
+                </h2>
+            </div>
+
+            <!-- Accordions -->
+            <div class="space-y-4" id="faq-accordion">
+
+                <!-- FAQ Item 1 -->
+                <div class="bg-paper-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-5 font-semibold text-stone-900 flex justify-between items-center focus:outline-none">
+                        <span class="text-sm sm:text-base" data-i18n="faq_q1">Q1. 메이크업을 하고 방문해도 퍼스널컬러 진단이 가능한가요?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-stone-400 transform transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-5 pt-0 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 bg-stone-50/50" data-i18n="faq_a1">
+                        정확한 퍼스널컬러 진단을 위해 민낯(쌩얼) 또는 가벼운 선크림 정도만 바르시고 방문하는 것을 권장합니다. 현장에 클렌징 공간이 준비되어 있어 도착 후 지우시는 것도 가능합니다.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-paper-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-5 font-semibold text-stone-900 flex justify-between items-center focus:outline-none">
+                        <span class="text-sm sm:text-base" data-i18n="faq_q2">Q2. 외국인 친구와 함께 가는데 언어 지원이 되나요?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-stone-400 transform transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-5 pt-0 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 bg-stone-50/50" data-i18n="faq_a2">
+                        네! 매장 내에 영어 및 일본어 통역이 가능한 스태프가 상주하고 있으며, 다국어 진단 차트가 준비되어 있어 해외 관광객분들도 편안하게 체험하실 수 있습니다.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-paper-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-5 font-semibold text-stone-900 flex justify-between items-center focus:outline-none">
+                        <span class="text-sm sm:text-base" data-i18n="faq_q3">Q3. 비가 오거나 날씨가 안 좋으면 촬영은 어떻게 되나요?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-stone-400 transform transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-5 pt-0 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 bg-stone-50/50" data-i18n="faq_a3">
+                        우천 시에는 스튜디오 실내 전통 세트장 촬영으로 변경하거나, 요청 시 수수료 없이 날짜 변경이 가능합니다.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-paper-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(4)" class="w-full text-left p-5 font-semibold text-stone-900 flex justify-between items-center focus:outline-none">
+                        <span class="text-sm sm:text-base" data-i18n="faq_q4">Q4. 한복 사이즈는 다양하게 마련되어 있나요?</span>
+                        <i id="faq-icon-4" class="fa-solid fa-chevron-down text-stone-400 transform transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-4" class="hidden p-5 pt-0 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 bg-stone-50/50" data-i18n="faq_a4">
+                        여성 44~100 사이즈, 남성 90~115 사이즈까지 다양한 한복이 구비되어 있습니다. 피팅 전문 아티스트가 피팅을 도와드립니다.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking / Reservation Section -->
+    <section id="booking" class="py-20 bg-stone-900 text-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-semibold uppercase tracking-widest text-amber-300 bg-stone-800 px-3 py-1 rounded-full border border-stone-700">Online Reservation</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100 mt-3 mb-2" data-i18n="form_title">
+                    한복컬러매치 체험 예약
+                </h2>
+                <p class="text-stone-400 text-xs sm:text-sm" data-i18n="form_subtitle">
+                    원하시는 코스와 날짜를 선택하시면 실시간으로 견적이 계산됩니다.
+                </p>
+            </div>
+
+            <!-- Booking Form Card -->
+            <div class="bg-stone-800 border border-stone-700 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                <form id="reservation-form" onsubmit="submitReservation(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                        <!-- Left Column: Options -->
+                        <div class="space-y-6">
+                            <!-- Step 1: Package Selection -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-amber-300 tracking-wider mb-2">
+                                    <span data-i18n="form_step1">1. 체험 코스 선택</span> <span class="text-rose-400">*</span>
+                                </label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-stone-700 bg-stone-900/60 cursor-pointer hover:border-amber-400 transition">
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" name="package" value="A" data-price="130000" onchange="calculatePrice()" class="text-rose-600 focus:ring-rose-500">
+                                            <div>
+                                                <p class="font-bold text-sm text-stone-100">Course A (Basic Match)</p>
+                                                <p class="text-[11px] text-stone-400" data-i18n="form_pkg_a_sub">진단 + 전통색 + 한복 (약 60분)</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm font-semibold text-stone-200">130,000원</span>
+                                    </label>
+
+                                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-rose-500/80 bg-rose-950/30 cursor-pointer hover:border-rose-400 transition">
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" name="package" value="B" data-price="159000" checked onchange="calculatePrice()" class="text-rose-600 focus:ring-rose-500">
+                                            <div>
+                                                <p class="font-bold text-sm text-rose-200">Course B (Full Styling) <span class="text-[10px] bg-rose-800 text-white px-1.5 py-0.5 rounded ml-1" data-i18n="badge_popular">인기</span></p>
+                                                <p class="text-[11px] text-stone-400" data-i18n="form_pkg_b_sub">진단 + 한복 + 헤어메이크업 (약 90분)</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm font-semibold text-rose-300">159,000원</span>
+                                    </label>
+
+                                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-stone-700 bg-stone-900/60 cursor-pointer hover:border-amber-400 transition">
+                                        <div class="flex items-center space-x-3">
+                                            <input type="radio" name="package" value="C" data-price="259000" onchange="calculatePrice()" class="text-rose-600 focus:ring-rose-500">
+                                            <div>
+                                                <p class="font-bold text-sm text-amber-200">Course C (Premium Snap)</p>
+                                                <p class="text-[11px] text-stone-400" data-i18n="form_pkg_c_sub">진단 + 헤메 + 야외 스냅 + 인화 (약 120분)</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm font-semibold text-amber-300">259,000원</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Guest Count & Date/Time -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-amber-300 tracking-wider mb-2">
+                                        <span data-i18n="form_guests">인원</span> <span class="text-rose-400">*</span>
+                                    </label>
+                                    <select id="guest-count" onchange="calculatePrice()" class="w-full bg-stone-900 border border-stone-700 rounded-xl p-3 text-sm text-stone-200 focus:border-amber-400 focus:outline-none">
+                                        <option value="1">1인 (1 Person)</option>
+                                        <option value="2" selected>2인 (2 People - Best)</option>
+                                        <option value="3">3인 (3 People)</option>
+                                        <option value="4">4인 이상 (4+ Group)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-amber-300 tracking-wider mb-2">
+                                        <span data-i18n="form_date">방문 희망일</span> <span class="text-rose-400">*</span>
+                                    </label>
+                                    <input type="date" id="booking-date" required class="w-full bg-stone-900 border border-stone-700 rounded-xl p-3 text-sm text-stone-200 focus:border-amber-400 focus:outline-none">
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Time Slot -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-amber-300 tracking-wider mb-2">
+                                    <span data-i18n="form_time">방문 희망 시간</span> <span class="text-rose-400">*</span>
+                                </label>
+                                <select id="booking-time" required class="w-full bg-stone-900 border border-stone-700 rounded-xl p-3 text-sm text-stone-200 focus:border-amber-400 focus:outline-none">
+                                    <option value="" data-i18n="form_time_ph">시간대를 선택하세요</option>
+                                    <option value="10:00">오전 10:00 (10:00 AM)</option>
+                                    <option value="11:30">오전 11:30 (11:30 AM)</option>
+                                    <option value="13:00">오후 01:00 (01:00 PM)</option>
+                                    <option value="14:30">오후 02:30 (02:30 PM)</option>
+                                    <option value="16:00">오후 04:00 (04:00 PM)</option>
+                                    <option value="17:30">오후 05:30 (05:30 PM)</option>
+                                </select>
+                            </div>
+
+                            <!-- Step 4: Add-on Perks Checkboxes -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-amber-300 tracking-wider mb-2" data-i18n="form_options_title">
+                                    무료 혜택 & 옵션 선택
+                                </label>
+                                <div class="space-y-2 text-xs">
+                                    <label class="flex items-center space-x-2 text-stone-300 cursor-pointer">
+                                        <input type="checkbox" id="opt-review" checked class="rounded text-rose-600 focus:ring-rose-500">
+                                        <span data-i18n="opt_review_text">[무료] 네이버/구글 리뷰 작성 이벤트 참여 (아크릴 액자 증정)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-stone-300 cursor-pointer">
+                                        <input type="checkbox" id="opt-oliveyoung" checked class="rounded text-rose-600 focus:ring-rose-500">
+                                        <span data-i18n="opt_olive_text">[무료] 올리브영 제휴 할인 쿠폰 & 샘플 키트 수령</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-stone-300 cursor-pointer">
+                                        <input type="checkbox" id="opt-rickshaw" onchange="calculatePrice()" class="rounded text-rose-600 focus:ring-rose-500">
+                                        <span data-i18n="opt_rickshaw_text">[옵션] 경복궁 충칭 인력거 골목 투어 추가 (+25,000원/1인)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: User Info & Price Summary -->
+                        <div class="space-y-6 flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <h4 class="text-xs font-semibold uppercase text-amber-300 tracking-wider" data-i18n="form_step2">
+                                    2. 예약자 정보 입력
+                                </h4>
+
+                                <div>
+                                    <label class="block text-xs text-stone-400 mb-1" data-i18n="input_name_label">성함 (Name) *</label>
+                                    <input type="text" id="user-name" placeholder="홍길동 / Tanaka Yui / Alex Smith" required class="w-full bg-stone-900 border border-stone-700 rounded-xl p-3 text-sm text-stone-200 focus:border-amber-400 focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs text-stone-400 mb-1" data-i18n="input_contact_label">연락처 / 카카오ID / LINE ID *</label>
+                                    <input type="text" id="user-contact" placeholder="010-0000-0000 / Kakao ID / LINE ID" required class="w-full bg-stone-900 border border-stone-700 rounded-xl p-3 text-sm text-stone-200 focus:border-amber-400 focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs text-stone-400 mb-1" data-i18n="input_lang_label">선호 언어 (Preferred Language)</label>
+                                    <select id="user-lang" class="w-full bg-stone-900 border border-stone-700 rounded-xl p-3 text-sm text-stone-200 focus:border-amber-400 focus:outline-none">
+                                        <option value="Korean">한국어 (Korean)</option>
+                                        <option value="Japanese">日本語 (Japanese)</option>
+                                        <option value="English">English</option>
+                                        <option value="Chinese">中文 (Chinese)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs text-stone-400 mb-1" data-i18n="input_notes_label">요청사항 (Special Requests)</label>
+                                    <textarea id="user-notes" rows="2" placeholder="피부 알레르기 유무, 동반자 정보 등을 적어주세요." class="w-full bg-stone-900 border border-stone-700 rounded-xl p-3 text-xs text-stone-200 focus:border-amber-400 focus:outline-none"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Live Price Summary Box -->
+                            <div class="bg-stone-900 p-5 rounded-2xl border border-stone-700 space-y-2 mt-4">
+                                <div class="flex justify-between text-xs text-stone-400">
+                                    <span data-i18n="sum_unit">선택 패키지 단가</span>
+                                    <span id="summary-unit-price">159,000원</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-stone-400">
+                                    <span data-i18n="sum_guests">인원 수</span>
+                                    <span id="summary-guests">2명</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-stone-400" id="summary-extra-row">
+                                    <span data-i18n="sum_options">추가 옵션 (인력거 투어)</span>
+                                    <span id="summary-extra">0원</span>
+                                </div>
+                                <div class="border-t border-stone-800 pt-3 flex justify-between items-center">
+                                    <span class="text-sm font-bold text-stone-200" data-i18n="sum_total">총 예상 금액</span>
+                                    <span class="text-2xl font-extrabold text-amber-300" id="summary-total-price">318,000원</span>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="w-full py-4 rounded-2xl bg-rose-800 hover:bg-rose-700 text-white font-bold text-base shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span data-i18n="btn_submit_booking">예약 신청 완료하기</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Place & Time / Location Section -->
+    <section class="py-16 bg-paper-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">Location & Hours</span>
+                    <h2 class="font-serif text-3xl font-bold text-stone-900 mt-3 mb-6" data-i18n="loc_title">
+                        오시는 길 & 이용 안내
+                    </h2>
+
+                    <div class="space-y-4 text-sm text-stone-700">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-rose-800 text-lg mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-stone-900" data-i18n="loc_address_label">주소</p>
+                                <p class="text-stone-600" data-i18n="loc_address_val">서울시 종로구 자하문로 12길 5 2층 (경복궁 일대)</p>
+                                <p class="text-xs text-rose-800 mt-0.5" data-i18n="loc_subway">* 지하철 3호선 경복궁역 3번 출구 도보 3분 거리</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-regular fa-clock text-rose-800 text-lg mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-stone-900" data-i18n="loc_hours_label">운영 시간 및 휴무</p>
+                                <p class="text-stone-600" data-i18n="loc_hours_val">매일 운영 (연중무휴) / 오전 10:00 ~ 오후 07:00</p>
+                                <p class="text-xs text-stone-500 mt-0.5" data-i18n="loc_hours_sub">(마감 1시간 전까지 진단 및 피팅 입장 가능)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-phone text-rose-800 text-lg mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-stone-900" data-i18n="loc_contact_label">문의 전화 & SNS</p>
+                                <p class="text-stone-600">02-730-8822 / KakaoTalk: @한복컬러매치</p>
+                                <p class="text-xs text-stone-500">Instagram: @hanbok_colormatch</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Directions Button -->
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="https://map.naver.com" target="_blank" class="px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center space-x-1.5">
+                            <i class="fa-solid fa-map"></i>
+                            <span data-i18n="btn_naver_map">네이버 지도 보기</span>
+                        </a>
+                        <a href="https://maps.google.com" target="_blank" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-semibold hover:bg-blue-700 transition flex items-center space-x-1.5">
+                            <i class="fa-brands fa-google"></i>
+                            <span data-i18n="btn_google_map">구글 맵 연결</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Visual Card -->
+                <div class="bg-stone-200 rounded-3xl h-80 overflow-hidden relative border border-stone-300 shadow-inner flex flex-col items-center justify-center text-center p-6 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517154421773-0529f29ea451?q=80&w=800&auto=format&fit=crop');">
+                    <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-[2px]"></div>
+                    <div class="relative z-10 bg-paper-white/95 p-6 rounded-2xl border border-stone-200 shadow-xl max-w-sm">
+                        <div class="w-12 h-12 rounded-full bg-rose-800 text-amber-300 mx-auto flex items-center justify-center text-xl mb-3 shadow">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-stone-900 text-lg" data-i18n="map_card_title">한복컬러매치 플래그십 스튜디오</h4>
+                        <p class="text-xs text-stone-600 mt-1" data-i18n="map_card_sub">경복궁 신무문 & 서촌 삼거리 바로 인접</p>
+                        <span class="inline-block mt-3 px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-[11px] font-semibold" data-i18n="map_card_tag">경복궁역 3번 출구 직진 200m</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-stone-400 py-12 border-t border-stone-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-2 text-stone-200 font-serif font-bold text-lg mb-2">
+                        <i class="fa-solid fa-fan text-rose-600"></i>
+                        <span data-i18n="brand_name">한복컬러매치</span>
+                    </div>
+                    <p class="text-stone-500">사업자 등록번호: 105-88-99201 | 대표: 한국문화뷰티랩 | 서울특별시 종로구 자하문로 12길 5 2층</p>
+                    <p class="text-stone-600 mt-1">© 2026 Hanbok Color Match Inc. All rights reserved.</p>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex space-x-4 text-lg">
+                    <a href="#" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-rose-800 text-stone-300 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-rose-800 text-stone-300 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-rose-800 text-stone-300 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-solid fa-comment-dots"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-paper-white rounded-3xl max-w-md w-full p-6 sm:p-8 border border-stone-200 shadow-2xl relative animate-fade-in">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center text-3xl mb-4">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="font-serif font-bold text-2xl text-stone-900 mb-2" data-i18n="modal_success_title">예약 신청이 완료되었습니다!</h3>
+                <p class="text-xs text-stone-600 leading-relaxed mb-6" data-i18n="modal_success_sub">
+                    입력하신 연락처로 <span class="font-semibold text-stone-900">10분 이내 확인 확정 메시지</span>가 발송됩니다.
+                </p>
+
+                <!-- Modal Summary Details Box -->
+                <div class="bg-warm-bg rounded-2xl p-4 text-left space-y-2 text-xs border border-stone-200 mb-6">
+                    <div class="flex justify-between">
+                        <span class="text-stone-500" data-i18n="modal_code_label">예약번호</span>
+                        <span class="font-bold text-stone-900" id="modal-code">HCM-20260929</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-stone-500" data-i18n="modal_name_label">예약자명</span>
+                        <span class="font-semibold text-stone-800" id="modal-name">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-stone-500" data-i18n="modal_pkg_label">체험 코스</span>
+                        <span class="font-semibold text-stone-800" id="modal-package">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-stone-500" data-i18n="modal_time_label">일시 및 인원</span>
+                        <span class="font-semibold text-stone-800" id="modal-datetime">-</span>
+                    </div>
+                    <div class="flex justify-between border-t border-stone-200 pt-2 text-sm font-bold">
+                        <span class="text-stone-900" data-i18n="modal_total_label">총 결제 예정 금액</span>
+                        <span class="text-rose-800" id="modal-total">-</span>
+                    </div>
+                </div>
+
+                <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-sm transition" data-i18n="modal_btn_close">
+                    확인 및 창 닫기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Non-intrusive Toast Notification Banner -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-amber-200 px-5 py-3 rounded-2xl shadow-2xl border border-amber-400/30 flex items-center space-x-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-globe text-amber-400 text-lg"></i>
+        <span id="toast-message" class="text-xs font-semibold text-stone-100">Language updated</span>
+    </div>
+
+    <script>
+        // Current Language State
+        let currentLang = 'KR';
+
+        // Translation Dictionary (KR, JP, EN)
+        const i18n = {
+            KR: {
+                doc_title: "한복컬러매치 | 퍼스널컬러 맞춤 한복 체험 & 스냅 촬영",
+                top_notice: '<i class="fa-solid fa-gift mr-1 text-trad-gold"></i> 오픈 기념 리뷰 이벤트: 네이버/구글 리뷰 작성 시 고급 아크릴 액자 증정!',
+                top_notice_short: '<i class="fa-solid fa-gift mr-1"></i> 리뷰 작성 시 아크릴 액자 무료!',
+                brand_name: "한복컬러매치",
+                nav_about: "서비스 소개",
+                nav_video: "체험 영상",
+                nav_color: "전통색 진단",
+                nav_packages: "패키지 & 가격",
+                nav_benefits: "제휴 혜택",
+                nav_reviews: "고객 후기",
+                nav_faq: "FAQ",
+                nav_btn_book: "빠른 예약",
+                hero_badge: "경복궁역 도보 3분 · 퍼스널컬러 x 한복 전문 뷰티 스튜디오",
+                hero_title: '나의 톤을 찾아 완성하는<br><span class="bg-gradient-to-r from-amber-200 via-rose-300 to-rose-100 bg-clip-text text-transparent">가장 단아하고 빛나는 순간</span>',
+                hero_desc: "무작정 대여하는 한복은 이제 그만. 1:1 퍼스널컬러 정밀 진단부터 나에게 딱 맞는 한국 전통색 한복 셀렉트, 전통 헤어·메이크업, 그리고 경복궁 야외 스냅 촬영까지 한 번에 경험하세요.",
+                hero_cta_book: "체험 코스 예약하기",
+                hero_cta_video: "30초 진단 영상 보기",
+                hero_cta_color: "나의 전통 퍼스널컬러 알아보기",
+                video_title: "한복컬러매치 체험 미리보기",
+                video_desc: "1:1 드레이핑 퍼스널컬러 진단부터 헤어·메이크업, 경복궁 야외 스냅까지 30초 영상으로 미리 확인하세요!",
+                video_tab1: "퍼스널컬러 진단",
+                video_tab2: "비포 & 애프터",
+                video_tab3: "경복궁 야외 스냅",
+                video_footnote: "* 실제 고객님의 퍼스널컬러 한복 스타일링 진단 과정 촬영 영상입니다.",
+                stat_1_label: "고객 만족도 (1,280+ 후기)",
+                stat_2_label: "보유 한복 수량",
+                stat_2_val: "300+ 프리미엄",
+                stat_3_label: "전문 진단사 & 아티스트",
+                stat_3_val: "100% 1:1 케어",
+                stat_4_label: "외국어 대응 서비스",
+                about_title: "왜 '한복컬러매치'인가요?",
+                about_desc: "단순히 옷을 빌려 입는 기존 한복 대여점에서 벗어나,<br class=\"hidden sm:inline\">나의 피부 톤과 분위기에 맞춰 완성되는 <strong>나만의 고품격 한국 문화 체험</strong>을 제안합니다.",
+                feat_1_title: "1:1 퍼스널컬러 진단",
+                feat_1_desc: "전문 드레이핑 천을 활용해 봄·여름·가을·겨울 톤을 진단하고 나만의 베스트 전통 색상을 찾아드립니다.",
+                feat_2_title: "맞춤 전통 한복 셀렉",
+                feat_2_desc: "진단된 색상 결과를 바탕으로 저고리, 치마, 장신구까지 어울리는 최적의 프리미엄 한복 조합을 추천받습니다.",
+                feat_3_title: "전문 헤어·메이크업",
+                feat_3_desc: "전통 댕기 머리, 땋은 머리 연출 및 톤에 맞는 단아한 뷰티 메이크업으로 한복 핏의 완성도를 높입니다.",
+                feat_4_title: "경복궁 야외 스냅 & 인화",
+                feat_4_desc: "경복궁 주요 포토스팟에서 전문 작가의 촬영과 보정본 파일, 고급 포토 인화 프레임을 한 번에 받아보세요.",
+                color_tester_title: "나에게 어울리는 전통 오방색은?",
+                color_tester_desc: "아래 탭을 클릭하여 퍼스널컬러 톤별 추천 한복 색조 조합과 계절별 풍경 및 한옥 스팟을 미리보세요!",
+                tab_spring: "봄 워머 (Spring Warm)",
+                tab_summer: "여름 쿨 (Summer Cool)",
+                tab_autumn: "가을 워머 (Autumn Warm)",
+                tab_winter: "겨울 쿨 (Winter Cool)",
+                trad_colors_label: "대표 한국 전통 매칭 색상",
+                packages_title: "체험 코스 & 가격 안내",
+                packages_desc: "필요한 구성만 알차게 모았습니다. 나의 일정과 목적에 꼭 맞는 패키지를 선택해보세요.",
+                pkg_a_title: "베이직 매치 코스",
+                pkg_a_desc: "퍼스널컬러 진단 후 어울리는 한복을 착용하는 기본 실속 코스",
+                pkg_a_time: "약 60분",
+                pkg_b_title: "스타일링 풀 매치 코스",
+                pkg_b_desc: "진단 + 한복 + 전문 전통 헤어·메이크업까지 완벽 보장",
+                pkg_b_time: "약 90분",
+                pkg_c_title: "프리미엄 스냅 풀패키지",
+                pkg_c_desc: "진단 + 한복 + 헤어메이크업 + 경복궁 작가 스냅 + 인화",
+                pkg_c_time: "약 120분",
+                currency_per_person: "원 / 1인",
+                badge_best: "★ BEST 인기 추천",
+                badge_discount: "특가",
+                badge_popular: "인기",
+                feat_personal_color: "1:1 퍼스널컬러 정밀 진단 (드레이핑)",
+                feat_trad_chart: "한국 전통 오방색 진단 차트 제공",
+                feat_hanbok_rental: "퍼스널 톤 맞춤 한복 대여 (속치마, 신발 포함)",
+                feat_hair_makeup: "헤어 메이크업 스타일링",
+                feat_snap_photo: "경복궁 야외 스냅 사진 촬영",
+                feat_hanbok_acc: "퍼스널 톤 맞춤 한복 & 노리개 등 장신구",
+                feat_hair_makeup_inc: "전통 헤어 댕기 연출 + 톤맞춤 메이크업",
+                feat_personal_report: "1:1 퍼스널컬러 정밀 진단 & 리포트",
+                feat_premium_hanbok: "프리미엄 원단 한복 & 풀 액세서리 대여",
+                feat_snap_inc: "경복궁 전문 스냅 작가 야외 촬영 (40분)",
+                feat_photo_prints: "보정본 10장 + 고화질 인화 2장 + 고급 프레임",
+                btn_select_a: "A 코스 선택하기",
+                btn_select_b: "B 코스 예약하기 (추천)",
+                btn_select_c: "C 코스 선택하기",
+                benefits_title: "한복컬러매치 단독 제휴 & 리뷰 혜택",
+                perk_1_title: "네이버 / 구글 리뷰 이벤트",
+                perk_1_desc: "체험 후 리뷰를 작성해주시는 모든 분께 탁상용 고급 아크릴 액자(1만원 상당)를 즉시 증정합니다.",
+                perk_1_tag: "현장 참여 가능",
+                perk_2_title: "올리브영 경복궁점 제휴 쿠폰",
+                perk_2_desc: "퍼스널컬러 진단 결과에 맞는 화장품 구매 시 사용 가능한 근처 올리브영 10% 할인 쿠폰 & 미니 샘플 키트 증정!",
+                perk_2_tag: "매장 도보 1분거리 연계",
+                perk_3_title: "경복궁 전통 인력거·투어 연계",
+                perk_3_desc: "한복 착용 후 편안하고 낭만적인 서촌·북촌 골목 투어가 가능한 제휴 인력거/오토바이팀 우선 할인 예약!",
+                perk_3_tag: "예약 시 추가 옵션 선택 가능",
+                reviews_title: "실제 방문 고객들의 생생 후기",
+                review_count: "(1,280+ 누적 리뷰)",
+                rev_1_name: "김*진 님 (20대 / 봄워머)",
+                rev_1_meta: "Course B 이용 · 최근 방문",
+                rev_1_text: '"평소에 주황색이나 밝은 색이 잘 안 어울린다고 생각했는데, 퍼스널컬러 진단받고 추천해주신 연분홍-황색 치마 조합을 입었더니 얼굴에 형광등 켜진 줄 알았습니다! 친구들도 다 경복궁에서 제 한복이 제일 예뻤대요."',
+                rev_1_tag: "퍼스널컬러 만족",
+                rev_2_name: "Yuki S. 님 (일본인 관광객)",
+                rev_2_meta: "Course C 이용 · 최근 방문",
+                rev_2_text: '"韓国旅行のハイライトでした！日本語の案内があって安心してパーソナルカラー診断を受けられました。写真家さんの撮影も親切で、アルバム印刷も綺麗に届きました！"',
+                rev_2_tag: "외국인 만족도 1위",
+                rev_3_name: "박*우 & 이*아 커플",
+                rev_3_meta: "Course B (2인) · 최근 방문",
+                rev_3_text: '"남자친구와 함께 퍼스널컬러 커플로 진단받고 어울리는 한복 톤을 맞춰 입었습니다. 메이크업 선생님도 제 피부 톤에 맞게 립 색깔까지 정성껏 발라주셔서 정말 대만족했어요!"',
+                rev_3_tag: "커플 스냅 추천",
+                rev_source_naver: "네이버 예약 검증 후기",
+                rev_source_google: "구글 리뷰 후기",
+                faq_title: "자주 묻는 질문",
+                faq_q1: "Q1. 메이크업을 하고 방문해도 퍼스널컬러 진단이 가능한가요?",
+                faq_a1: "정확한 퍼스널컬러 진단을 위해 민낯(쌩얼) 또는 가벼운 선크림 정도만 바르시고 방문하는 것을 권장합니다. 현장에 클렌징 공간이 준비되어 있어 도착 후 지우시는 것도 가능합니다.",
+                faq_q2: "Q2. 외국인 친구와 함께 가는데 언어 지원이 되나요?",
+                faq_a2: "네! 매장 내에 영어 및 일본어 통역이 가능한 스태프가 상주하고 있으며, 다국어 진단 차트가 준비되어 있어 해외 관광객분들도 편안하게 체험하실 수 있습니다.",
+                faq_q3: "Q3. 비가 오거나 날씨가 안 좋으면 촬영은 어떻게 되나요?",
+                faq_a3: "우천 시에는 스튜디오 실내 전통 세트장 촬영으로 변경하거나, 요청 시 수수료 없이 날짜 변경이 가능합니다.",
+                faq_q4: "Q4. 한복 사이즈는 다양하게 마련되어 있나요?",
+                faq_a4: "여성 44~100 사이즈, 남성 90~115 사이즈까지 다양한 한복이 구비되어 있습니다. 피팅 전문 아티스트가 피팅을 도와드립니다.",
+                form_title: "한복컬러매치 체험 예약",
+                form_subtitle: "원하시는 코스와 날짜를 선택하시면 실시간으로 견적이 계산됩니다.",
+                form_step1: "1. 체험 코스 선택",
+                form_pkg_a_sub: "진단 + 전통색 + 한복 (약 60분)",
+                form_pkg_b_sub: "진단 + 한복 + 헤어메이크업 (약 90분)",
+                form_pkg_c_sub: "진단 + 헤메 + 야외 스냅 + 인화 (약 120분)",
+                form_guests: "인원",
+                form_date: "방문 희망일",
+                form_time: "방문 희망 시간",
+                form_time_ph: "시간대를 선택하세요",
+                form_options_title: "무료 혜택 & 옵션 선택",
+                opt_review_text: "[무료] 네이버/구글 리뷰 작성 이벤트 참여 (아크릴 액자 증정)",
+                opt_olive_text: "[무료] 올리브영 제휴 할인 쿠폰 & 샘플 키트 수령",
+                opt_rickshaw_text: "[옵션] 경복궁 충칭 인력거 골목 투어 추가 (+25,000원/1인)",
+                form_step2: "2. 예약자 정보 입력",
+                input_name_label: "성함 (Name) *",
+                input_contact_label: "연락처 / 카카오ID / LINE ID *",
+                input_lang_label: "선호 언어 (Preferred Language)",
+                input_notes_label: "요청사항 (Special Requests)",
+                sum_unit: "선택 패키지 단가",
+                sum_guests: "인원 수",
+                sum_options: "추가 옵션 (인력거 투어)",
+                sum_total: "총 예상 금액",
+                btn_submit_booking: "예약 신청 완료하기",
+                loc_title: "오시는 길 & 이용 안내",
+                loc_address_label: "주소",
+                loc_address_val: "서울시 종로구 자하문로 12길 5 2층 (경복궁 일대)",
+                loc_subway: "* 지하철 3호선 경복궁역 3번 출구 도보 3분 거리",
+                loc_hours_label: "운영 시간 및 휴무",
+                loc_hours_val: "매일 운영 (연중무휴) / 오전 10:00 ~ 오후 07:00",
+                loc_hours_sub: "(마감 1시간 전까지 진단 및 피팅 입장 가능)",
+                loc_contact_label: "문의 전화 & SNS",
+                btn_naver_map: "네이버 지도 보기",
+                btn_google_map: "구글 맵 연결",
+                map_card_title: "한복컬러매치 플래그십 스튜디오",
+                map_card_sub: "경복궁 신무문 & 서촌 삼거리 바로 인접",
+                map_card_tag: "경복궁역 3번 출구 직진 200m",
+                modal_success_title: "예약 신청이 완료되었습니다!",
+                modal_success_sub: '입력하신 연락처로 <span class="font-semibold text-stone-900">10분 이내 확인 확정 메시지</span>가 발송됩니다.',
+                modal_code_label: "예약번호",
+                modal_name_label: "예약자명",
+                modal_pkg_label: "체험 코스",
+                modal_time_label: "일시 및 인원",
+                modal_total_label: "총 결제 예정 금액",
+                modal_btn_close: "확인 및 창 닫기",
+                toast_lang_changed: "언어가 한국어로 변경되었습니다."
+            },
+            JP: {
+                doc_title: "Hanbok Color Match | パーソナルカラー韓服体験＆スナップ撮影",
+                top_notice: '<i class="fa-solid fa-gift mr-1 text-trad-gold"></i> オープン記念：レビュー投稿で高級アクリルフォトフレームプレゼント！',
+                top_notice_short: '<i class="fa-solid fa-gift mr-1"></i> レビューでアクリル額縁無料！',
+                brand_name: "韓服カラーマッチ",
+                nav_about: "サービス紹介",
+                nav_video: "体験動画",
+                nav_color: "伝統色診断",
+                nav_packages: "コース＆料金",
+                nav_benefits: "提携特典",
+                nav_reviews: "口コミ・体験談",
+                nav_faq: "よくある質問",
+                nav_btn_book: "今すぐ予約",
+                hero_badge: "景福宮駅徒歩3分 · パーソナルカラー×韓服専門ビューティースタジオ",
+                hero_title: 'トーンを見つけて完成する<br><span class="bg-gradient-to-r from-amber-200 via-rose-300 to-rose-100 bg-clip-text text-transparent">最も優雅で輝く瞬間</span>',
+                hero_desc: "ただ借りるだけの韓服体験はもう終わり。1:1精密パーソナルカラー診断から、あなたに似合う韓国伝統色韓服の選定、伝統ヘア＆メイク、景福宮ロケーション撮影まで一括体験！",
+                hero_cta_book: "体験コースを予約する",
+                hero_cta_video: "30秒診断動画を見る",
+                hero_cta_color: "私の伝統パーソナルカラーを診断",
+                video_title: "韓服カラーマッチ 体験プレビュー動画",
+                video_desc: "1:1パーソナルカラー診断からヘアメイク、景福宮ロケーション撮影まで動画で一足先にご覧いただけます！",
+                video_tab1: "パーソナルカラー診断",
+                video_tab2: "ビフォー＆アフター",
+                video_tab3: "景福宮ロケーション撮影",
+                video_footnote: "※ 実際にご来店されたお客様のパーソナルカラー診断＆スタイリング動画です。",
+                stat_1_label: "顧客満足度 (1,280件以上)",
+                stat_2_label: "保有韓服数",
+                stat_2_val: "300着以上プレミアム",
+                stat_3_label: "専門診断士＆アーティスト",
+                stat_3_val: "100% 1:1マンツーマン",
+                stat_4_label: "外国語対応サービス",
+                about_title: "なぜ「韓服カラーマッチ」なのか？",
+                about_desc: "一般的な韓服レンタルショップとは一線を画す、<br class=\"hidden sm:inline\">あなたの肌トーンと雰囲気に合わせて完成する<strong>プレミアム韓国文化体験</strong>をご提案します。",
+                feat_1_title: "1:1 パーソナルカラー診断",
+                feat_1_desc: "専用ドレープを使用して春夏秋冬のパーソナルカラーを精密診断し、ベストな伝統色を導き出します。",
+                feat_2_title: "カスタム伝統韓服セレクト",
+                feat_2_desc: "診断結果に基づき、チョゴリ・チマ・髪飾り・ノリゲまで最高のマッチング韓服を提案します。",
+                feat_3_title: "専門伝統ヘア＆メイク",
+                feat_3_desc: "伝統的なデンギヘアや編み込み、トーンに合わせた端正なメイクで韓服姿の完成度を高めます。",
+                feat_4_title: "景福宮ロケーション撮影＆印刷",
+                feat_4_desc: "景福宮のフォトスポットでプロカメラマンが撮影。補正データ＋高級フォトフレームをセットでお届け！",
+                color_tester_title: "あなたに似合う伝統の五方色（伝統色）は？",
+                color_tester_desc: "下のタブをクリックして、各パーソナルカラータイプ別のおすすめ韓服配色と季節の風景をプレビューしてください！",
+                tab_spring: "イエベ春 (Spring Warm)",
+                tab_summer: "ブルベ夏 (Summer Cool)",
+                tab_autumn: "イエベ秋 (Autumn Warm)",
+                tab_winter: "ブルベ冬 (Winter Cool)",
+                trad_colors_label: "代表的な韓国伝統マッチングカラー",
+                packages_title: "体験コース＆料金のご案内",
+                packages_desc: "必要なサービスだけを凝縮。スケジュールと目的に合わせて最適なプランをお選びください。",
+                pkg_a_title: "ベーシックマッチコース",
+                pkg_a_desc: "パーソナルカラー診断後、似合う韓服を着用する基本お得プラン",
+                pkg_a_time: "約60分",
+                pkg_b_title: "フルスタイリングマッチコース",
+                pkg_b_desc: "診断＋韓服＋本格伝統ヘア＆メイクアップまで完全保証！",
+                pkg_b_time: "約90分",
+                pkg_c_title: "プレミアムスナップ撮影フルパック",
+                pkg_c_desc: "診断＋韓服＋ヘアメイク＋景福宮プロ撮影＋写真印刷",
+                pkg_c_time: "約120分",
+                currency_per_person: "ウォン / 1名",
+                badge_best: "★ 人気No.1おすすめ",
+                badge_discount: "特価",
+                badge_popular: "人気",
+                feat_personal_color: "1:1 精密パーソナルカラー診断 (ドレーピング)",
+                feat_trad_chart: "韓国伝統五方色診断チャート進呈",
+                feat_hanbok_rental: "パーソナルトーン韓服レンタル (インナー・靴込)",
+                feat_hair_makeup: "ヘア＆メイクスタイリング",
+                feat_snap_photo: "景福宮屋外スナップ撮影",
+                feat_hanbok_acc: "パーソナル韓服＆ノリゲ・髪飾り一式",
+                feat_hair_makeup_inc: "伝統デンギヘア＋トーン別メイクアップ",
+                feat_personal_report: "1:1 精密パーソナルカラー診断＆レポート",
+                feat_premium_hanbok: "高級絹生地韓服＆フルアクセサリーレンタル",
+                feat_snap_inc: "景福宮プロカメラマン屋外撮影 (40分)",
+                feat_photo_prints: "補正データ10枚＋高画質印刷2枚＋高級額縁",
+                btn_select_a: "Aコースを選択",
+                btn_select_b: "Bコースを予約 (おすすめ)",
+                btn_select_c: "Cコースを選択",
+                benefits_title: "韓服カラーマッチ限定提携＆レビュー特典",
+                perk_1_title: "NAVER / Google レビューイベント",
+                perk_1_desc: "体験後にレビューを書いていただいた方全員に、卓上高級アクリルフォトフレーム（1万ウォン相当）をプレゼント！",
+                perk_1_tag: "現地参加可能",
+                perk_2_title: "オリーブヤング景福宮店 提携クーポン",
+                perk_2_desc: "パーソナルカラーに合ったコスメ購入時に使える近隣オリーブヤング10%割引クーポン＆ミニサンプルセット！",
+                perk_2_tag: "店舗から徒歩1分連動",
+                perk_3_title: "景福宮 伝統人力車・ツアー連携",
+                perk_3_desc: "韓服着用後、快適でロマンチックな西村・北村路地ツアーが楽しめる提携人力車優先割引予約！",
+                perk_3_tag: "予約時追加オプション選択可能",
+                reviews_title: "実際に体験されたお客様の声",
+                review_count: "(1,280件以上のレビュー)",
+                rev_1_name: "キム*ジン様 (20代 / イエベ春)",
+                rev_1_meta: "Course B利用 · 最近のご来店",
+                rev_1_text: '"普段は明るい色が似合わないと思っていましたが、パーソナルカラー診断で勧められた薄ピンクと黄色のチマを着たら顔色がぱっと明るくなりました！友達からも一番可愛いと大好評でした！"',
+                rev_1_tag: "カラー診断大満足",
+                rev_2_name: "Yuki S.様 (日本人観光客)",
+                rev_2_meta: "Course C利用 · 最近のご来店",
+                rev_2_text: '"韓国旅行のハイライトでした！日本語の案内があって安心してパーソナルカラー診断を受けられました。写真家さんの撮影も親切で、アルバム印刷も綺麗に届きました！"',
+                rev_2_tag: "外国人満足度No.1",
+                rev_3_name: "パク*ウ＆イ*ア カップル様",
+                rev_3_meta: "Course B (2名) · 最近のご来店",
+                rev_3_text: '"彼氏と一緒にパーソナルカラー診断を受けてお揃いのトーンで韓服を合わせました。メイクさんも肌トーンに合わせて丁寧にリップまで塗ってくれて大満足です！"',
+                rev_3_tag: "カップルスナップおすすめ",
+                rev_source_naver: "NAVER予約認証レビュー",
+                rev_source_google: "Googleクチコミ",
+                faq_title: "よくある質問 (FAQ)",
+                faq_q1: "Q1. メイクをしたまま来店してもパーソナルカラー診断はできますか？",
+                faq_a1: "正確な診断のためノーメイク（すっぴん）または軽い日焼け止め程度でのご来店を推奨します。店内にクレンジングスペースも用意しております。",
+                faq_q2: "Q2. 外国人の友達と行きますが、言語サポートはありますか？",
+                faq_a2: "はい！日本語・英語が可能なスタッフが常駐しており、多言語診断チャートもご用意しておりますので安心してご利用いただけます。",
+                faq_q3: "Q3. 雨や悪天候の場合、撮影はどうなりますか？",
+                faq_a3: "雨天時はスタジオ内の伝統セット場撮影に変更するか、お客様のご希望に応じて手数料なしで日程変更が可能です。",
+                faq_q4: "Q4. 韓服のサイズは豊富ですか？",
+                faq_a4: "女性S〜XXL(44〜100)、男性S〜3XL(90〜115)まで豊富なサイズを取り揃えております。専門フィッターがぴったりに調整いたします。",
+                form_title: "韓服カラーマッチ 体験予約",
+                form_subtitle: "ご希望のコースと日程を選択すると、リアルタイムで合計金額が計算されます。",
+                form_step1: "1. 体験コースの選択",
+                form_pkg_a_sub: "診断 ＋ 伝統色 ＋ 韓服 (約60分)",
+                form_pkg_b_sub: "診断 ＋ 韓服 ＋ ヘアメイク (約90分)",
+                form_pkg_c_sub: "診断 ＋ ヘアメイク ＋ スナップ ＋ 印刷 (約120分)",
+                form_guests: "人数",
+                form_date: "来店希望日",
+                form_time: "来店希望時間",
+                form_time_ph: "時間帯を選択してください",
+                form_options_title: "無料特典＆オプション選択",
+                opt_review_text: "【無料】レビュー投稿イベント参加 (アクリルフォトフレーム進呈)",
+                opt_olive_text: "【無料】オリーブヤング提携10%割引クーポン＆サンプル進呈",
+                opt_rickshaw_text: "【オプション】景福宮 伝統人力車ツアー追加 (＋25,000ウォン/1名)",
+                form_step2: "2. 予約者情報の入力",
+                input_name_label: "お名前 (Name) *",
+                input_contact_label: "ご連絡先 / Kakao ID / LINE ID *",
+                input_lang_label: "希望言語 (Language)",
+                input_notes_label: "ご要望・備考 (Special Requests)",
+                sum_unit: "選択コース単価",
+                sum_guests: "人数",
+                sum_options: "追加オプション (人力車ツアー)",
+                sum_total: "予想合計金額",
+                btn_submit_booking: "予約を確定する",
+                loc_title: "アクセス＆ご利用案内",
+                loc_address_label: "住所",
+                loc_address_val: "ソウル特別市鍾路区紫霞門路12ギル5 2階 (景福宮エリア)",
+                loc_subway: "※ 地下鉄3号線 景福宮(キョンボックン)駅 3番出口 徒歩3分",
+                loc_hours_label: "営業時間＆定休日",
+                loc_hours_val: "年中無休 / 午前10:00 〜 午後07:00",
+                loc_hours_sub: "(最終受付：閉店1時間前まで)",
+                loc_contact_label: "お問い合わせ＆SNS",
+                btn_naver_map: "NAVERマップで開く",
+                btn_google_map: "Googleマップで開く",
+                map_card_title: "韓服カラーマッチ フラッグシップスタジオ",
+                map_card_sub: "景福宮 神武門＆西村交差点すぐ近く",
+                map_card_tag: "景福宮駅3番出口 直進200m",
+                modal_success_title: "ご予約申請が完了しました！",
+                modal_success_sub: 'ご入力いただいた連絡先に<span class="font-semibold text-stone-900">10分以内に予約確定メッセージ</span>をお送りします。',
+                modal_code_label: "予約番号",
+                modal_name_label: "お名前",
+                modal_pkg_label: "体験コース",
+                modal_time_label: "日時＆人数",
+                modal_total_label: "お支払い予定金額",
+                modal_btn_close: "確認して閉じる",
+                toast_lang_changed: "日本語に切り替えました。"
+            },
+            EN: {
+                doc_title: "Hanbok Color Match | Personal Color Hanbok Rental & Snap Photography",
+                top_notice: '<i class="fa-solid fa-gift mr-1 text-trad-gold"></i> Grand Opening Event: Leave a Naver/Google review to receive a free premium acrylic photo frame!',
+                top_notice_short: '<i class="fa-solid fa-gift mr-1"></i> Free acrylic frame with review!',
+                brand_name: "Hanbok Color Match",
+                nav_about: "About",
+                nav_video: "Video Preview",
+                nav_color: "Color Analysis",
+                nav_packages: "Packages & Pricing",
+                nav_benefits: "Perks & Deals",
+                nav_reviews: "Reviews",
+                nav_faq: "FAQ",
+                nav_btn_book: "Book Now",
+                hero_badge: "3 mins walk from Gyeongbokgung Stn · Personal Color x Hanbok Studio",
+                hero_title: 'Discover Your Personal Palette<br><span class="bg-gradient-to-r from-amber-200 via-rose-300 to-rose-100 bg-clip-text text-transparent">For Your Most Radiant Moments in Seoul</span>',
+                hero_desc: "Say goodbye to random Hanbok rentals. Experience a complete 1:1 Personal Color diagnosis, tailored traditional Korean Hanbok styling, hair & makeup, and outdoor photo shoots at Gyeongbokgung Palace.",
+                hero_cta_book: "Book Experience Course",
+                hero_cta_video: "Watch 30s Promo Video",
+                hero_cta_color: "Explore My Traditional Palette",
+                video_title: "Experience Video Preview",
+                video_desc: "Watch how 1:1 Personal Color analysis, hair & makeup, and Gyeongbokgung Palace shoots unfold in 30 seconds!",
+                video_tab1: "Color Analysis",
+                video_tab2: "Before & After",
+                video_tab3: "Palace Outdoor Snap",
+                video_footnote: "* Video footage of real customer personal color diagnosis and Hanbok styling.",
+                stat_1_label: "Customer Rating (1,280+ Reviews)",
+                stat_2_label: "Hanbok Collection",
+                stat_2_val: "300+ Premium Sets",
+                stat_3_label: "Certified Stylists",
+                stat_3_val: "100% 1:1 Care",
+                stat_4_label: "Multilingual Service",
+                about_title: "Why 'Hanbok Color Match'?",
+                about_desc: "Move beyond simple garment rental.<br class=\"hidden sm:inline\">We offer a tailored <strong>high-grade Korean cultural experience</strong> crafted specifically to complement your unique skin tone and style.",
+                feat_1_title: "1:1 Personal Color Analysis",
+                feat_1_desc: "Professional drape diagnosis determines your seasonal tone (Spring/Summer/Autumn/Winter) and discovers your best traditional Korean hues.",
+                feat_2_title: "Custom Hanbok Selection",
+                feat_2_desc: "Based on your color profile, get matched with the perfect combination of Jeogori (jacket), Chima (skirt), and traditional accessories.",
+                feat_3_title: "Pro Hair & Makeup",
+                feat_3_desc: "Traditional Daenggi hair braiding and tone-matched elegant beauty makeup elevate your overall Korean traditional look.",
+                feat_4_title: "Palace Outdoor Snap & Prints",
+                feat_4_desc: "Guided by professional photographers at Gyeongbokgung Palace. Includes color-edited files, high-res prints, and a photo frame.",
+                color_tester_title: "Which Traditional Korean Hues Suit You?",
+                color_tester_desc: "Click the seasonal tabs below to preview recommended Hanbok color pairings and authentic Korean seasonal scenery!",
+                tab_spring: "Spring Warm",
+                tab_summer: "Summer Cool",
+                tab_autumn: "Autumn Warm",
+                tab_winter: "Winter Cool",
+                trad_colors_label: "Featured Traditional Palette Swatches",
+                packages_title: "Courses & Pricing",
+                packages_desc: "Transparent all-inclusive packages. Choose the ideal course tailored to your schedule and goals.",
+                pkg_a_title: "Basic Match Course",
+                pkg_a_desc: "Essential course including 1:1 personal color diagnosis and matching Hanbok rental.",
+                pkg_a_time: "Approx. 60 mins",
+                pkg_b_title: "Full Styling Match Course",
+                pkg_b_desc: "Complete package: Color Analysis + Hanbok + Professional Traditional Hair & Makeup.",
+                pkg_b_time: "Approx. 90 mins",
+                pkg_c_title: "Premium Snap Full Package",
+                pkg_c_desc: "Ultimate experience: Analysis + Hanbok + Hair/Makeup + Palace Snap Shoot + Frame Print.",
+                pkg_c_time: "Approx. 120 mins",
+                currency_per_person: "KRW / Person",
+                badge_best: "★ BEST SELLER",
+                badge_discount: "OFFER",
+                badge_popular: "HOT",
+                feat_personal_color: "1:1 Precision Personal Color Drape Analysis",
+                feat_trad_chart: "Traditional Korean 5-Color Chart Provided",
+                feat_hanbok_rental: "Tone-matched Hanbok Rental (Includes Undergarments & Shoes)",
+                feat_hair_makeup: "Hair & Makeup Styling",
+                feat_snap_photo: "Gyeongbokgung Palace Outdoor Snap Photography",
+                feat_hanbok_acc: "Tone-matched Hanbok & Accessories (Norigae, Hairpins)",
+                feat_hair_makeup_inc: "Traditional Daenggi Hair Styling + Tone Makeup",
+                feat_personal_report: "1:1 Personal Color Diagnosis & Written Report",
+                feat_premium_hanbok: "Premium Silk Fabric Hanbok & Full Accessories",
+                feat_snap_inc: "Pro Photographer Shoot at Gyeongbokgung (40 mins)",
+                feat_photo_prints: "10 Edited Photos + 2 High-Res Prints + Premium Frame",
+                btn_select_a: "Select Course A",
+                btn_select_b: "Book Course B (Recommended)",
+                btn_select_c: "Select Course C",
+                benefits_title: "Exclusive Perks & Partnership Discounts",
+                perk_1_title: "Naver / Google Review Event",
+                perk_1_desc: "Leave a quick review after your experience to receive a complimentary tabletop acrylic photo frame (10,000 KRW value).",
+                perk_1_tag: "Available On-Site",
+                perk_2_title: "Olive Young Gyeongbokgung Voucher",
+                perk_2_desc: "Get a 10% discount coupon & mini cosmetic sample kit at the nearby Olive Young store to match your personal color results!",
+                perk_2_tag: "1 min walk from store",
+                perk_3_title: "Gyeongbokgung Rickshaw / Tour Booking",
+                perk_3_desc: "Priority discount booking for traditional rickshaw or tour rides around the scenic Seochon and Bukchon Hanok villages!",
+                perk_3_tag: "Optional add-on during booking",
+                reviews_title: "Real Customer Experiences",
+                review_count: "(1,280+ Verified Reviews)",
+                rev_1_name: "Kim * Jin (20s / Spring Warm)",
+                rev_1_meta: "Course B · Visited Recently",
+                rev_1_text: '"I always thought bright colors didn\'t suit me, but after my personal color analysis, the recommended pink and yellow skirt combination illuminated my skin! Everyone at Gyeongbokgung said my Hanbok was the prettier one."',
+                rev_1_tag: "Loved Color Diagnosis",
+                rev_2_name: "Yuki S. (Tourist from Japan)",
+                rev_2_meta: "Course C · Visited Recently",
+                rev_2_text: '"Highlight of our Seoul trip! Staff explained everything kindly in Japanese. The personal color diagnosis was eye-opening and the photo session inside Gyeongbokgung turned out incredible!"',
+                rev_2_tag: "#1 Rated for Tourists",
+                rev_3_name: "Park * Woo & Lee * A Couple",
+                rev_3_meta: "Course B (2 People) · Visited Recently",
+                rev_3_text: '"My boyfriend and I did a couple color match and got matching Hanbok tones. The makeup artist matched my lipstick shade perfectly to my warm tone. Highly recommended!"',
+                rev_3_tag: "Recommended for Couples",
+                rev_source_naver: "Verified Naver Reservation",
+                rev_source_google: "Verified Google Review",
+                faq_title: "Frequently Asked Questions",
+                faq_q1: "Q1. Can I get a personal color diagnosis if I am wearing makeup?",
+                faq_a1: "For accurate drape testing, we recommend coming with bare skin or light sunscreen. We also provide a makeup removal area at our studio if you arrive with makeup.",
+                faq_q2: "Q2. Is English or Japanese language support available?",
+                faq_a2: "Yes! Our studio has fluent English and Japanese speaking staff and multilingual color analysis charts for international guests.",
+                faq_q3: "Q3. What happens if it rains on my photo shoot day?",
+                faq_a3: "In case of rainy weather, we can switch to our indoor traditional Korean studio sets or reschedule your booking date with zero fee.",
+                faq_q4: "Q4. Do you have diverse Hanbok sizes?",
+                faq_a4: "Yes, we carry women's sizes XS to 3XL (44 to 100) and men's sizes S to 4XL (90 to 115). Professional stylists assist with fitting.",
+                form_title: "Online Reservation",
+                form_subtitle: "Select your desired course, date, and headcount for instant price calculation.",
+                form_step1: "1. Select Experience Course",
+                form_pkg_a_sub: "Analysis + Traditional Color + Hanbok (60 mins)",
+                form_pkg_b_sub: "Analysis + Hanbok + Hair & Makeup (90 mins)",
+                form_pkg_c_sub: "Analysis + Hair/Makeup + Outdoor Snap + Print (120 mins)",
+                form_guests: "Guests",
+                form_date: "Preferred Date",
+                form_time: "Preferred Time",
+                form_time_ph: "Select a time slot",
+                form_options_title: "Free Perks & Options",
+                opt_review_text: "[Free] Participate in review event (Receive free acrylic photo frame)",
+                opt_olive_text: "[Free] Receive Olive Young 10% discount coupon & sample kit",
+                opt_rickshaw_text: "[Option] Add Gyeongbokgung Rickshaw Tour (+25,000 KRW/person)",
+                form_step2: "2. Contact Information",
+                input_name_label: "Full Name *",
+                input_contact_label: "Phone / WhatsApp / Kakao ID / LINE ID *",
+                input_lang_label: "Preferred Language",
+                input_notes_label: "Special Requests or Allergies",
+                sum_unit: "Package Unit Price",
+                sum_guests: "Headcount",
+                sum_options: "Add-ons (Rickshaw Tour)",
+                sum_total: "Estimated Total",
+                btn_submit_booking: "Complete Booking Request",
+                loc_title: "Location & Operating Hours",
+                loc_address_label: "Address",
+                loc_address_val: "2F, 5 Jahamun-ro 12-gil, Jongno-gu, Seoul (Gyeongbokgung Area)",
+                loc_subway: "* Subway Line 3, Gyeongbokgung Station Exit 3 (3 mins walk)",
+                loc_hours_label: "Hours & Schedule",
+                loc_hours_val: "Open Daily / 10:00 AM – 07:00 PM",
+                loc_hours_sub: "(Last entry for fitting 1 hour before closing)",
+                loc_contact_label: "Contact & Social",
+                btn_naver_map: "Open Naver Map",
+                btn_google_map: "Open Google Maps",
+                map_card_title: "Hanbok Color Match Flagship Studio",
+                map_card_sub: "Adjacent to Gyeongbokgung Sinmumun Gate & Seochon",
+                map_card_tag: "200m straight from Gyeongbokgung Stn Exit 3",
+                modal_success_title: "Reservation Request Submitted!",
+                modal_success_sub: 'A confirmation message will be sent to your provided contact within <span class="font-semibold text-stone-900">10 minutes</span>.',
+                modal_code_label: "Booking Ref.",
+                modal_name_label: "Name",
+                modal_pkg_label: "Selected Course",
+                modal_time_label: "Date & Guests",
+                modal_total_label: "Total Estimated Price",
+                modal_btn_close: "Confirm & Close Window",
+                toast_lang_changed: "Language changed to English."
+            }
+        };
+
+        // Multilingual Seasonal Color Data & Images
+        const seasonData = {
+            spring: {
+                title: {
+                    KR: "🌸 봄 워머 (Spring Warm) 톤 추천",
+                    JP: "🌸 イエベ春 (Spring Warm) おすすめ",
+                    EN: "🌸 Spring Warm Palette Recommendation"
+                },
+                badge: {
+                    KR: "화사함 · 생기발랄 · 따뜻함",
+                    JP: "華やか · 生き生き · あたたかみ",
+                    EN: "Vibrant · Cheerful · Warm Light"
+                },
+                desc: {
+                    KR: "피부에 따뜻한 노란 기와 맑은 혈색이 도는 타입입니다. 은은한 연분홍, 개나리 노랑, 파스텔 옥색 저고리가 얼굴을 한층 더 밝고 생기있게 연출해 줍니다.",
+                    JP: "肌に温かみのある黄色みと透明感のある血色があるタイプ。淡いピンク、レンギョウの黄色、パステルジェイドのチョゴリが顔立ちをパッと明るく見せてくれます。",
+                    EN: "Best suited for skin with warm undertones and clear radiance. Pastel pink, light yellow, and soft jade Hanbok jackets naturally brighten your facial features."
+                },
+                swatches: {
+                    KR: [
+                        { name: "연분홍", color: "#F3A5B1" },
+                        { name: "황색", color: "#F1D152" },
+                        { name: "옥색", color: "#A8D8B9" },
+                        { name: "살구색", color: "#E8C39E" }
+                    ],
+                    JP: [
+                        { name: "薄ピンク", color: "#F3A5B1" },
+                        { name: "黄色", color: "#F1D152" },
+                        { name: "翡翠色", color: "#A8D8B9" },
+                        { name: "アプリコット", color: "#E8C39E" }
+                    ],
+                    EN: [
+                        { name: "Soft Pink", color: "#F3A5B1" },
+                        { name: "Warm Yellow", color: "#F1D152" },
+                        { name: "Light Jade", color: "#A8D8B9" },
+                        { name: "Apricot", color: "#E8C39E" }
+                    ]
+                },
+                img: "https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=800&auto=format&fit=crop",
+                tipTitle: {
+                    KR: "💡 봄 워머 스타일링 팁",
+                    JP: "💡 イエベ春のスタイリングのコツ",
+                    EN: "💡 Spring Warm Styling Tip"
+                },
+                tip: {
+                    KR: "금박 장식이 들어간 연분홍 치마와 크림색 저고리 조합에 붉은 댕기로 포인트를 주면 사진 촬영 시 얼굴선이 가장 또렷해집니다.",
+                    JP: "金箔のあしらわれた薄ピンクのチマとクリーム色のチョゴリに赤いデンギ（髪飾り）でアクセントをつけると写真映えが最高になります。",
+                    EN: "Pair a gold-leaf pink skirt with a cream jacket and accent with a crimson hair ribbon to make your face pop in photos."
+                }
+            },
+            summer: {
+                title: {
+                    KR: "🌿 여름 쿨 (Summer Cool) 톤 추천",
+                    JP: "🌿 ブルベ夏 (Summer Cool) おすすめ",
+                    EN: "🌿 Summer Cool Palette Recommendation"
+                },
+                badge: {
+                    KR: "청초함 · 단아함 · 쿨톤 시원함",
+                    JP: "清純 · 端正 · 涼やかさ",
+                    EN: "Graceful · Serene · Cool Pastel"
+                },
+                desc: {
+                    KR: "피부 톤이 맑고 붉은 기가 살짝 사르르 감도는 청초한 타입입니다. 파스텔 톤의 쪽빛(블루), 연라벤더, 쑥색 치마가 맑고 단아한 고전 미를 완성해줍니다.",
+                    JP: "肌色が澄んでいてほんのり赤みのある清楚なタイプ。パステルトーンのインディゴブルー、薄ラベンダー、翡翠色が上品な伝統美を引き立てます。",
+                    EN: "Suited for clear skin with rosy undertones. Lavender, ice blue, and soft sage green skirts highlight an elegant and timeless royal aesthetic."
+                },
+                swatches: {
+                    KR: [
+                        { name: "연라벤더", color: "#D1C4E9" },
+                        { name: "쪽빛(블루)", color: "#90CAF9" },
+                        { name: "은회색", color: "#E0E0E0" },
+                        { name: "비취색", color: "#80CBC4" }
+                    ],
+                    JP: [
+                        { name: "ラベンダー", color: "#D1C4E9" },
+                        { name: "インディゴ", color: "#90CAF9" },
+                        { name: "銀灰色", color: "#E0E0E0" },
+                        { name: "翡翠色", color: "#80CBC4" }
+                    ],
+                    EN: [
+                        { name: "Soft Lavender", color: "#D1C4E9" },
+                        { name: "Indigo Blue", color: "#90CAF9" },
+                        { name: "Silver Gray", color: "#E0E0E0" },
+                        { name: "Cool Jade", color: "#80CBC4" }
+                    ]
+                },
+                img: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800&auto=format&fit=crop",
+                tipTitle: {
+                    KR: "💡 여름 쿨 스타일링 팁",
+                    JP: "💡 ブルベ夏のスタイリングのコツ",
+                    EN: "💡 Summer Cool Styling Tip"
+                },
+                tip: {
+                    KR: "은사 장식의 쪽빛 치마와 백색 저고리를 조합하고 은비녀 장신구를 얹어주면 청순한 이미지가 배가됩니다.",
+                    JP: "銀糸の刺繍入りブルーチマに純白チョゴリを合わせ、銀のかんざしを添えると清純な美しさが際立ちます。",
+                    EN: "A silver-embroidered indigo skirt paired with a snow-white jacket and silver hairpins double the serene beauty."
+                }
+            },
+            autumn: {
+                title: {
+                    KR: "🍁 가을 워머 (Autumn Warm) 톤 추천",
+                    JP: "🍁 イエベ秋 (Autumn Warm) おすすめ",
+                    EN: "🍁 Autumn Warm Palette Recommendation"
+                },
+                badge: {
+                    KR: "우아함 · 깊이감 · 고풍스러운 한옥 매력",
+                    JP: "エレガント · 深み · 伝統韓屋の趣",
+                    EN: "Deep · Elegant · Traditional Hanok Charm"
+                },
+                desc: {
+                    KR: "그윽하고 분위기 있는 어스(Earth) 톤과 고즈넉한 한옥 풍경이 잘 어울리는 타입입니다. 대추색, 겨자색, 올리브 그린 등 기품 있는 한국 전통 원색 계열이 인상을 고급스럽게 만들어 줍니다.",
+                    JP: "シックで落ち着いたアーストーンと風情ある韓屋風景が映えるタイプ。深紅（バーガンディ）、マスタードイエロー、オリーブグリーンが高級感ある雰囲気を演出します。",
+                    EN: "Complements rich earthy undertones and quiet Hanok landscapes. Jujube red, mustard yellow, and olive green deliver a majestic princess look."
+                },
+                swatches: {
+                    KR: [
+                        { name: "대추색", color: "#8B263E" },
+                        { name: "겨자색", color: "#C59B27" },
+                        { name: "쑥색", color: "#6B705C" },
+                        { name: "테라코타", color: "#B85B35" }
+                    ],
+                    JP: [
+                        { name: "深紅", color: "#8B263E" },
+                        { name: "マスタード", color: "#C59B27" },
+                        { name: "よもぎ色", color: "#6B705C" },
+                        { name: "テラコッタ", color: "#B85B35" }
+                    ],
+                    EN: [
+                        { name: "Jujube Red", color: "#8B263E" },
+                        { name: "Mustard", color: "#C59B27" },
+                        { name: "Olive Green", color: "#6B705C" },
+                        { name: "Terracotta", color: "#B85B35" }
+                    ]
+                },
+                img: "https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=800&auto=format&fit=crop",
+                tipTitle: {
+                    KR: "💡 가을 워머 스타일링 팁",
+                    JP: "💡 イエベ秋のスタイリングのコツ",
+                    EN: "💡 Autumn Warm Styling Tip"
+                },
+                tip: {
+                    KR: "고즈넉한 한옥 단풍 담벼락 앞에서 깊은 대추색 치마와 금박 겨자색 저고리를 매치하면 고풍스러운 왕실 단아함이 살아납니다.",
+                    JP: "伝統的な韓屋の紅葉の塀の前で、深紅のチマと金箔のマスタードチョゴリを合わせると格調高い王室スタイルが引き立ちます。",
+                    EN: "Pose in front of historic Hanok walls with red foliage while wearing a rich jujube red skirt and gold-leaf jacket for a regal royal look."
+                }
+            },
+            winter: {
+                title: {
+                    KR: "❄️ 겨울 쿨 (Winter Cool) 톤 추천",
+                    JP: "❄️ ブルベ冬 (Winter Cool) おすすめ",
+                    EN: "❄️ Winter Cool Palette Recommendation"
+                },
+                badge: {
+                    KR: "선명함 · 세련됨 · 설경 속 선명한 카리스마",
+                    JP: "鮮やか · 洗練 · 雪景色のコントラスト",
+                    EN: "High Contrast · Modern · Striking Snow Scenery"
+                },
+                desc: {
+                    KR: "대비감이 명확하고 세련된 분위기를 자아내는 타입입니다. 하얀 설경과 어우러지는 선명한 남색, 딥 레드, 오방색 원색 조합이 이목구비를 더욱 선명하게 돋보이게 해줍니다.",
+                    JP: "メリハリのある鮮やかなカラーが似合う洗練されたタイプ。ネイビー、ディープカルマイン、純白のコントラストが顔立ちを引き締めます。",
+                    EN: "Characterized by high contrast and sleek elegance. Vivid navy, deep crimson red, and bright white make facial features stand out sharply against scenic backdrops."
+                },
+                swatches: {
+                    KR: [
+                        { name: "심홍색", color: "#A10022" },
+                        { name: "진남색", color: "#1A237E" },
+                        { name: "순백색", color: "#FFFFFF" },
+                        { name: "먹색", color: "#37474F" }
+                    ],
+                    JP: [
+                        { name: "深紅(クリムゾン)", color: "#A10022" },
+                        { name: "濃紺", color: "#1A237E" },
+                        { name: "純白", color: "#FFFFFF" },
+                        { name: "墨色", color: "#37474F" }
+                    ],
+                    EN: [
+                        { name: "Deep Crimson", color: "#A10022" },
+                        { name: "Royal Navy", color: "#1A237E" },
+                        { name: "Pure White", color: "#FFFFFF" },
+                        { name: "Charcoal", color: "#37474F" }
+                    ]
+                },
+                img: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=800&auto=format&fit=crop",
+                tipTitle: {
+                    KR: "💡 겨울 쿨 스타일링 팁",
+                    JP: "💡 ブルベ冬のスタイリングのコツ",
+                    EN: "💡 Winter Cool Styling Tip"
+                },
+                tip: {
+                    KR: "강렬한 진남색 치마와 선명한 백색 저고리, 그리고 립 포인트 메이크업으로 도회적이면서도 또렷한 궁중 한복 룩을 완성해 보세요.",
+                    JP: "深みのあるネイビーチマに純白チョゴリ、赤いリップメイクで洗練された王室スタイリングを完成させましょう。",
+                    EN: "Pair a rich navy skirt with a vivid white top and crisp red lip accent for a sleek, striking palace look."
+                }
+            }
+        };
+
+        let activeSeason = 'spring';
+
+        // Change Language Function
+        function changeLanguage(lang) {
+            if (!i18n[lang]) return;
+            currentLang = lang;
+
+            // Highlight Active Language Button
+            ['KR', 'JP', 'EN'].forEach(l => {
+                const btn = document.getElementById(`lang-btn-${l}`);
+                if (btn) {
+                    if (l === lang) {
+                        btn.className = "px-2 py-0.5 rounded font-bold bg-amber-400 text-stone-900 transition";
+                    } else {
+                        btn.className = "px-2 py-0.5 rounded text-stone-300 hover:text-white transition";
+                    }
+                }
+            });
+
+            // Update DOM Elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            // Re-render season color test box with new language
+            selectSeason(activeSeason);
+
+            // Re-calculate price summary labels
+            calculatePrice();
+
+            // Show Custom Toast Notification
+            showToast(i18n[lang].toast_lang_changed);
+        }
+
+        // Show Custom Floating Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const msgEl = document.getElementById('toast-message');
+            if (!toast || !msgEl) return;
+            
+            msgEl.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        // Select Color Tester Season
+        function selectSeason(seasonKey) {
+            activeSeason = seasonKey;
+            const data = seasonData[seasonKey];
+            if (!data) return;
+
+            // Update active tab buttons
+            ['spring', 'summer', 'autumn', 'winter'].forEach(s => {
+                const btn = document.getElementById(`tab-${s}`);
+                if (btn) {
+                    if (s === seasonKey) {
+                        btn.className = "px-5 py-2.5 rounded-full font-medium text-sm transition bg-rose-800 text-white shadow-lg";
+                    } else {
+                        btn.className = "px-5 py-2.5 rounded-full font-medium text-sm transition bg-stone-800 text-stone-300 hover:bg-stone-700";
+                    }
+                }
+            });
+
+            // Update season texts and images based on active language
+            const lang = currentLang;
+            document.getElementById('season-title').innerText = data.title[lang] || data.title['KR'];
+            document.getElementById('season-badge').innerText = data.badge[lang] || data.badge['KR'];
+            document.getElementById('season-desc').innerText = data.desc[lang] || data.desc['KR'];
+            document.getElementById('season-tip-title').innerText = data.tipTitle[lang] || data.tipTitle['KR'];
+            document.getElementById('season-tip').innerText = data.tip[lang] || data.tip['KR'];
+
+            const imgEl = document.getElementById('season-img');
+            if (imgEl) {
+                imgEl.src = data.img;
+            }
+
+            // Render Color Swatches
+            const swatchesContainer = document.getElementById('season-swatches');
+            if (swatchesContainer) {
+                const swatches = data.swatches[lang] || data.swatches['KR'];
+                swatchesContainer.innerHTML = swatches.map(item => `
+                    <div class="flex items-center space-x-2 bg-stone-900/80 px-3 py-1.5 rounded-xl border border-stone-700">
+                        <span class="w-4 h-4 rounded-full border border-white/20 shadow-inner" style="background-color: ${item.color};"></span>
+                        <span class="text-xs text-stone-200 font-medium">${item.name}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Video Tab Switcher
+        function switchVideo(videoId, tabIdx) {
+            const iframe = document.getElementById('promo-iframe');
+            if (iframe) {
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            }
+
+            [1, 2, 3].forEach(idx => {
+                const btn = document.getElementById(`vtab-${idx}`);
+                if (btn) {
+                    if (idx === tabIdx) {
+                        btn.className = "px-4 py-2 rounded-full font-semibold transition bg-rose-800 text-white shadow";
+                    } else {
+                        btn.className = "px-4 py-2 rounded-full font-semibold transition bg-stone-800 text-stone-300 hover:bg-stone-700";
+                    }
+                }
+            });
+        }
+
+        // Mobile Menu Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        // Accordion Toggle
+        function toggleFaq(index) {
+            const ans = document.getElementById(`faq-ans-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (ans && icon) {
+                if (ans.classList.contains('hidden')) {
+                    ans.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    ans.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Package Pre-selection helper from pricing table
+        function preselectPackage(pkgCode) {
+            const radio = document.querySelector(`input[name="package"][value="${pkgCode}"]`);
+            if (radio) {
+                radio.checked = true;
+                calculatePrice();
+            }
+        }
+
+        // Real-time Price Calculation
+        function calculatePrice() {
+            const selectedPkgRadio = document.querySelector('input[name="package"]:checked');
+            if (!selectedPkgRadio) return;
+
+            const unitPrice = parseInt(selectedPkgRadio.getAttribute('data-price') || "0");
+            const guestsSelect = document.getElementById('guest-count');
+            const guests = parseInt(guestsSelect ? guestsSelect.value : "1");
+            const rickshawOpt = document.getElementById('opt-rickshaw');
+            const rickshawChecked = rickshawOpt ? rickshawOpt.checked : false;
+
+            const extraPerPerson = rickshawChecked ? 25000 : 0;
+            const extraTotal = extraPerPerson * guests;
+            const grandTotal = (unitPrice * guests) + extraTotal;
+
+            // Unit Currency Formatting based on language
+            const suffix = currentLang === 'EN' ? ' KRW' : (currentLang === 'JP' ? 'ウォン' : '원');
+
+            const unitPriceEl = document.getElementById('summary-unit-price');
+            const guestsEl = document.getElementById('summary-guests');
+            const extraEl = document.getElementById('summary-extra');
+            const totalEl = document.getElementById('summary-total-price');
+
+            if (unitPriceEl) unitPriceEl.innerText = unitPrice.toLocaleString() + suffix;
+            if (guestsEl) guestsEl.innerText = guests + (currentLang === 'EN' ? ' Person(s)' : (currentLang === 'JP' ? '名' : '명'));
+            if (extraEl) extraEl.innerText = extraTotal.toLocaleString() + suffix;
+            if (totalEl) totalEl.innerText = grandTotal.toLocaleString() + suffix;
+        }
+
+        // Submit Reservation (Replaces alert with toast & modal)
+        function submitReservation(event) {
+            event.preventDefault();
+
+            const timeEl = document.getElementById('booking-time');
+            const time = timeEl ? timeEl.value : '';
+
+            if (!time) {
+                showToast(currentLang === 'EN' ? 'Please select a preferred time slot.' : (currentLang === 'JP' ? 'ご希望の時間帯を選択してください。' : '방문 희망 시간을 선택해 주세요.'));
+                return;
+            }
+
+            const name = document.getElementById('user-name').value;
+            const pkgRadio = document.querySelector('input[name="package"]:checked');
+            const pkgValue = pkgRadio ? pkgRadio.value : 'B';
+            const date = document.getElementById('booking-date').value;
+            const guests = document.getElementById('guest-count').value;
+            const totalText = document.getElementById('summary-total-price').innerText;
+
+            // Populate Modal Summary Details
+            document.getElementById('modal-code').innerText = 'HCM-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-package').innerText = `Course ${pkgValue}`;
+            document.getElementById('modal-datetime').innerText = `${date} ${time} (${guests} ${currentLang === 'EN' ? 'Guests' : (currentLang === 'JP' ? '名' : '인')})`;
+            document.getElementById('modal-total').innerText = totalText;
+
+            // Show Modal
+            const modal = document.getElementById('booking-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('booking-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Initialize Page Default Settings
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('booking-date');
+            if (dateInput) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+            }
+            
+            // Initialize default season swatches and pricing
+            selectSeason('spring');
+            calculatePrice();
+        });
+    </script>
+</body>
+</html>
