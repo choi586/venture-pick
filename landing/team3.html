@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하루고등학교 | Haru High School One-Day Experience</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0a3852',
+                            accent: '#1d4ed8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(180deg, #dbeafe 0%, #eff6ff 60%, #ffffff 100%);
+            position: relative;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(#93c5fd 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+        }
+        .card-shadow-hover {
+            transition: all 0.3s ease;
+        }
+        .card-shadow-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 35px -5px rgba(2, 132, 199, 0.15), 0 8px 16px -2px rgba(0, 0, 0, 0.05);
+        }
+        .blue-gradient-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+        }
+        .blue-gradient-btn:hover {
+            background: linear-gradient(135deg, #0369a1 0%, #1e40af 100%);
+        }
+        .badge-pill {
+            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Navigation Bar (Clean White Portal Style) -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-sky-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white text-xl font-extrabold shadow-md shadow-sky-500/20">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl font-black tracking-tight text-slate-900">하루고등학교</span>
+                        <span class="text-[10px] bg-sky-100 text-sky-800 font-extrabold px-2 py-0.5 rounded-full uppercase border border-sky-200" data-i18n="nav_est">SEOUL EST. 2026</span>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-500 tracking-wider">HARU HIGH SCHOOL EXPERIENCE</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu Navigation -->
+            <div class="hidden lg:flex items-center gap-8 font-bold text-sm text-slate-700">
+                <a href="#about" data-i18n="nav_about" class="hover:text-sky-600 transition flex items-center gap-2"><i class="fa-solid fa-school text-sky-500"></i> 학교소개</a>
+                <a href="#schedule" data-i18n="nav_schedule" class="hover:text-sky-600 transition flex items-center gap-2"><i class="fa-solid fa-calendar-check text-sky-500"></i> 시간표</a>
+                <a href="#id-card-preview" data-i18n="nav_idcard" class="hover:text-sky-600 transition flex items-center gap-2"><i class="fa-solid fa-id-card text-sky-500"></i> 학생증 발급</a>
+                <a href="#reviews" data-i18n="nav_reviews" class="hover:text-sky-600 transition flex items-center gap-2"><i class="fa-solid fa-comments text-sky-500"></i> 학생 소리함</a>
+                <a href="#faq" data-i18n="nav_faq" class="hover:text-sky-600 transition flex items-center gap-2"><i class="fa-solid fa-circle-question text-sky-500"></i> 교칙 Q&A</a>
+            </div>
+
+            <!-- Right Controls: Language Selector & Booking CTA Button -->
+            <div class="flex items-center gap-3">
+                <!-- Language Switcher Bar -->
+                <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
+                    <button type="button" onclick="setLanguage('ko')" id="btn-lang-ko" class="px-2.5 py-1 rounded-lg bg-sky-600 text-white font-extrabold shadow-sm transition">KO</button>
+                    <button type="button" onclick="setLanguage('en')" id="btn-lang-en" class="px-2.5 py-1 rounded-lg text-slate-600 hover:bg-slate-200 transition">EN</button>
+                    <button type="button" onclick="setLanguage('ja')" id="btn-lang-ja" class="px-2.5 py-1 rounded-lg text-slate-600 hover:bg-slate-200 transition">JP</button>
+                </div>
+
+                <a href="#booking" data-i18n="nav_booking_btn" class="blue-gradient-btn text-white px-5 py-2.5 rounded-xl text-sm font-extrabold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square"></i> 입학 신청원서
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Inspired by Reference Banner Style) -->
+    <header id="about" class="hero-bg hero-pattern pt-12 pb-20 px-4 sm:px-6 lg:px-8 border-b border-sky-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Top Announcement Pill -->
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-sky-200 text-sky-700 text-xs sm:text-sm font-bold shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                    <i class="fa-solid fa-bullhorn text-sky-500"></i>
+                    <span data-i18n="hero_notice_tag">[2026학년도 신입생 모집] 매주 월요일 하루 입학식 진행</span>
+                </div>
+            </div>
+
+            <!-- Central Hero White Signboard Banner (Reference Image Style) -->
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border-2 border-sky-100 shadow-2xl relative text-center">
+                <!-- Background Geometric Accents -->
+                <div class="absolute top-6 left-8 text-sky-200 text-3xl opacity-60">
+                    <i class="fa-regular fa-circle"></i>
+                </div>
+                <div class="absolute bottom-6 right-8 text-sky-200 text-3xl opacity-60">
+                    <i class="fa-solid fa-play rotate-45"></i>
+                </div>
+
+                <!-- Student Graphic Banner Placeholder Visual -->
+                <div class="mb-6 inline-flex items-center justify-center p-3 bg-sky-50 rounded-2xl border border-sky-100">
+                    <div class="flex items-center gap-3 text-sky-600 font-extrabold text-sm sm:text-base">
+                        <span class="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center font-black"><i class="fa-solid fa-users"></i></span>
+                        <span>글로벌 K-청소년 교류 & 하루 체류형 한국학교 체험 프로그램</span>
+                    </div>
+                </div>
+
+                <!-- Main Title Box -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight" data-i18n="hero_title">
+                    <span class="text-sky-600">하루고등학교</span>는<br>
+                    외국인 학생의 <span class="text-blue-700 underline decoration-sky-300 decoration-4">K-학창시절 체험</span>을 위해<br>
+                    최선을 다하겠습니다.
+                </h1>
+
+                <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-medium mt-6 leading-relaxed" data-i18n="hero_desc">
+                    서울의 진짜 리모델링 캠퍼스에서 예쁜 K-고등학교 교복을 입고, K-POP 음악 수업부터 직접 만든 급식 도시락, 운동장 체육대회와 졸업식까지! 8시간 풀타임 K-학창시절 체험 여행.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#booking" class="blue-gradient-btn text-white px-8 py-4 rounded-2xl text-lg font-black shadow-lg shadow-sky-500/25 transition transform hover:scale-105 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i> <span data-i18n="hero_btn_book">70,000원에 하루 학생 입학하기</span>
+                    </a>
+                    <a href="#schedule" class="bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-200 px-7 py-4 rounded-2xl text-lg font-extrabold transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-clock text-sky-600"></i> <span data-i18n="hero_btn_schedule">8교시 시간표 보기</span>
+                    </a>
+                </div>
+
+                <!-- Highlight Badges -->
+                <div class="mt-10 pt-8 border-t border-slate-100 grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-black text-sky-600">8 Hours</p>
+                        <p class="text-xs sm:text-sm font-bold text-slate-500 mt-1" data-i18n="stat_1">1~6교시 몰입 수업</p>
+                    </div>
+                    <div class="border-x border-slate-100">
+                        <p class="text-2xl sm:text-3xl font-black text-blue-600">100%</p>
+                        <p class="text-xs sm:text-sm font-bold text-slate-500 mt-1" data-i18n="stat_2">실제 한국 교복 지급</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-black text-emerald-600">4.9 / 5.0</p>
+                        <p class="text-xs sm:text-sm font-bold text-slate-500 mt-1" data-i18n="stat_3">글로벌 학생 만족도</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Quick Nav Cards Floating Below Hero (Matching Reference Image) -->
+            <div class="max-w-5xl mx-auto mt-12 grid md:grid-cols-3 gap-6">
+                <!-- Quick Card 1 -->
+                <a href="#about" class="bg-white rounded-2xl p-6 border border-sky-100 card-shadow card-shadow-hover flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 border border-sky-200 text-sky-600 flex items-center justify-center text-2xl font-black mb-4 group-hover:bg-sky-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-school-flag"></i>
+                    </div>
+                    <h3 class="font-extrabold text-base text-slate-900 group-hover:text-sky-600 transition" data-i18n="quick1_title">하루고등학교 란?</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="quick1_desc">서울 캠퍼스 안내 및 프로그램 소개</p>
+                    <div class="mt-4 text-sky-600 text-xs font-bold flex items-center gap-1 group-hover:translate-x-1 transition">
+                        <span>자세히 보기</span> <i class="fa-solid fa-circle-chevron-right text-sm"></i>
+                    </div>
+                </a>
+
+                <!-- Quick Card 2 -->
+                <a href="#schedule" class="bg-white rounded-2xl p-6 border border-sky-100 card-shadow card-shadow-hover flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 border border-sky-200 text-sky-600 flex items-center justify-center text-2xl font-black mb-4 group-hover:bg-sky-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="font-extrabold text-base text-slate-900 group-hover:text-sky-600 transition" data-i18n="quick2_title">시간표 & 교과 과정</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="quick2_desc">1교시 등교부터 6교시 졸업식까지</p>
+                    <div class="mt-4 text-sky-600 text-xs font-bold flex items-center gap-1 group-hover:translate-x-1 transition">
+                        <span>시간표 확인하기</span> <i class="fa-solid fa-circle-chevron-right text-sm"></i>
+                    </div>
+                </a>
+
+                <!-- Quick Card 3 -->
+                <a href="#booking" class="bg-white rounded-2xl p-6 border border-sky-100 card-shadow card-shadow-hover flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 border border-sky-200 text-sky-600 flex items-center justify-center text-2xl font-black mb-4 group-hover:bg-sky-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="font-extrabold text-base text-slate-900 group-hover:text-sky-600 transition" data-i18n="quick3_title">입학 원서 작성하기</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="quick3_desc">온라인 간편 신청 & 결제</p>
+                    <div class="mt-4 text-sky-600 text-xs font-bold flex items-center gap-1 group-hover:translate-x-1 transition">
+                        <span>원서 접수하기</span> <i class="fa-solid fa-circle-chevron-right text-sm"></i>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Interactive ID Card Generator Section (Student Handbook Styling) -->
+    <section id="id-card-preview" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="bg-sky-100 text-sky-800 font-extrabold text-xs px-3 py-1 rounded-full uppercase border border-sky-200" data-i18n="id_badge">Pre-Admission Student ID</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-2" data-i18n="id_title">나만의 '하루 실물 학생증' 미리 제작하기</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base" data-i18n="id_subtitle">입학 당일 목에 거는 플라스틱 RFID 학생증 카드를 실시간으로 커스텀해 보세요!</p>
+            </div>
+
+            <div class="bg-sky-50/50 rounded-3xl p-6 sm:p-10 border-2 border-sky-100 grid md:grid-cols-2 gap-10 items-center shadow-lg">
+                <!-- Form Customizer Inputs -->
+                <div class="space-y-5">
+                    <div class="bg-white p-4 rounded-2xl border border-sky-200 shadow-sm">
+                        <p class="text-xs font-bold text-sky-900 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-sky-600 text-sm"></i>
+                            <span data-i18n="id_info_box">입력하신 이름과 국적으로 실물 플라스틱 학생증이 즉시 인쇄됩니다!</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-black text-slate-700 uppercase mb-1.5" data-i18n="lbl_name">영문 성명 (Full Name)</label>
+                        <input type="text" id="preview-name" value="Alex Smith" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none font-bold text-slate-800 text-sm bg-white shadow-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-black text-slate-700 uppercase mb-1.5" data-i18n="lbl_country">출신 국적 (Nationality)</label>
+                        <select id="preview-country" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none font-bold text-slate-800 text-sm bg-white shadow-sm">
+                            <option value="🇺🇸 United States">🇺🇸 United States</option>
+                            <option value="🇯🇵 Japan">🇯🇵 Japan</option>
+                            <option value="🇫🇷 France">🇫🇷 France</option>
+                            <option value="🇹🇭 Thailand">🇹🇭 Thailand</option>
+                            <option value="🇩🇪 Germany">🇩🇪 Germany</option>
+                            <option value="🇬🇧 United Kingdom">🇬🇧 United Kingdom</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-black text-slate-700 uppercase mb-1.5" data-i18n="lbl_avatar">학생 아바타 및 교복 스타일</label>
+                        <div class="grid grid-cols-2 gap-3 pt-1">
+                            <button type="button" onclick="setAvatar('female')" id="btn-avatar-female" class="py-3 rounded-xl border-2 border-sky-500 bg-sky-50 text-sky-900 font-extrabold text-xs flex items-center justify-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-user-ninja text-pink-500 text-sm"></i> <span data-i18n="avatar_a">여학생 교복</span>
+                            </button>
+                            <button type="button" onclick="setAvatar('male')" id="btn-avatar-male" class="py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-extrabold text-xs flex items-center justify-center gap-2 hover:bg-slate-50">
+                                <i class="fa-solid fa-user-astronaut text-blue-600 text-sm"></i> <span data-i18n="avatar_b">남학생 교복</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Card Graphic Preview -->
+                <div class="flex justify-center">
+                    <div class="w-full max-w-sm">
+                        <!-- Card Lanyard Strap Mockup -->
+                        <div class="w-16 h-8 bg-sky-600 mx-auto rounded-t-xl shadow-md border-b-2 border-sky-800 flex items-center justify-center text-white text-[10px] font-black">
+                            HARU
+                        </div>
+                        <div class="w-4 h-5 bg-slate-300 mx-auto -mt-1 rounded-sm shadow-inner"></div>
+
+                        <!-- Card Body -->
+                        <div class="bg-white rounded-2xl p-6 shadow-2xl border-2 border-sky-200 relative overflow-hidden">
+                            <!-- Holographic Watermark -->
+                            <div class="absolute -right-8 -bottom-8 w-28 h-28 rounded-full bg-gradient-to-tr from-sky-200/40 to-blue-200/40 blur-sm pointer-events-none"></div>
+
+                            <div class="flex justify-between items-center border-b-2 border-slate-100 pb-3 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-xs font-black">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-black text-base leading-tight text-slate-900" data-i18n="card_school_name">하루고등학교</h4>
+                                        <p class="text-[9px] font-bold text-slate-400 tracking-wider">HARU HIGH SCHOOL</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-sky-600 text-white font-black px-2.5 py-0.5 rounded-md" data-i18n="card_badge">학생증</span>
+                            </div>
+
+                            <div class="flex items-center gap-4 my-3">
+                                <div class="w-22 h-26 bg-slate-100 rounded-xl border-2 border-slate-200 overflow-hidden flex items-center justify-center shrink-0 shadow-inner">
+                                    <i id="card-avatar-icon" class="fa-solid fa-user-ninja text-5xl text-pink-500"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-[10px] text-slate-400 font-bold" data-i18n="card_lbl_name">성명 / Name</p>
+                                    <p id="card-display-name" class="font-black text-xl text-slate-900 leading-tight">Alex Smith</p>
+                                    <p class="text-[10px] text-slate-400 font-bold mt-2" data-i18n="card_lbl_nation">국적 / Nationality</p>
+                                    <p id="card-display-country" class="text-xs font-bold text-sky-700">🇺🇸 United States</p>
+                                </div>
+                            </div>
+
+                            <!-- Card Barcode Graphic -->
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex flex-col items-center">
+                                <div class="h-8 w-full bg-[repeating-linear-gradient(90deg,#0f172a,#0f172a_2px,#fff_2px,#fff_4px)] opacity-80"></div>
+                                <div class="w-full flex justify-between items-center mt-1.5 text-[10px] font-bold text-slate-400">
+                                    <span>NO: 2026-0892</span>
+                                    <span class="text-sky-600" data-i18n="card_validity">유효기간: 체험 당일</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section (1교시 ~ 6교시 School Class Timetable) -->
+    <section id="schedule" class="py-20 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-sky-100 text-sky-800 font-extrabold text-xs px-3 py-1 rounded-full uppercase border border-sky-200" data-i18n="sch_badge">Class Timetable</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-2" data-i18n="sch_title">하루고등학교 8시간 정규 시간표</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base" data-i18n="sch_subtitle">등교 조회부터 6교시 수업, 그리고 감동의 졸업식까지 완벽한 K-학교 일정입니다.</p>
+            </div>
+
+            <!-- Timetable Card Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1교시 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover relative group">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">09:00 - 10:30</span>
+                        <span class="text-xs font-black text-white bg-sky-600 px-2.5 py-0.5 rounded-full" data-i18n="p1_num">1교시</span>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 flex items-center gap-2" data-i18n="step1_title">
+                        <i class="fa-solid fa-shirt text-sky-500"></i> 등교 & 교복 환복
+                    </h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="step1_desc">
+                        서울 캠퍼스 교문 등교! 나만의 커스텀 실물 학생증을 수령하고, 트렌디한 한국 고등학교 교복으로 환복합니다.
+                    </p>
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-xs font-bold text-sky-800 border border-sky-100 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check text-sky-600"></i> <span data-i18n="step1_tag">교복 사이즈 피팅, 학생증 목걸이 지급</span>
+                    </div>
+                </div>
+
+                <!-- 2교시 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover relative group">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">10:30 - 12:00</span>
+                        <span class="text-xs font-black text-white bg-sky-600 px-2.5 py-0.5 rounded-full" data-i18n="p2_num">2교시</span>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 flex items-center gap-2" data-i18n="step2_title">
+                        <i class="fa-solid fa-music text-pink-500"></i> 음악 시간 (K-POP)
+                    </h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="step2_desc">
+                        음악실에서 최신 K-POP 포인트 안무와 원어 가사를 익힙니다. 반 친구들과 함께 숏폼 댄스 챌린지 영상 촬영!
+                    </p>
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-xs font-bold text-sky-800 border border-sky-100 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check text-sky-600"></i> <span data-i18n="step2_tag">K-POP 안무 기초, 숏폼 영상 제출</span>
+                    </div>
+                </div>
+
+                <!-- 3교시 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover relative group">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">12:00 - 13:30</span>
+                        <span class="text-xs font-black text-white bg-sky-600 px-2.5 py-0.5 rounded-full" data-i18n="p3_num">3교시</span>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 flex items-center gap-2" data-i18n="step3_title">
+                        <i class="fa-solid fa-utensils text-amber-500"></i> 급식 시간 (K-Food Cooking)
+                    </h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="step3_desc">
+                        학교 조리실에서 직접 떡볶이와 추억의 옛날 도시락을 만들고 식판에 담아 즐기는 즐거운 급식시간.
+                    </p>
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-xs font-bold text-sky-800 border border-sky-100 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check text-sky-600"></i> <span data-i18n="step3_tag">K-푸드 조리 체험, 학교 식판 급식</span>
+                    </div>
+                </div>
+
+                <!-- 4교시 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover relative group">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">13:30 - 15:00</span>
+                        <span class="text-xs font-black text-white bg-sky-600 px-2.5 py-0.5 rounded-full" data-i18n="p4_num">4교시</span>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 flex items-center gap-2" data-i18n="step4_title">
+                        <i class="fa-solid fa-volleyball text-emerald-500"></i> 체육 시간 (전통 체육대회)
+                    </h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="step4_desc">
+                        운동장에서 펼쳐지는 미니 체육대회! 무궁화 꽃이 피었습니다, 딱지치기, 제기차기 등 한국 전래 놀이 대결.
+                    </p>
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-xs font-bold text-sky-800 border border-sky-100 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check text-sky-600"></i> <span data-i18n="step4_tag">팀별 체육대회, 한국 전통 민속놀이</span>
+                    </div>
+                </div>
+
+                <!-- 5교시 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover relative group">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">15:00 - 16:30</span>
+                        <span class="text-xs font-black text-white bg-sky-600 px-2.5 py-0.5 rounded-full" data-i18n="p5_num">5교시</span>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 flex items-center gap-2" data-i18n="step5_title">
+                        <i class="fa-solid fa-store text-purple-500"></i> 동아리 활동 & 매점
+                    </h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="step5_desc">
+                        한국 학창시절 필수 코스! 학교 매점 대표 간식(피카츄 돈까스, 바나나우유)을 맛보고 네컷 사진을 찍습니다.
+                    </p>
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-xs font-bold text-sky-800 border border-sky-100 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check text-sky-600"></i> <span data-i18n="step5_tag">매점 간식 무료 제공, 인생네컷 촬영</span>
+                    </div>
+                </div>
+
+                <!-- 6교시 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover relative group">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">16:30 - 17:00</span>
+                        <span class="text-xs font-black text-white bg-sky-600 px-2.5 py-0.5 rounded-full" data-i18n="p6_num">6교시</span>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 flex items-center gap-2" data-i18n="step6_title">
+                        <i class="fa-solid fa-award text-yellow-500"></i> 졸업식 & 종례
+                    </h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="step6_desc">
+                        학창시절의 마지막을 장식하는 감동의 졸업식! 수료증 수여 및 졸업 가운 스냅 사진 촬영으로 일정을 마칩니다.
+                    </p>
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-xs font-bold text-sky-800 border border-sky-100 flex items-center gap-1.5">
+                        <i class="fa-solid fa-check text-sky-600"></i> <span data-i18n="step6_tag">공식 졸업증서 수여, 출력 사진 증정</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & School Welcome Kit Section -->
+    <section id="pricing" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-sky-50/60 rounded-3xl p-8 sm:p-12 border-2 border-sky-100 shadow-xl grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="bg-sky-600 text-white font-extrabold text-xs px-3 py-1 rounded-full uppercase" data-i18n="prc_badge">All-Inclusive School Kit</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 leading-tight" data-i18n="prc_title">
+                        70,000원에 모두 포함된<br>
+                        하루고 입학 웰컴 패키지
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="prc_desc">
+                        현장에서 추가 비용 결제 없음! 교복 대여부터 점심 급식, 커스텀 학생증, 졸업 앨범용 스냅사진까지 모두 준비되어 있습니다.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-white rounded-2xl border border-sky-100 shadow-sm flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-shirt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-sm text-slate-900" data-i18n="inc1_title">트렌디 교복 풀세트</h4>
+                                <p class="text-xs text-slate-500 mt-0.5" data-i18n="inc1_desc">자켓, 셔츠, 넥타이/리본, 스커트/바지</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white rounded-2xl border border-sky-100 shadow-sm flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-id-badge"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-sm text-slate-900" data-i18n="inc2_title">실물 맞춤 학생증</h4>
+                                <p class="text-xs text-slate-500 mt-0.5" data-i18n="inc2_desc">영문 이름 및 전용 목걸이 카드 케이스</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white rounded-2xl border border-sky-100 shadow-sm flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-sm text-slate-900" data-i18n="inc3_title">급식 & 매점 간식</h4>
+                                <p class="text-xs text-slate-500 mt-0.5" data-i18n="inc3_desc">DIY 떡볶이, 추억의 도시락, 바나나우유</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white rounded-2xl border border-sky-100 shadow-sm flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-sm text-slate-900" data-i18n="inc4_title">졸업증서 & 사진</h4>
+                                <p class="text-xs text-slate-500 mt-0.5" data-i18n="inc4_desc">하루고 수료증 + 인쇄 원본 스냅사진</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Card Box -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-sm bg-white rounded-3xl p-8 border-2 border-sky-200 shadow-2xl text-center relative">
+                        <div class="bg-sky-600 text-white font-black text-xs px-4 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4 shadow-sm">
+                            School One-Day Pass
+                        </div>
+                        <p class="text-slate-500 text-xs font-bold" data-i18n="prc_card_label">1인 입학 및 수강료</p>
+                        <div class="my-4">
+                            <span class="text-5xl font-black text-sky-600" id="pricing-main-price">₩70,000</span>
+                            <span class="text-slate-400 text-xs block mt-1">/ 8 Hours Course</span>
+                        </div>
+                        <div class="text-xs text-sky-800 bg-sky-50 p-3 rounded-xl border border-sky-200 mb-6 font-bold" data-i18n="prc_location">
+                            <i class="fa-solid fa-location-dot text-sky-600 mr-1"></i> 서울 시내 리모델링 학교 캠퍼스
+                        </div>
+                        <a href="#booking" class="block w-full blue-gradient-btn text-white font-black py-4 rounded-xl shadow-lg transition transform hover:scale-105" data-i18n="prc_card_btn">
+                            지금 입학원서 작성하기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section (Clean School Bulletin Board) -->
+    <section id="reviews" class="py-20 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-sky-100 text-sky-800 font-extrabold text-xs px-3 py-1 rounded-full uppercase border border-sky-200" data-i18n="rev_badge">Student Voice</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-2" data-i18n="rev_title">하루고 학생 소리함 (참가자 후기)</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base" data-i18n="rev_subtitle">세계 각지에서 교복을 입으러 찾아온 졸업생들의 생생한 한 마디!</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex text-amber-400 text-xs gap-0.5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] font-extrabold bg-sky-50 text-sky-700 border border-sky-200 px-2 py-0.5 rounded" data-i18n="rev1_tag">2026기 졸업생</span>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic mb-6" data-i18n="rev1_text">
+                            "K-드라마에서 보던 예쁜 교복을 입고 2교시 음악 시간에 K-POP 댄스를 배운 게 대박이었어요! 직접 만들어 먹은 떡볶이 급식도 너무 맛있었습니다!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-sky-600 text-white font-black flex items-center justify-center text-xs">
+                            JS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">Jessica Smith 🇺🇸</h4>
+                            <p class="text-[10px] text-slate-400">Instagram @jess_in_seoul</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex text-amber-400 text-xs gap-0.5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] font-extrabold bg-sky-50 text-sky-700 border border-sky-200 px-2 py-0.5 rounded" data-i18n="rev2_tag">2026기 졸업생</span>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic mb-6" data-i18n="rev2_text">
+                            "체육시간에 무궁화 꽃이 피었습니다 게임을 했는데 외국인 친구들과 진짜 학창시절 클래스메이트가 된 기분이었어요. 졸업식 땐 눈물 날 뻔!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-black flex items-center justify-center text-xs">
+                            KT
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">Kenji Takahashi 🇯🇵</h4>
+                            <p class="text-[10px] text-slate-400">TikTok @kenji_travels</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-sky-100 card-shadow card-shadow-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex text-amber-400 text-xs gap-0.5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] font-extrabold bg-sky-50 text-sky-700 border border-sky-200 px-2 py-0.5 rounded" data-i18n="rev3_tag">2026기 졸업생</span>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic mb-6" data-i18n="rev3_text">
+                            "70,000원에 교복 피팅, 급식 점심, 실물 학생증 카드, 졸업증서까지 받아서 정말 구성이 알차요. 서울에서 꼭 해봐야 할 경험입니다!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-black flex items-center justify-center text-xs">
+                            CL
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">Chloe Laurent 🇫🇷</h4>
+                            <p class="text-[10px] text-slate-400">YouTube @Chloe_in_Korea</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (School Rules & Handbook) -->
+    <section id="faq" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="bg-sky-100 text-sky-800 font-extrabold text-xs px-3 py-1 rounded-full uppercase border border-sky-200" data-i18n="faq_badge">Student Handbook FAQ</span>
+                <h2 class="text-3xl font-black text-slate-900 mt-2" data-i18n="faq_title">하루고 생활 규정 & FAQ</h2>
+                <p class="text-slate-600 text-sm mt-1" data-i18n="faq_subtitle">입학 전 자주 묻는 질문들을 확인해 보세요.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="border border-sky-100 rounded-2xl overflow-hidden shadow-sm transition">
+                    <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center p-5 text-left font-black text-slate-900 bg-slate-50 hover:bg-sky-50 transition">
+                        <span data-i18n="faq1_q">Q. 한국어를 잘 못해도 수업을 들을 수 있나요?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-sky-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-5 bg-white text-slate-600 text-sm border-t border-slate-100 leading-relaxed" data-i18n="faq1_a">
+                        네, 물론입니다! 영어가 원활한 친절한 버디 스태프진이 항상 동행하여 언어 장벽 없이 수업에 즐겁게 참여하실 수 있습니다.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-sky-100 rounded-2xl overflow-hidden shadow-sm transition">
+                    <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center p-5 text-left font-black text-slate-900 bg-slate-50 hover:bg-sky-50 transition">
+                        <span data-i18n="faq2_q">Q. 하루고등학교 위치는 정확히 어디인가요?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-sky-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-5 bg-white text-slate-600 text-sm border-t border-slate-100 leading-relaxed" data-i18n="faq2_a">
+                        서울 시내에 위치한 리모델링 학교 문화 캠퍼스에서 진행됩니다. 지하철역에서 도보 5분 거리이며, 입학 신청 완료 후 상세 오시는 길 약도가 이메일로 안내됩니다.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-sky-100 rounded-2xl overflow-hidden shadow-sm transition">
+                    <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center p-5 text-left font-black text-slate-900 bg-slate-50 hover:bg-sky-50 transition">
+                        <span data-i18n="faq3_q">Q. 다양한 교복 사이즈가 준비되어 있나요?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-sky-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-5 bg-white text-slate-600 text-sm border-t border-slate-100 leading-relaxed" data-i18n="faq3_a">
+                        XS부터 3XL까지 다양한 피팅 사이즈의 남녀 한국 교복이 구비되어 있습니다. 등교 직후 탈의실에서 자유롭게 피팅하실 수 있습니다.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-sky-100 rounded-2xl overflow-hidden shadow-sm transition">
+                    <button onclick="toggleFaq(4)" class="w-full flex justify-between items-center p-5 text-left font-black text-slate-900 bg-slate-50 hover:bg-sky-50 transition">
+                        <span data-i18n="faq4_q">Q. 채식이나 돼지고기 미포함 급식도 가능한가요?</span>
+                        <i id="faq-icon-4" class="fa-solid fa-chevron-down text-sky-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-4" class="hidden p-5 bg-white text-slate-600 text-sm border-t border-slate-100 leading-relaxed" data-i18n="faq4_a">
+                        네! 입학 원서 작성 시 식사 타입을 선택해주시면 비건 및 돼지고기 미포함 급식 재료를 별도 제공합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section (Official Admission Application Form) -->
+    <section id="booking" class="py-20 bg-sky-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white text-slate-900 rounded-3xl p-8 sm:p-12 shadow-2xl border-2 border-sky-100 relative">
+                <div class="text-center mb-8 border-b border-slate-100 pb-6">
+                    <div class="inline-flex items-center gap-2 bg-sky-100 text-sky-800 font-extrabold text-xs px-3 py-1 rounded-full uppercase mb-2">
+                        <i class="fa-solid fa-file-pen"></i> Official Admission Form
+                    </div>
+                    <h2 class="text-3xl font-black text-slate-900" data-i18n="form_title">하루고등학교 입학 원서</h2>
+                    <p class="text-slate-600 text-sm mt-1" data-i18n="form_subtitle">잊지 못할 한국 학창시절의 학생이 되기 위한 신입생 입학 신청서입니다.</p>
+                </div>
+
+                <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black text-slate-700 uppercase mb-2" data-i18n="form_lbl_fullname">신청자 성명 (Full Name) *</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-slate-900 text-sm font-bold bg-white" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-slate-700 uppercase mb-2" data-i18n="form_lbl_email">이메일 주소 (Email) *</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-slate-900 text-sm font-bold bg-white" placeholder="student@example.com">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black text-slate-700 uppercase mb-2" data-i18n="form_lbl_date">등교 희망 월요일 선택 *</label>
+                            <select id="booking-date" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-slate-900 text-sm font-bold bg-white">
+                                <option value="2026-10-05">2026년 10월 05일 (월) 09:00 AM</option>
+                                <option value="2026-10-12">2026년 10월 12일 (월) 09:00 AM</option>
+                                <option value="2026-10-19">2026년 10월 19일 (월) 09:00 AM</option>
+                                <option value="2026-10-26">2026년 10월 26일 (월) 09:00 AM</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-slate-700 uppercase mb-2" data-i18n="form_lbl_guests">입학 참가 인원 (Students) *</label>
+                            <select id="booking-guests" onchange="calculateTotal()" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-slate-900 text-sm font-bold bg-white">
+                                <option value="1">1명 (₩70,000)</option>
+                                <option value="2">2명 (₩140,000)</option>
+                                <option value="3">3명 (₩210,000)</option>
+                                <option value="4">4명 (₩280,000)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black text-slate-700 uppercase mb-2" data-i18n="form_lbl_size">희망 교복 사이즈</label>
+                            <select class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-slate-900 text-sm font-bold bg-white">
+                                <option>S (여성 44~55 / 남성 90)</option>
+                                <option selected>M (여성 55~66 / 남성 95)</option>
+                                <option>L (여성 66~77 / 남성 100)</option>
+                                <option>XL (남성 105 이상)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-slate-700 uppercase mb-2" data-i18n="form_lbl_diet">급식 식사 옵션</label>
+                            <select class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-slate-900 text-sm font-bold bg-white">
+                                <option>일반 한국 급식 (General)</option>
+                                <option>채식주의 (Vegetarian)</option>
+                                <option>돼지고기 제외 (No Pork)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Payment Total Box -->
+                    <div class="bg-sky-900 text-white rounded-2xl p-6 flex flex-col sm:flex-row justify-between items-center gap-4 mt-6 border-2 border-sky-500">
+                        <div>
+                            <p class="text-xs text-sky-200 font-bold" data-i18n="form_total_label">최종 입학 수강 결제 금액</p>
+                            <p id="total-price-display" class="text-3xl font-black text-sky-300 mt-0.5">₩70,000</p>
+                            <p class="text-[11px] text-sky-100 mt-1" data-i18n="form_total_includes">포함: 교복 + 급식 + 맞춤 학생증 + 졸업증서</p>
+                        </div>
+                        <button type="submit" class="w-full sm:w-auto bg-sky-400 hover:bg-sky-300 text-sky-950 font-black px-8 py-4 rounded-xl shadow-lg transition transform hover:scale-105 whitespace-nowrap">
+                            <i class="fa-solid fa-stamp mr-2"></i> <span data-i18n="form_btn_submit">입학 원서 제출 및 결제</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t-4 border-sky-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3 md:col-span-2">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center text-white font-black">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-lg font-black text-white">하루고등학교 (Haru High School)</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        학교에서 한국 학생의 하루를 체험하는 체류형 K-문화 관광 프로그램. 서울 재생 캠퍼스에서 평생 잊지 못할 추억을 선사합니다.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-3">홍보 및 파트너 채널</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#" class="hover:text-sky-400 transition"><i class="fa-brands fa-instagram text-pink-400 mr-2"></i> Instagram (@haru_student)</a></li>
+                        <li><a href="#" class="hover:text-sky-400 transition"><i class="fa-brands fa-tiktok text-sky-400 mr-2"></i> TikTok Official Channel</a></li>
+                        <li><a href="#" class="hover:text-sky-400 transition"><i class="fa-solid fa-tv text-indigo-400 mr-2"></i> OTT 글로벌 예능 파트너십</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-3">행정 정보</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        등교일: 매주 월요일 09:00 - 17:00<br>
+                        소요시간: 8시간 (1~6교시)<br>
+                        문의: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="59383d34302a2a3036371931382b2c2a2d2c3d3c372d77322b">[email&#160;protected]</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-center text-[11px] text-slate-500">
+                &copy; 2026 하루고등학교 (Haru High School). All rights reserved. Designed for K-Culture Enthusiasts worldwide.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="booking-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white text-slate-900 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl border-2 border-sky-100">
+            <div class="w-16 h-16 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center mx-auto text-2xl font-black">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-2xl font-black text-slate-900">하루고 입학이 허가되었습니다!</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+                입학 원서가 접수되었습니다. 수강 확정 안내문과 캠퍼스 약도가 이메일로 발송되었습니다.
+            </p>
+            <div class="bg-sky-50 p-4 rounded-2xl text-xs text-left space-y-1 text-slate-800 border border-sky-200 font-bold">
+                <p><strong>등교 예정일:</strong> <span id="modal-date-display">2026-10-05</span> (08:50까지 등교)</p>
+                <p><strong>결제 승인액:</strong> <span id="modal-price-display">₩70,000</span></p>
+                <p><strong>준비물:</strong> 신분증 (교복 및 학생증 현장 지급)</p>
+            </div>
+            <button onclick="closeModal()" class="w-full blue-gradient-btn text-white font-black py-3 rounded-xl transition">
+                확인 및 닫기
+            </button>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Multi-Language Translation Dictionaries (KO, EN, JP)
+        const i18n = {
+            ko: {
+                nav_est: "SEOUL EST. 2026",
+                nav_about: "학교소개",
+                nav_schedule: "시간표",
+                nav_idcard: "학생증 발급",
+                nav_reviews: "학생 소리함",
+                nav_faq: "교칙 Q&A",
+                nav_booking_btn: "입학 신청원서",
+                hero_notice_tag: "[2026학년도 신입생 모집] 매주 월요일 하루 입학식 진행",
+                hero_title: "<span class=\"text-sky-600\">하루고등학교</span>는<br>외국인 학생의 <span class=\"text-blue-700 underline decoration-sky-300 decoration-4\">K-학창시절 체험</span>을 위해<br>최선을 다하겠습니다.",
+                hero_desc: "서울의 진짜 리모델링 캠퍼스에서 예쁜 K-고등학교 교복을 입고, K-POP 음악 수업부터 직접 만든 급식 도시락, 운동장 체육대회와 졸업식까지! 8시간 풀타임 K-학창시절 체험 여행.",
+                hero_btn_book: "70,000원에 하루 학생 입학하기",
+                hero_btn_schedule: "8교시 시간표 보기",
+                stat_1: "1~6교시 몰입 수업",
+                stat_2: "실제 한국 교복 지급",
+                stat_3: "글로벌 학생 만족도",
+                quick1_title: "하루고등학교 란?",
+                quick1_desc: "서울 캠퍼스 안내 및 프로그램 소개",
+                quick2_title: "시간표 & 교과 과정",
+                quick2_desc: "1교시 등교부터 6교시 졸업식까지",
+                quick3_title: "입학 원서 작성하기",
+                quick3_desc: "온라인 간편 신청 & 결제",
+                card_hero_school: "하루고등학교",
+                card_hero_badge: "학생증",
+                card_photo_label: "학생 사진",
+                card_lbl_name: "성명 / Name",
+                card_lbl_grade: "학번 / Class",
+                card_hero_day: "매주 월요일",
+                card_hero_status: "09:00 등교 완료",
+                id_badge: "Pre-Admission Student ID",
+                id_title: "나만의 '하루 실물 학생증' 미리 제작하기",
+                id_subtitle: "입학 당일 목에 거는 플라스틱 RFID 학생증 카드를 실시간으로 커스텀해 보세요!",
+                id_info_box: "입력하신 이름과 국적으로 실물 플라스틱 학생증이 즉시 인쇄됩니다!",
+                lbl_name: "영문 성명 (Full Name)",
+                lbl_country: "출신 국적 (Nationality)",
+                lbl_avatar: "학생 아바타 및 교복 스타일",
+                avatar_a: "여학생 교복",
+                avatar_b: "남학생 교복",
+                card_school_name: "하루고등학교",
+                card_badge: "학생증",
+                card_lbl_nation: "국적 / Nationality",
+                card_validity: "유효기간: 체험 당일",
+                sch_badge: "Class Timetable",
+                sch_title: "하루고등학교 8시간 정규 시간표",
+                sch_subtitle: "등교 조회부터 6교시 수업, 그리고 감동의 졸업식까지 완벽한 K-학교 일정입니다.",
+                p1_num: "1교시", p2_num: "2교시", p3_num: "3교시", p4_num: "4교시", p5_num: "5교시", p6_num: "6교시",
+                step1_title: "등교 & 교복 환복",
+                step1_desc: "서울 캠퍼스 교문 등교! 나만의 커스텀 실물 학생증을 수령하고, 트렌디한 한국 고등학교 교복으로 환복합니다.",
+                step1_tag: "교복 사이즈 피팅, 학생증 목걸이 지급",
+                step2_title: "음악 시간 (K-POP)",
+                step2_desc: "음악실에서 최신 K-POP 포인트 안무와 원어 가사를 익힙니다. 반 친구들과 함께 숏폼 댄스 챌린지 영상 촬영!",
+                step2_tag: "K-POP 안무 기초, 숏폼 영상 제출",
+                step3_title: "급식 시간 (K-Food Cooking)",
+                step3_desc: "학교 조리실에서 직접 떡볶이와 추억의 옛날 도시락을 만들고 식판에 담아 즐기는 즐거운 급식시간.",
+                step3_tag: "K-푸드 조리 체험, 학교 식판 급식",
+                step4_title: "체육 시간 (전통 체육대회)",
+                step4_desc: "운동장에서 펼쳐지는 미니 체육대회! 무궁화 꽃이 피었습니다, 딱지치기, 제기차기 등 한국 전래 놀이 대결.",
+                step4_tag: "팀별 체육대회, 한국 전통 민속놀이",
+                step5_title: "동아리 활동 & 매점",
+                step5_desc: "한국 학창시절 필수 코스! 학교 매점 대표 간식(피카츄 돈까스, 바나나우유)을 맛보고 네컷 사진을 찍습니다.",
+                step5_tag: "매점 간식 무료 제공, 인생네컷 촬영",
+                step6_title: "졸업식 & 종례",
+                step6_desc: "학창시절의 마지막을 장식하는 감동의 졸업식! 수료증 수여 및 졸업 가운 스냅 사진 촬영으로 일정을 마칩니다.",
+                step6_tag: "공식 졸업증서 수여, 출력 사진 증정",
+                prc_badge: "All-Inclusive School Kit",
+                prc_title: "70,000원에 모두 포함된<br>하루고 입학 웰컴 패키지",
+                prc_desc: "현장에서 추가 비용 결제 없음! 교복 대여부터 점심 급식, 커스텀 학생증, 졸업 앨범용 스냅사진까지 모두 준비되어 있습니다.",
+                inc1_title: "트렌디 교복 풀세트",
+                inc1_desc: "자켓, 셔츠, 넥타이/리본, 스커트/바지",
+                inc2_title: "실물 맞춤 학생증",
+                inc2_desc: "영문 이름 및 전용 목걸이 카드 케이스",
+                inc3_title: "급식 & 매점 간식",
+                inc3_desc: "DIY 떡볶이, 추억의 도시락, 바나나우유",
+                inc4_title: "졸업증서 & 사진",
+                inc4_desc: "하루고 수료증 + 인쇄 원본 스냅사진",
+                prc_card_label: "1인 입학 및 수강료",
+                prc_location: "<i class=\"fa-solid fa-location-dot text-sky-600 mr-1\"></i> 서울 시내 리모델링 학교 캠퍼스",
+                prc_card_btn: "지금 입학원서 작성하기",
+                rev_badge: "Student Voice",
+                rev_title: "하루고 학생 소리함 (참가자 후기)",
+                rev_subtitle: "세계 각지에서 교복을 입으러 찾아온 졸업생들의 생생한 한 마디!",
+                rev1_tag: "2026기 졸업생",
+                rev1_text: "\"K-드라마에서 보던 예쁜 교복을 입고 2교시 음악 시간에 K-POP 댄스를 배운 게 대박이었어요! 직접 만들어 먹은 떡볶이 급식도 너무 맛있었습니다!\"",
+                rev2_tag: "2026기 졸업생",
+                rev2_text: "\"체육시간에 무궁화 꽃이 피었습니다 게임을 했는데 외국인 친구들과 진짜 학창시절 클래스메이트가 된 기분이었어요. 졸업식 땐 눈물 날 뻔!\"",
+                rev3_tag: "2026기 졸업생",
+                rev3_text: "\"70,000원에 교복 피팅, 급식 점심, 실물 학생증 카드, 졸업증서까지 받아서 정말 구성이 알차요. 서울에서 꼭 해봐야 할 경험입니다!\"",
+                faq_badge: "Student Handbook FAQ",
+                faq_title: "하루고 생활 규정 & FAQ",
+                faq_subtitle: "입학 전 자주 묻는 질문들을 확인해 보세요.",
+                faq1_q: "Q. 한국어를 잘 못해도 수업을 들을 수 있나요?",
+                faq1_a: "네, 물론입니다! 영어가 원활한 친절한 버디 스태프진이 항상 동행하여 언어 장벽 없이 수업에 즐겁게 참여하실 수 있습니다.",
+                faq2_q: "Q. 하루고등학교 위치는 정확히 어디인가요?",
+                faq2_a: "서울 시내에 위치한 리모델링 학교 문화 캠퍼스에서 진행됩니다. 지하철역에서 도보 5분 거리이며, 입학 신청 완료 후 상세 오시는 길 약도가 이메일로 안내됩니다.",
+                faq3_q: "Q. 다양한 교복 사이즈가 준비되어 있나요?",
+                faq3_a: "XS부터 3XL까지 다양한 피팅 사이즈의 남녀 한국 교복이 구비되어 있습니다. 등교 직후 탈의실에서 자유롭게 피팅하실 수 있습니다.",
+                faq4_q: "Q. 채식이나 돼지고기 미포함 급식도 가능한가요?",
+                faq4_a: "네! 입학 원서 작성 시 식사 타입을 선택해주시면 비건 및 돼지고기 미포함 급식 재료를 별도 제공합니다.",
+                form_title: "하루고등학교 입학 원서",
+                form_subtitle: "잊지 못할 한국 학창시절의 학생이 되기 위한 신입생 입학 신청서입니다.",
+                form_lbl_fullname: "신청자 성명 (Full Name) *",
+                form_lbl_email: "이메일 주소 (Email) *",
+                form_lbl_date: "등교 희망 월요일 선택 *",
+                form_lbl_guests: "입학 참가 인원 (Students) *",
+                form_lbl_size: "희망 교복 사이즈",
+                form_lbl_diet: "급식 식사 옵션",
+                form_total_label: "최종 입학 수강 결제 금액",
+                form_total_includes: "포함: 교복 + 급식 + 맞춤 학생증 + 졸업증서",
+                form_btn_submit: "입학 원서 제출 및 결제"
+            },
+            en: {
+                nav_est: "SEOUL EST. 2026",
+                nav_about: "About",
+                nav_schedule: "Timetable",
+                nav_idcard: "Student ID Card",
+                nav_reviews: "Student Voice",
+                nav_faq: "School Rules",
+                nav_booking_btn: "Apply Admission",
+                hero_notice_tag: "[2026 Admissions] Monday One-Day High School Program",
+                hero_title: "<span class=\"text-sky-600\">Haru High School</span> will do its best<br>for international students to experience<br><span class=\"text-blue-700 underline decoration-sky-300 decoration-4\">Authentic K-Highschool Life</span>.",
+                hero_desc: "Wear authentic Korean high school uniforms at a renovated campus in Seoul. Enjoy K-POP music class, DIY school lunch, playground sports day, and graduation! An 8-hour full immersion school trip.",
+                hero_btn_book: "Join School for ₩70,000",
+                hero_btn_schedule: "View 6-Period Timetable",
+                stat_1: "6-Period Full Course",
+                stat_2: "Authentic K-Uniform",
+                stat_3: "Global Student Rating",
+                quick1_title: "About Haru High",
+                quick1_desc: "Seoul Campus & Program Details",
+                quick2_title: "Timetable & Classes",
+                quick2_desc: "From 1st Period to Graduation",
+                quick3_title: "Admission Form",
+                quick3_desc: "Easy Online Application & Payment",
+                card_hero_school: "HARU HIGH SCHOOL",
+                card_hero_badge: "STUDENT ID",
+                card_photo_label: "Student Photo",
+                card_lbl_name: "Name",
+                card_lbl_grade: "Class",
+                card_hero_day: "Every Monday",
+                card_hero_status: "09:00 AM Attendance",
+                id_badge: "Pre-Admission Student ID",
+                id_title: "Customize Your Personal Student ID Card",
+                id_subtitle: "Preview the physical plastic RFID student badge that you will receive on school day!",
+                id_info_box: "Your submitted name and nationality will be printed on the official plastic card!",
+                lbl_name: "Full Name (English)",
+                lbl_country: "Nationality",
+                lbl_avatar: "Student Avatar & Uniform Style",
+                avatar_a: "Female Uniform",
+                avatar_b: "Male Uniform",
+                card_school_name: "HARU HIGH SCHOOL",
+                card_badge: "STUDENT ID",
+                card_lbl_nation: "Nationality",
+                card_validity: "VALIDITY: One-Day Pass",
+                sch_badge: "Class Timetable",
+                sch_title: "Haru High School 8-Hour Timetable",
+                sch_subtitle: "From morning homeroom to 6th period and graduation, experience the real Korean school life.",
+                p1_num: "Period 1", p2_num: "Period 2", p3_num: "Period 3", p4_num: "Period 4", p5_num: "Period 5", p6_num: "Period 6",
+                step1_title: "Arrival & Uniform Fitting",
+                step1_desc: "Arrive at Seoul campus gate! Receive your custom physical Student ID lanyard and change into trendy Korean uniforms.",
+                step1_tag: "Uniform Size Fitting & Lanyard Receipt",
+                step2_title: "Music Class (K-POP)",
+                step2_desc: "Learn trending K-POP choreo and Korean lyrics in music room. Film a fun short-form dance video with classmates!",
+                step2_tag: "K-POP Cover Dance & Video Submission",
+                step3_title: "Cafeteria Lunch (DIY K-Food)",
+                step3_desc: "Cook Tteokbokki and retro school lunchbox in our school cooking room, served on authentic metal lunch trays.",
+                step3_tag: "K-Food Cooking & Cafeteria Meal",
+                step4_title: "P.E. Class (Sports Day)",
+                step4_desc: "Mini Sports Day on the playground! Play Red Light Green Light, Ddakji, and Jegi-chagi in team games.",
+                step4_tag: "Team Sports Day & Korean Folk Games",
+                step5_title: "Club & School Snack Shop",
+                step5_desc: "Essential K-school routine! Taste famous school snack shop food (Pikachu cutlet, Banana milk) and take photo booth snapshots.",
+                step5_tag: "Free School Snacks & Photobooth",
+                step6_title: "Graduation Ceremony",
+                step6_desc: "An emotional ceremony! Receive your official diploma certificate and take photos in graduation gowns.",
+                step6_tag: "Official Diploma & Printed Snap Photos",
+                prc_badge: "All-Inclusive School Kit",
+                prc_title: "Haru High Welcome Kit<br>All-In-One for ₩70,000 (~$52)",
+                prc_desc: "No hidden extra fees! Includes uniform rental, cafeteria lunch, custom plastic ID badge, and graduation diploma snapshot.",
+                inc1_title: "Trendy Uniform Full Set",
+                inc1_desc: "Jacket, shirt, tie/ribbon, skirt/pants",
+                inc2_title: "Custom Plastic ID Card",
+                inc2_desc: "Printed English name & lanyard card case",
+                inc3_title: "School Lunch & Snacks",
+                inc3_desc: "DIY Tteokbokki, retro lunchbox, banana milk",
+                inc4_title: "Diploma & Snap Photos",
+                inc4_desc: "Haru High Certificate + High-res printed photo",
+                prc_card_label: "Student Tuition (Per Person)",
+                prc_location: "<i class=\"fa-solid fa-location-dot text-sky-600 mr-1\"></i> Renovated Campus in Seoul",
+                prc_card_btn: "Fill Admission Application",
+                rev_badge: "Student Voice",
+                rev_title: "Haru High Student Bulletin Board",
+                rev_subtitle: "Real reviews pinned by international graduates who became Korean students for a day!",
+                rev1_tag: "Class of 2026",
+                rev1_text: "\"Wearing cute K-drama uniforms and dancing to K-POP in music class was amazing! The Tteokbokki lunch we cooked was so delicious!\"",
+                rev2_tag: "Class of 2026",
+                rev2_text: "\"Playing Red Light Green Light during P.E. class made us feel like real high school classmates. The graduation ceremony almost made me cry!\"",
+                rev3_tag: "Class of 2026",
+                rev3_text: "\"For ₩70,000, getting uniform rental, lunch, physical ID card, and graduation diploma is incredible value. Highly recommended in Seoul!\"",
+                faq_badge: "Student Handbook FAQ",
+                faq_title: "School Rules & FAQ",
+                faq_subtitle: "Check out frequently asked questions before joining.",
+                faq1_q: "Q. Can I participate if I don't speak Korean?",
+                faq1_a: "Yes! English-fluent buddy staff guide you through all classes so you can fully enjoy without any language barrier.",
+                faq2_q: "Q. Where is Haru High School located?",
+                faq2_a: "Located at a renovated school campus in Seoul, 5 minutes walk from subway station. Full address map will be sent after application.",
+                faq3_q: "Q. Are various uniform sizes available?",
+                faq3_a: "We offer XS to 3XL uniform fitting sizes for both men and women. Try them on in our changing room upon arrival.",
+                faq4_q: "Q. Are Vegetarian or Halal food options available?",
+                faq4_a: "Yes! Simply choose your meal preference on the application form and customized ingredients will be provided.",
+                form_title: "Haru High School Admission Application",
+                form_subtitle: "Official enrollment form to become a Korean high school student for a day.",
+                form_lbl_fullname: "Full Name (English) *",
+                form_lbl_email: "Email Address *",
+                form_lbl_date: "Select Preferred Monday *",
+                form_lbl_guests: "Number of Students *",
+                form_lbl_size: "Uniform Size",
+                form_lbl_diet: "Cafeteria Meal Option",
+                form_total_label: "Total Tuition & Fee",
+                form_total_includes: "Includes: Uniform + Lunch + Custom ID + Diploma",
+                form_btn_submit: "Submit Application & Pay"
+            },
+            ja: {
+                nav_est: "SEOUL EST. 2026",
+                nav_about: "学校紹介",
+                nav_schedule: "時間割",
+                nav_idcard: "학생증 発行",
+                nav_reviews: "학생 声箱",
+                nav_faq: "校則 Q&A",
+                nav_booking_btn: "入学願書",
+                hero_notice_tag: "[2026年度 新入生募集] 毎週月曜日 1日入学式進行",
+                hero_title: "<span class=\"text-sky-600\">一日高等学校</span>は<br>外国人学生の<span class=\"text-blue-700 underline decoration-sky-300 decoration-4\">K-学園生活体験</span>のために<br>最善を尽くします。",
+                hero_desc: "ソウルの本物のリ노ベーション校舎で可愛い韓国制服を着て、K-POPダンス授業、手作り給食ランチ、運動場での体育祭、卒業式まで！8時間で楽しむK-学園生活体験ツアー。",
+                hero_btn_book: "70,000ウォンで1日高校生になる",
+                hero_btn_schedule: "6時間授業の時間割を見る",
+                stat_1: "1~6時間目 フル授業",
+                stat_2: "本物の韓国制服支給",
+                stat_3: "グローバル学生満足度",
+                quick1_title: "一日高等学校 とは？",
+                quick1_desc: "ソウル校舎案内及びプログラム紹介",
+                quick2_title: "時間割 & カリキュラム",
+                quick2_desc: "1時間目登校から6時間目卒業式まで",
+                quick3_title: "入学願書作成",
+                quick3_desc: "オンライン簡単申請 & 決済",
+                card_hero_school: "一日高等学校",
+                card_hero_badge: "学生証",
+                card_photo_label: "顔写真",
+                card_lbl_name: "氏名 / Name",
+                card_lbl_grade: "学番 / Class",
+                card_hero_day: "毎週月曜日",
+                card_hero_status: "09:00 登校完了",
+                id_badge: "Pre-Admission Student ID",
+                id_title: "自分だけの「一日実物学生証」をプレビュー",
+                id_subtitle: "体験当日に実際にお渡しするプラスチックRFID学生証カードをリアルタイムでカスタム！",
+                id_info_box: "入力されたお名前と国籍で実際のプラスチックカードが印刷されます！",
+                lbl_name: "ローマ字氏名 (Full Name)",
+                lbl_country: "国籍 (Nationality)",
+                lbl_avatar: "アバター＆制服スタイル",
+                avatar_a: "女子生徒 制服",
+                avatar_b: "男子生徒 制服",
+                card_school_name: "一日高等学校",
+                card_badge: "学生証",
+                card_lbl_nation: "国籍 / Nationality",
+                card_validity: "有効期限: 体験当日",
+                sch_badge: "Class Timetable",
+                sch_title: "一日高等学校 8時間正規時間割",
+                sch_subtitle: "登교朝会から6時間目の授業、그리고感動の卒業式まで完璧な韓国の学校生活。",
+                p1_num: "1時間目", p2_num: "2時間目", p3_num: "3時間目", p4_num: "4時間目", p5_num: "5時間目", p6_num: "6時間目",
+                step1_title: "登校 & 制服着替え",
+                step1_desc: "ソウル校舎に登校！カスタム実物学生証を受け取り、おしゃれな韓国制服に着替えます。",
+                step1_tag: "制服サイズフィッティング・学生証ストラップ受領",
+                step2_title: "音楽の時間 (K-POP)",
+                step2_desc: "音楽室で最新K-POPダンスと歌を学びます。クラスメイトと一緒にショート動画撮影！",
+                step2_tag: "K-POPダンス基礎・ショート動画提出",
+                step3_title: "給食の時間 (K-Foodクッキング)",
+                step3_desc: "調理室でトッポギと懐かしのお弁当を自分たちで作って、ステンレス給食プレートで味わうランチタイム。",
+                step3_tag: "K-Food調理体験・給食プレート体験",
+                step4_title: "体育の時間 (伝統体育祭)",
+                step4_desc: "校庭で繰り広げられるミニ運動会！「だるまさんがころんだ」やめんこ遊び対決。",
+                step4_tag: "チーム別運動会・韓国伝統遊び",
+                step5_title: "部活動 & 売店体験",
+                step5_desc: "韓国の学校売店人気スナック（ピカチュウカツ、バナナウ유）を味わい、制服プリクラを撮影！",
+                step5_tag: "売店スナック無料支給・人生4コマ撮影",
+                step6_title: "卒業式 & ホームルーム",
+                step6_desc: "一日を締めくくる感動の卒業式！修了証授与と卒業ガウンでの記念写真撮影。",
+                step6_tag: "公式卒業証書授与・プリント写真プレゼント",
+                prc_badge: "All-Inclusive School Kit",
+                prc_title: "70,000ウォンに全て含まれた<br>一日高 入学ウェルカムパッケージ",
+                prc_desc: "現地での追加料金なし！制服レンタル、給食ランチ、オリジナル学生証、卒業アルバム写真まで全て完備。",
+                inc1_title: "トレンド制服フルセット",
+                inc1_desc: "ジャケット、シャツ、ネクタイ/リボン、スカート/パンツ",
+                inc2_title: "オリジナル実物学生証",
+                inc2_desc: "ローマ字名入りプラスチックカード＆ストラップ",
+                inc3_title: "給食 & 売店おやつ",
+                inc3_desc: "手作りトッ포ギ、懐かしのお弁当、バナナミルク",
+                inc4_title: "卒業証書 & 記念写真",
+                inc4_desc: "一日高修了証 + 高画質プリント写真",
+                prc_card_label: "1名様 授業料",
+                prc_location: "<i class=\"fa-solid fa-location-dot text-sky-600 mr-1\"></i> ソウル市内リノベーション校舎",
+                prc_card_btn: "今すぐ入学願書を書く",
+                rev_badge: "Student Voice",
+                rev_title: "一日高 학생 声箱 (口コミ)",
+                rev_subtitle: "世界中から参加した卒業生たちのリアルな一言！",
+                rev1_tag: "2026期 卒業生",
+                rev1_text: "「ドラマで見た制服を着て2時間目にK-POPダンスを習ったのが最高！自分で作ったトッポギ給食もすごく美味しかったです！」",
+                rev2_tag: "2026期 卒業生",
+                rev2_text: "「体育の時間のだるまさんがころんだゲームで、外国人の友達と本物のクラスメイトになれた気分でした。卒業式は泣きそうになりました！」",
+                rev3_tag: "2026期 卒業生",
+                rev3_text: "「70,000ウォンで制服、給食、プラスチック学生증、卒業証書まで貰えて大満足。ソウルで絶対体験すべきです！」",
+                faq_badge: "Student Handbook FAQ",
+                faq_title: "一日高 校칙 & FAQ",
+                faq_subtitle: "入学前のよくある質問をご確認ください。",
+                faq1_q: "Q. 韓国語が話せなくても授業を受けられますか？",
+                faq1_a: "はい、もちろんです！英語対応スタッフが常駐しているため、言葉의 壁なく楽しく参加できます。",
+                faq2_q: "Q. 一日高等学校의 詳しい場所はどこですか？",
+                faq2_a: "ソウル市内のリノベーション学校施設で開催されます。地下鉄駅から徒歩5分です。ご予約完了後、詳しい地図をお送りします。",
+                faq3_q: "Q. 制服のサイズは揃っていますか？",
+                faq3_a: "XSから3XLまで男女多様なサイズをご用意しております。登校後、更衣室でご試着いただけます。",
+                faq4_q: "Q. ベジタリアンや豚肉抜きの給食も可能ですか？",
+                faq4_a: "はい！願書作成時に食事のオプションを選択していただければ、専用の食材をご用意いたします。",
+                form_title: "一日高等学校 入学願書",
+                form_subtitle: "韓国の高校生になるための新入生入学申請書です。",
+                form_lbl_fullname: "お名前 (ローマ字) *",
+                form_lbl_email: "メールアドレス *",
+                form_lbl_date: "希望登校月曜日を選択 *",
+                form_lbl_guests: "入学参加人数 *",
+                form_lbl_size: "희망 制服サイズ",
+                form_lbl_diet: "급식 食事オプション",
+                form_total_label: "最終入学授業料",
+                form_total_includes: "含まれるもの: 制服 + 給食 + 学生証 + 卒業証書",
+                form_btn_submit: "願書提出及び決済を行う"
+            }
+        };
+
+        let currentLang = 'ko';
+
+        function setLanguage(lang) {
+            if (!i18n[lang]) return;
+            currentLang = lang;
+
+            // Highlight active language button
+            ['ko', 'en', 'ja'].forEach(l => {
+                const btn = document.getElementById(`btn-lang-${l}`);
+                if (btn) {
+                    if (l === lang) {
+                        btn.className = "px-2.5 py-1 rounded-lg bg-sky-600 text-white font-extrabold shadow-sm transition";
+                    } else {
+                        btn.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:bg-slate-200 transition font-bold";
+                    }
+                }
+            });
+
+            // Update elements with data-i18n attribute
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            calculateTotal();
+        }
+
+        // Student ID Card Dynamic Customizer
+        const previewNameInput = document.getElementById('preview-name');
+        const previewCountrySelect = document.getElementById('preview-country');
+        const cardDisplayName = document.getElementById('card-display-name');
+        const cardDisplayCountry = document.getElementById('card-display-country');
+        const cardAvatarIcon = document.getElementById('card-avatar-icon');
+
+        previewNameInput.addEventListener('input', (e) => {
+            cardDisplayName.textContent = e.target.value.trim() || 'Alex Smith';
+        });
+
+        previewCountrySelect.addEventListener('change', (e) => {
+            cardDisplayCountry.textContent = e.target.value;
+        });
+
+        function setAvatar(type) {
+            const btnFemale = document.getElementById('btn-avatar-female');
+            const btnMale = document.getElementById('btn-avatar-male');
+
+            if (type === 'female') {
+                cardAvatarIcon.className = 'fa-solid fa-user-ninja text-5xl text-pink-500';
+                btnFemale.className = "py-3 rounded-xl border-2 border-sky-500 bg-sky-50 text-sky-900 font-extrabold text-xs flex items-center justify-center gap-2 shadow-sm";
+                btnMale.className = "py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-extrabold text-xs flex items-center justify-center gap-2 hover:bg-slate-50";
+            } else {
+                cardAvatarIcon.className = 'fa-solid fa-user-astronaut text-5xl text-blue-600';
+                btnMale.className = "py-3 rounded-xl border-2 border-sky-500 bg-sky-50 text-sky-900 font-extrabold text-xs flex items-center justify-center gap-2 shadow-sm";
+                btnFemale.className = "py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-extrabold text-xs flex items-center justify-center gap-2 hover:bg-slate-50";
+            }
+        }
+
+        // Dynamic Price Calculator based on guests & currency
+        function calculateTotal() {
+            const guestSelect = document.getElementById('booking-guests');
+            const priceDisplay = document.getElementById('total-price-display');
+            const guests = parseInt(guestSelect.value, 10);
+            const totalKRW = guests * 70000;
+            
+            if (currentLang === 'en') {
+                const totalUSD = guests * 52;
+                priceDisplay.textContent = `₩${totalKRW.toLocaleString()} (~$${totalUSD})`;
+            } else if (currentLang === 'ja') {
+                const totalJPY = guests * 7800;
+                priceDisplay.textContent = `₩${totalKRW.toLocaleString()} (約¥${totalJPY.toLocaleString()})`;
+            } else {
+                priceDisplay.textContent = '₩' + totalKRW.toLocaleString();
+            }
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Admission Form Handler
+        function handleBooking(event) {
+            event.preventDefault();
+            const dateVal = document.getElementById('booking-date').value;
+            const priceVal = document.getElementById('total-price-display').textContent;
+
+            document.getElementById('modal-date-display').textContent = dateVal;
+            document.getElementById('modal-price-display').textContent = priceVal;
+
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
