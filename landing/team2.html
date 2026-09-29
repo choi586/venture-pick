@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お酒タクシー | 北海道ブルワリー＆ワイナリー貸切カスタムツアー</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        wine: {
+                            600: '#9f1239',
+                            800: '#881337',
+                            900: '#4c0519',
+                        },
+                        sapporo: {
+                            blue: '#0d2238',
+                            gold: '#e5a93b',
+                            bg: '#f8f9fa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'Noto Sans JP', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(13, 34, 56, 0.92) 0%, rgba(30, 27, 75, 0.85) 50%, rgba(136, 19, 55, 0.88) 100%),
+                        url('https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        .glass-dark {
+            background: rgba(13, 34, 56, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-sapporo-bg text-slate-800 font-sans antialiased selection:bg-amber-400 selection:text-slate-900">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-slate-900 font-black text-xl shadow-lg shadow-amber-500/20 group-hover:rotate-6 transition-transform">
+                    酒
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight font-display text-white">お酒タクシー</span>
+                    <span class="hidden sm:inline-block text-xs text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded ml-2 font-medium">北海道・酒蔵観光タクシー</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#features" class="hover:text-amber-400 transition-colors">サービスの特徴</a>
+                <a href="#experience" class="hover:text-amber-400 transition-colors">ツアーの流れ</a>
+                <a href="#courses" class="hover:text-amber-400 transition-colors">おすすめコース・料金</a>
+                <a href="#pairing" class="hover:text-amber-400 transition-colors">ドライバー厳選ペアリング</a>
+                <a href="#calculator" class="hover:text-amber-400 transition-colors">料金シミュレーター</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="openBookingModal()" class="bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold px-5 py-2.5 rounded-full text-sm transition-all shadow-md hover:shadow-amber-500/20 active:scale-95 flex items-center gap-2">
+                    <i class="fa-solid fa-taxi"></i>
+                    <span>予約・見積もり相談</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen hero-gradient flex items-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 text-white overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-10 w-80 h-80 bg-wine-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                
+                <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-amber-400/30 px-4 py-2 rounded-full text-amber-300 text-xs sm:text-sm font-medium shadow-inner">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                    <span>運転の心配ゼロ！貸切チャーターでお酒＆絶景を満喫</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                    できたての地酒と<br class="hidden sm:inline"/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">北海道の絶景</span>を一日で！
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                    サッポロビール工場から富良野ワイナリーまで。<br class="hidden sm:inline"/>
+                    飲酒運転の心配なく、専属ドライバーとともに北海道最高の酒蔵、絶品グルメ、豊かな自然をゆったりとお愉しみいただけます。
+                </p>
+
+                <!-- Value Highlights Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 max-w-xl mx-auto lg:mx-0">
+                    <div class="bg-white/10 backdrop-blur border border-white/10 rounded-2xl p-3 text-center">
+                        <i class="fa-solid fa-wine-glass-stripe text-amber-400 text-xl mb-1"></i>
+                        <p class="text-xs text-slate-300">心ゆくまで試飲</p>
+                        <p class="text-sm font-bold text-white">飲酒運転ゼロ</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur border border-white/10 rounded-2xl p-3 text-center">
+                        <i class="fa-solid fa-map-location-dot text-amber-400 text-xl mb-1"></i>
+                        <p class="text-xs text-slate-300">最適な回遊ルート</p>
+                        <p class="text-sm font-bold text-white">検証済み日帰りコース</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur border border-white/10 rounded-2xl p-3 text-center">
+                        <i class="fa-solid fa-road text-amber-400 text-xl mb-1"></i>
+                        <p class="text-xs text-slate-300">高速道路料金</p>
+                        <p class="text-sm font-bold text-white">通行料すべて込み</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur border border-white/10 rounded-2xl p-3 text-center">
+                        <i class="fa-solid fa-utensils text-amber-400 text-xl mb-1"></i>
+                        <p class="text-xs text-slate-300">地元ドライバー伝授</p>
+                        <p class="text-sm font-bold text-white">隠れた名店案内</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#courses" class="w-full sm:w-auto text-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-4 rounded-2xl transition-all shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 text-base">
+                        <span>おすすめコースを見る</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <button onclick="openBookingModal()" class="w-full sm:w-auto bg-slate-800/90 hover:bg-slate-700/90 text-white font-semibold border border-slate-600 px-8 py-4 rounded-2xl transition-all flex items-center justify-center gap-2 text-base">
+                        <i class="fa-solid fa-paper-plane text-amber-400"></i>
+                        <span>カスタム見積もり依頼</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Tour Promo Card -->
+            <div class="lg:col-span-5">
+                <div class="glass-dark rounded-3xl p-6 sm:p-8 text-white relative shadow-2xl border border-slate-700">
+                    <div class="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md border border-white/20">
+                        人気No.1コース
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                        <span class="text-xs font-semibold uppercase text-amber-300 tracking-wider">Sapporo Special Tour</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-2">札幌2大ビール巡り＆市内観光ツアー</h3>
+                    <p class="text-sm text-slate-300 mb-6">サッポロビール北海道工場＆キリンビール千歳工場の工場直送生ビール試飲と、札幌市内の名所観光を一度に楽しむ贅沢コース！</p>
+
+                    <div class="space-y-3 text-sm border-t border-b border-slate-700/80 py-4 mb-6">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400"><i class="fa-regular fa-clock mr-2 text-amber-400"></i>所要時間</span>
+                            <span class="font-semibold text-white">約8時間（日帰り日程）</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400"><i class="fa-solid fa-user-group mr-2 text-amber-400"></i>基準乗車人数</span>
+                            <span class="font-semibold text-white">タクシー1台（最大4名様）</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400"><i class="fa-solid fa-yen-sign mr-2 text-amber-400"></i>予想料金</span>
+                            <span class="text-lg font-extrabold text-amber-400">約 15,000 円〜 <span class="text-xs font-normal text-slate-400">(1台あたり)</span></span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/60 rounded-xl p-3 flex items-center gap-3 mb-6 border border-slate-800">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                        </div>
+                        <p class="text-xs text-slate-300">
+                            ホテル往復送迎、ドライバー回送費、高速道路トールゲート料金完全コミコミ！
+                        </p>
+                    </div>
+
+                    <button onclick="selectCourseAndModal('札幌2大ビール巡りツアー')" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 rounded-xl transition-colors text-center text-sm">
+                        このコースでかんたん予約・相談
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Promotion Banner -->
+    <section class="bg-slate-900 border-b border-slate-800 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">
+                提携・連携旅行プラットフォーム
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-75 grayscale hover:grayscale-0 transition-all">
+                <div class="flex items-center gap-2 text-slate-300 font-bold text-lg">
+                    <i class="fa-solid fa-wine-bottle text-amber-400"></i> デイリーショット (Dailyshot)
+                </div>
+                <div class="flex items-center gap-2 text-slate-300 font-bold text-lg">
+                    <i class="fa-solid fa-plane-departure text-amber-400"></i> Agoda / Klook 公式提携
+                </div>
+                <div class="flex items-center gap-2 text-slate-300 font-bold text-lg">
+                    <i class="fa-brands fa-instagram text-pink-400"></i> SNSインフルエンサー人気企画
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appeal & Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-600 text-xs font-bold uppercase tracking-wider bg-amber-100 px-3 py-1 rounded-full">WHY OS AKE TAXI?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">
+                    なぜ「お酒タクシー」が選ばれるのか？
+                </h2>
+                <p class="text-slate-600 text-base">
+                    ただ飲むだけで終わる旅はもう終わり！地酒、美食、四季折々の絶景を安全かつ快適に一日で味わいつくす特別な体験です。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-600 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fa-solid fa-beer-mug-empty"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">01. 運転の心配ゼロで心ゆくまで飲み比べ</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        レンタカーの運転手が「お酒を飲めない悔しさ」とはサヨナラ！専属ドライバーが運転を担当するため、醸造所の新鮮なビールやワインを存分に試飲できます。
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-wine-600/10 text-wine-600 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">02. 地元ドライバーお勧めのアテ＆〆めグルメ</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        観光客向け店舗だけでなく、北海道の地元ドライバーが本当に薦めるお酒に合うアテや、〆のラーメン・スープカレーなどローカルグルメへご案内。
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">03. ドアtoドアで移動のストレスZERO</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        電車の時刻表チェックやバスの乗り換え待ちの煩わしさは一切なし。お泊まりのホテル玄関前から出発し、帰りもそのままホテルまで安全にお届けします。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="mt-16 bg-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-2xl overflow-x-auto">
+                <h3 class="text-xl font-bold text-amber-400 mb-6 text-center">北海道酒蔵巡り 移動手段の徹底比較</h3>
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-sm text-slate-400">
+                            <th class="py-3 px-4">比較項目</th>
+                            <th class="py-3 px-4">レンタカー利用</th>
+                            <th class="py-3 px-4">公共交通機関 (JR/バス)</th>
+                            <th class="py-3 px-4 text-amber-400 font-bold bg-amber-400/10 rounded-t-lg">お酒タクシー (Osake Taxi)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-slate-800">
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-slate-300">ドライバーの試飲</td>
+                            <td class="py-4 px-4 text-red-400 font-medium"><i class="fa-solid fa-xmark mr-1"></i> 絶対不可 (飲酒運転禁止)</td>
+                            <td class="py-4 px-4 text-emerald-400 font-medium"><i class="fa-solid fa-check mr-1"></i> 可能</td>
+                            <td class="py-4 px-4 font-bold text-amber-300 bg-amber-400/10"><i class="fa-solid fa-circle-check text-amber-400 mr-1"></i> 全員が安心して飲み比べ可能</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-slate-300">移動の利便性</td>
+                            <td class="py-4 px-4 text-slate-300">不慣れな道でのセルフ運転</td>
+                            <td class="py-4 px-4 text-red-400"><i class="fa-solid fa-xmark mr-1"></i> 本数が少なく乗り換えが煩雑</td>
+                            <td class="py-4 px-4 font-bold text-amber-300 bg-amber-400/10"><i class="fa-solid fa-circle-check text-amber-400 mr-1"></i> ホテル前で楽々乗車＆送迎</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-slate-300">1日のタイパ (効率)</td>
+                            <td class="py-4 px-4 text-slate-300">ガソリン・高速代が別途発生</td>
+                            <td class="py-4 px-4 text-slate-300">1日1〜2ヶ所訪問が限界</td>
+                            <td class="py-4 px-4 font-bold text-amber-300 bg-amber-400/10"><i class="fa-solid fa-circle-check text-amber-400 mr-1"></i> 3〜4ヶ所＋高速料金コミコミ</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-slate-300">ローカルガイド・提案</td>
+                            <td class="py-4 px-4 text-slate-400">なし (自力で検索)</td>
+                            <td class="py-4 px-4 text-slate-400">なし</td>
+                            <td class="py-4 px-4 font-bold text-amber-300 bg-amber-400/10"><i class="fa-solid fa-circle-check text-amber-400 mr-1"></i> ベテランドライバーのグルメ穴場案内</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Experience Step-by-Step Section -->
+    <section id="experience" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-600 text-xs font-bold uppercase tracking-wider bg-amber-100 px-3 py-1 rounded-full">DAY TOUR EXPERIENCE</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">
+                    お酒タクシーの完璧な1日の流れ
+                </h2>
+                <p class="text-slate-600 text-base">
+                    朝のホテル出発から夕方の帰還まで、綿密に計算されたスケジュールでスムーズにお愉しみいただけます。
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-amber-200 -translate-y-1/2 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-full bg-slate-900 text-amber-400 font-bold flex items-center justify-center text-sm mb-4">01</div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">ホテルお迎え・ご乗車</h4>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-clock mr-1"></i> 午前 09:00</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            ご指定の札幌市内ホテル前に専属タクシーが定時でお待ちしています。荷物を積んで出発！
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-sm mb-4">02</div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">酒蔵・ワイナリー見学</h4>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-clock mr-1"></i> 午前 10:30 ~ 12:30</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            できたての無濾過クラフトビールや限定醸造ワインを堪能！製造工程の見学ツアーも体験。
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-full bg-wine-600 text-white font-bold flex items-center justify-center text-sm mb-4">03</div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">ドライバー推奨ランチ</h4>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-clock mr-1"></i> 午後 01:00 ~ 02:30</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            ジンギスカンや海鮮丼、熱々の札幌味噌ラーメンなど、地元のドライバーが太鼓判を押す名店へ。
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-full bg-slate-900 text-amber-400 font-bold flex items-center justify-center text-sm mb-4">04</div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">絶景観光スポット巡り</h4>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-clock mr-1"></i> 午後 03:00 ~ 05:30</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            小樽運河、富良野のラベンダー畑やクリスマスツリー、八剣山の美しい景観を巡ります。
+                        </p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm mb-4">05</div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">ホテルへ安全に送迎</h4>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-clock mr-1"></i> 午後 06:00 ~ 07:00</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            ほろ酔いと旅の余韻を車内で感じながら、ホテル玄関前まで安全にお戻りいただき一日が終了。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses & Pricing Section -->
+    <section id="courses" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-600 text-xs font-bold uppercase tracking-wider bg-amber-100 px-3 py-1 rounded-full">SELECT YOUR TOUR</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">
+                    北海道人気おすすめコース3選
+                </h2>
+                <p class="text-slate-600 text-base">
+                    お好みのテーマや目的地に合わせて細かく調整された、お酒タクシー自慢のシグネチャーコースです。
+                </p>
+            </div>
+
+            <!-- Course Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Course Card 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 bg-slate-800 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=800&q=80" alt="Sapporo Beer Tour" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur text-amber-400 text-xs font-bold px-3 py-1 rounded-full">
+                                ビール好き必見
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-slate-900">札幌2大ビール巡りツアー</h3>
+                            </div>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                日本を代表するビールの聖地！サッポロビール北海道工場とキリンビール千歳工場で鮮度抜群の工場直送ビールを試飲。
+                            </p>
+
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200 space-y-2 text-xs mb-4">
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-regular fa-clock mr-1 text-amber-500"></i> 所要時間</span>
+                                    <span class="font-semibold text-slate-900">約 8 時間</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-solid fa-map-pin mr-1 text-amber-500"></i> 主な訪問地</span>
+                                    <span class="font-semibold text-slate-900">恵庭工場、千歳、大通公園</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-solid fa-car mr-1 text-amber-500"></i> 高速トール代</span>
+                                    <span class="font-semibold text-emerald-600">全額含まれています</span>
+                                </div>
+                            </div>
+
+                            <h4 class="text-xs font-bold text-slate-900 mb-2 uppercase">コースに含まれる価値 (Value):</h4>
+                            <ul class="text-xs text-slate-600 space-y-1.5 mb-6">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> サッポロビール北海道工場（恵庭）見学</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> キリンビール千歳工場の新鮮試飲</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> 札幌市内名所（大通公園・時計台など）アレンジ可能</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">タクシー1台あたり</span>
+                            <span class="text-2xl font-black text-amber-600">約 15,000 円〜</span>
+                        </div>
+                        <button onclick="selectCourseAndModal('札幌2大ビール巡りツアー')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-3 rounded-xl transition-colors">
+                            予約する
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="bg-slate-50 border-2 border-amber-400 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between relative">
+                    <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 font-bold text-xs px-4 py-1.5 rounded-bl-2xl shadow">
+                        POPULAR NO.1
+                    </div>
+
+                    <div>
+                        <div class="relative h-52 bg-slate-800 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?auto=format&fit=crop&w=800&q=80" alt="Otaru Beer Canal Tour" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur text-amber-400 text-xs font-bold px-3 py-1 rounded-full">
+                                異国情緒とロマン
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-slate-900">小樽ビール＆運河観光ツアー</h3>
+                            </div>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                小樽運河の情緒あふれる風景の中で味わう本格ドイツ風小樽クラフトビールと、オルゴール堂・北一硝子の散策。
+                            </p>
+
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200 space-y-2 text-xs mb-4">
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-regular fa-clock mr-1 text-amber-500"></i> 所要時間</span>
+                                    <span class="font-semibold text-slate-900">約 7~8 時間</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-solid fa-map-pin mr-1 text-amber-500"></i> 主な訪問地</span>
+                                    <span class="font-semibold text-slate-900">小樽運河、オルゴール堂、小樽倉庫No.1</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-solid fa-car mr-1 text-amber-500"></i> 高速トール代</span>
+                                    <span class="font-semibold text-emerald-600">全額含まれています</span>
+                                </div>
+                            </div>
+
+                            <h4 class="text-xs font-bold text-slate-900 mb-2 uppercase">コースに含まれる価値 (Value):</h4>
+                            <ul class="text-xs text-slate-600 space-y-1.5 mb-6">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> 小樽ビール醸造所見学＆ビアホール食歩き</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> 小樽運河＆堺町通り商店街の自由散策</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> 札幌〜小樽間の高速道路往復通行料込み</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-amber-50 border-t border-amber-200 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">タクシー1台あたり</span>
+                            <span class="text-2xl font-black text-amber-600">約 15,000 ~ 20,000 円</span>
+                        </div>
+                        <button onclick="selectCourseAndModal('小樽ビール＆運河観光ツアー')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-4 py-3 rounded-xl transition-colors shadow">
+                            予約する
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 bg-slate-800 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Biei Furano Wine Tour" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 bg-wine-900/90 text-wine-200 text-xs font-bold px-3 py-1 rounded-full">
+                                ワイン＆大自然
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-slate-900">美瑛・富良野ワイン＆絶景ツアー</h3>
+                            </div>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                富良野ワイン工場のテイスティングと美瑛の幻想的なパノラマロードを巡る、長距離ラグジュアリーコース。
+                            </p>
+
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200 space-y-2 text-xs mb-4">
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-regular fa-clock mr-1 text-amber-500"></i> 所要時間</span>
+                                    <span class="font-semibold text-slate-900">約 10~12 時間</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-solid fa-map-pin mr-1 text-amber-500"></i> 主な訪問地</span>
+                                    <span class="font-semibold text-slate-900">富良野ワイン工場、クリスマスツリーの木</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span><i class="fa-solid fa-car mr-1 text-amber-500"></i> 高速トール代</span>
+                                    <span class="font-semibold text-emerald-600">全額含まれています</span>
+                                </div>
+                            </div>
+
+                            <h4 class="text-xs font-bold text-slate-900 mb-2 uppercase">コースに含まれる価値 (Value):</h4>
+                            <ul class="text-xs text-slate-600 space-y-1.5 mb-6">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-wine-600"></i> 富良野ワイン工場（滝沢・八剣山ワイナリー追加も可）</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-wine-600"></i> 美瑛のクリスマスツリー＆四季折々の花畑巡り</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-wine-600"></i> 長距離移動の高速料金・車両メンテ費用全額コミコミ</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">タクシー1台あたり</span>
+                            <span class="text-2xl font-black text-wine-800">約 20,000 円〜</span>
+                        </div>
+                        <button onclick="selectCourseAndModal('美瑛・富良野ワイン＆絶景ツアー')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-3 rounded-xl transition-colors">
+                            予約する
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Food & Liquor Pairing Section -->
+    <section id="pairing" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-wider bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">DRIVER's RECOMMENDATION</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+                    ドライバーがこっそり教える地酒×絶品アテ
+                </h2>
+                <p class="text-slate-400 text-base">
+                    北海道の魅力を知り尽くしたタクシードライバー推奨のマリアージュを体験。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pairing 1 -->
+                <div class="glass-dark rounded-3xl p-6 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full">ビール絶品ペア</span>
+                            <i class="fa-solid fa-fire-burner text-amber-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">工場直送生ビール × ジンギスカン</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            ジューシーに焼き上げた生ラムジンギスカンと、弾ける炭酸とコクが自慢の生ビールの圧倒的な相性！
+                        </p>
+                    </div>
+                    <div class="bg-slate-800/80 rounded-2xl p-3 text-xs text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-amber-400 shrink-0"></i>
+                        <span>ドライバーTip: 行列の少ない老舗ジンギスカン店へ優先案内！</span>
+                    </div>
+                </div>
+
+                <!-- Pairing 2 -->
+                <div class="glass-dark rounded-3xl p-6 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full">小樽スペシャル</span>
+                            <i class="fa-solid fa-fish text-amber-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">小樽デュンケル × 朝獲れ海鮮丼</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            小樽港直送のウニやイクラを乗せた特上丼と、香ばしいウニの甘みを引き立てるドイツ風黒ビール。
+                        </p>
+                    </div>
+                    <div class="bg-slate-800/80 rounded-2xl p-3 text-xs text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-amber-400 shrink-0"></i>
+                        <span>ドライバーTip: 魚市場直営の隠れ家食堂へご案内。</span>
+                    </div>
+                </div>
+
+                <!-- Pairing 3 -->
+                <div class="glass-dark rounded-3xl p-6 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold bg-wine-600/30 text-wine-300 px-3 py-1 rounded-full">ワイン極上ペア</span>
+                            <i class="fa-solid fa-cheese text-amber-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">富良野ピノ・ノワール × 自家製チーズ＆ステーキ</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            富良野の広大な農場で育まれた濃厚フレッシュチーズと、芳醇な赤ワインの至福のコンビネーション。
+                        </p>
+                    </div>
+                    <div class="bg-slate-800/80 rounded-2xl p-3 text-xs text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-amber-400 shrink-0"></i>
+                        <span>ドライバーTip: ワイナリー直営レストランの展望席確保をお手伝い！</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator Section -->
+    <section id="calculator" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl">
+                <div class="text-center mb-8">
+                    <span class="text-amber-600 text-xs font-bold uppercase tracking-wider bg-amber-100 px-3 py-1 rounded-full">COST ESTIMATOR</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                        リアルタイム料金シミュレーター
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">人数や追加オプションを選択して、概算費用を今すぐ確認できます。</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Option 1: Course Selection -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">1. ご希望のツアーコースを選択</label>
+                        <select id="calcCourse" onchange="calculateEstimate()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                            <option value="15000" data-name="札幌2大ビール巡りツアー (8時間)">札幌2大ビール巡りツアー (約8時間) - 15,000円〜</option>
+                            <option value="18000" data-name="小樽ビール＆運河観光ツアー (8時間)">小樽ビール＆運河観光ツアー (約7~8時間) - 18,000円〜</option>
+                            <option value="22000" data-name="美瑛・富良野ワイン＆絶景ツアー (11時間)">美瑛・富良野ワイン＆絶景ツアー (約10~12時間) - 22,000円〜</option>
+                        </select>
+                    </div>
+
+                    <!-- Option 2: Passenger Count -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">2. ご乗車人数 (タクシー1台あたり最大4名)</label>
+                        <div class="grid grid-cols-4 gap-3">
+                            <button type="button" onclick="setPassengers(1)" class="pax-btn bg-amber-500 text-slate-950 font-bold border border-amber-500 py-3 rounded-xl text-center text-sm">1名</button>
+                            <button type="button" onclick="setPassengers(2)" class="pax-btn bg-slate-100 text-slate-700 font-bold border border-slate-200 py-3 rounded-xl text-center text-sm">2名</button>
+                            <button type="button" onclick="setPassengers(3)" class="pax-btn bg-slate-100 text-slate-700 font-bold border border-slate-200 py-3 rounded-xl text-center text-sm">3名</button>
+                            <button type="button" onclick="setPassengers(4)" class="pax-btn bg-slate-100 text-slate-700 font-bold border border-slate-200 py-3 rounded-xl text-center text-sm">4名</button>
+                        </div>
+                    </div>
+
+                    <!-- Option 3: Additional Options -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">3. 追加オプションの選択</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer">
+                                <input type="checkbox" id="optWinery" onchange="calculateEstimate()" class="w-4 h-4 text-amber-500 rounded focus:ring-amber-400">
+                                <span class="text-xs sm:text-sm text-slate-700">滝沢 / 八剣山ワイナリー等 スポット追加訪問 (+3,000円)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer">
+                                <input type="checkbox" id="optLang" onchange="calculateEstimate()" class="w-4 h-4 text-amber-500 rounded focus:ring-amber-400">
+                                <span class="text-xs sm:text-sm text-slate-700">外国語（英語・韓国語など）対応可能ドライバー指定 (+2,000円)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Calculation Output Result -->
+                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
+                        <p class="text-xs font-semibold text-slate-500 mb-1">タクシー1台あたりの合計予想料金（高速代込み）</p>
+                        <p class="text-3xl sm:text-4xl font-black text-amber-600 mb-2" id="totalEstimateText">15,000 円</p>
+                        <p class="text-xs text-slate-500" id="perPersonEstimateText">1名あたり約 15,000 円 (計1名様の場合)</p>
+                    </div>
+
+                    <button onclick="applyCalculatedToModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-2xl text-center text-sm transition-colors shadow-lg">
+                        この見積もりでそのまま相談する
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 text-xs font-bold uppercase tracking-wider bg-amber-100 px-3 py-1 rounded-full">FAQ</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">よくあるご質問</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-slate-50 p-6 rounded-2xl border border-slate-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between font-bold text-slate-900 cursor-pointer">
+                        <span>Q. 試飲費用や酒蔵の入場料は料金に含まれますか？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        タクシー料金には、専属ドライバーの回送費、ガソリン代、高速道路通行料が含まれております。各酒蔵での試飲セット料金や個人の飲食費は現地でお好みに応じて直接お支払いください。
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 p-6 rounded-2xl border border-slate-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between font-bold text-slate-900 cursor-pointer">
+                        <span>Q. 出発地や目的地を希望のホテルに指定できますか？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        はい、可能です！基本的に札幌市内のホテルや札幌駅など、ご希望の場所へ無料でお迎えおよび送迎を行っております。
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 p-6 rounded-2xl border border-slate-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between font-bold text-slate-900 cursor-pointer">
+                        <span>Q. 当日現地で立ち寄り先を変更することは可能ですか？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        はい、完全貸切プライベートツアーですので、貸切時間の範囲内であればドライバーと相談しながら柔軟にルートを変更いただけます。
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA & Info -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+                <div class="md:col-span-6 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 font-black flex items-center justify-center text-base">
+                            酒
+                        </div>
+                        <span class="text-xl font-bold text-white font-display">お酒タクシー</span>
+                    </div>
+                    <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+                        運転の心配なくタクシーで楽しむ北海道ビール＆ワイナリーカスタムツアー。
+                        できたての地酒、絶品グルメ、美しい自然を一日で快適に体験いただけます。
+                    </p>
+                </div>
+
+                <div class="md:col-span-3 space-y-2">
+                    <h4 class="text-sm font-bold text-white">主要コース</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="#courses" class="hover:text-amber-400">札幌2大ビール巡りツアー</a></li>
+                        <li><a href="#courses" class="hover:text-amber-400">小樽ビール＆運河観光ツアー</a></li>
+                        <li><a href="#courses" class="hover:text-amber-400">美瑛・富良野ワイン＆絶景ツアー</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3 space-y-2">
+                    <h4 class="text-sm font-bold text-white">カスタマーサポート</h4>
+                    <p class="text-xs">LINE公式アカウント: @OsakeTaxi</p>
+                    <p class="text-xs">Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b080e0b0b14090f3b14081a101e0f1a031256131410101a121f1455110b">[email&#160;protected]</a></p>
+                    <p class="text-xs">営業時間: 年中無休 09:00 ~ 18:00</p>
+                </div>
+            </div>
+
+            <div class="pt-8 text-center text-xs text-slate-600">
+                <p>© 2026 お酒タクシー (Osake Taxi) Hokkaido Travel Service. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <div class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-2">
+                    <i class="fa-solid fa-taxi"></i> お酒タクシー 予約・相談窓口
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900">ツアー見積もり＆予約相談</h3>
+                <p class="text-xs text-slate-500 mt-1">フォームをご送信いただければ、2時間以内に専属マネージャーからご連絡いたします。</p>
+            </div>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4 text-xs sm:text-sm">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">お名前 (代表者様)</label>
+                    <input type="text" required placeholder="山田 太郎" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">ご連絡先 (電話番号 または LINE ID)</label>
+                    <input type="text" required placeholder="090-1234-5678 または LINE ID" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">ご希望のツアーコース</label>
+                    <select id="modalCourse" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                        <option value="札幌2大ビール巡りツアー">札幌2大ビール巡りツアー (約8時間)</option>
+                        <option value="小樽ビール＆運河観光ツアー">小樽ビール＆運河観光ツアー (約7~8時間)</option>
+                        <option value="美瑛・富良野ワイン＆絶景ツアー">美瑛・富良野ワイン＆絶景ツアー (約10~12時間)</option>
+                        <option value="オリジナル・カスタム日程相談">その他カスタム日程相談</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">ご利用希望日</label>
+                        <input type="date" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">ご乗車人数</label>
+                        <select class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                            <option>1名</option>
+                            <option selected>2名</option>
+                            <option>3名</option>
+                            <option>4名 (上限)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">お迎え希望ホテル・場所</label>
+                    <input type="text" placeholder="例: 札幌グランドホテル" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">その他ご要望</label>
+                    <textarea rows="3" placeholder="お好みのお酒（ビール/ワイン/日本酒）や行きたいスポット、ドライバーのご要望などをご記入ください。" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-amber-400 focus:outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-4 rounded-xl transition-all shadow-lg text-sm mt-2">
+                    無料相談・予約リクエストを送信
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Interactive Logic Script -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        let currentPassengers = 1;
+
+        function setPassengers(num) {
+            currentPassengers = num;
+            const btns = document.querySelectorAll('.pax-btn');
+            btns.forEach((btn, idx) => {
+                if (idx + 1 === num) {
+                    btn.className = 'pax-btn bg-amber-500 text-slate-950 font-bold border border-amber-500 py-3 rounded-xl text-center text-sm';
+                } else {
+                    btn.className = 'pax-btn bg-slate-100 text-slate-700 font-bold border border-slate-200 py-3 rounded-xl text-center text-sm';
+                }
+            });
+            calculateEstimate();
+        }
+
+        function calculateEstimate() {
+            const courseSelect = document.getElementById('calcCourse');
+            const basePrice = parseInt(courseSelect.value);
+            
+            let extra = 0;
+            if (document.getElementById('optWinery').checked) extra += 3000;
+            if (document.getElementById('optLang').checked) extra += 2000;
+
+            const total = basePrice + extra;
+            const perPerson = Math.round(total / currentPassengers);
+
+            document.getElementById('totalEstimateText').innerText = total.toLocaleString('ja-JP') + ' 円';
+            document.getElementById('perPersonEstimateText').innerText = `1名あたり約 ${perPerson.toLocaleString('ja-JP')} 円 (計 ${currentPassengers} 名様の場合)`;
+        }
+
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function selectCourseAndModal(courseName) {
+            document.getElementById('modalCourse').value = courseName;
+            openBookingModal();
+        }
+
+        function applyCalculatedToModal() {
+            const selectEl = document.getElementById('calcCourse');
+            const selectedOption = selectEl.options[selectEl.selectedIndex];
+            const courseText = selectedOption.getAttribute('data-name') || selectedOption.text;
+            
+            if (courseText.includes('札幌')) {
+                document.getElementById('modalCourse').value = '札幌2大ビール巡りツアー';
+            } else if (courseText.includes('小樽')) {
+                document.getElementById('modalCourse').value = '小樽ビール＆運河観光ツアー';
+            } else if (courseText.includes('美瑛')) {
+                document.getElementById('modalCourse').value = '美瑛・富良野ワイン＆絶景ツアー';
+            }
+            
+            openBookingModal();
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            // Custom notification toast
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 bg-emerald-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 flex items-center gap-3 animate-bounce';
+            toast.innerHTML = `
+                <i class="fa-solid fa-circle-check text-xl"></i>
+                <div>
+                    <p class="font-bold text-sm">予約リクエストを受け付けました！</p>
+                    <p class="text-xs text-emerald-100">担当マネージャーより折り返しご連絡差し上げます。</p>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            closeBookingModal();
+
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+        }
+
+        // Initialize calculator on page load
+        calculateEstimate();
+    </script>
+</body>
+</html>
